@@ -40,9 +40,9 @@ const services = [
       "Branching scenarios",
       "Progress visualization",
     ],
-    color: "border-teal",
-    accent: "text-teal",
-    bg: "bg-teal/10",
+    color: "border-gold",
+    accent: "text-gold",
+    bg: "bg-gold/10",
   },
   {
     title: "AI-Powered Course Design",

@@ -36,9 +36,9 @@ const caseStudies = [
       "Full SCORM compliance",
       "Interactive scenarios & branching",
     ],
-    color: "border-teal",
-    accent: "text-teal",
-    bg: "bg-teal/10",
+    color: "border-gold",
+    accent: "text-gold",
+    bg: "bg-gold/10",
   },
   {
     category: "Technology Training",

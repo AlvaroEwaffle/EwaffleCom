@@ -25,7 +25,7 @@ const posts = [
     date: "February 2026",
     description:
       "Both standards have their place, but choosing the wrong one can limit your analytics, compatibility, and future flexibility. We break down the differences with practical recommendations.",
-    color: "bg-teal/10 text-teal",
+    color: "bg-gold/10 text-gold",
   },
   {
     category: "Business",

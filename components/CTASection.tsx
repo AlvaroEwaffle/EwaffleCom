@@ -18,7 +18,7 @@ export default function CTASection({
   secondaryHref,
 }: CTASectionProps) {
   return (
-    <section className="bg-gradient-to-br from-accent/20 to-teal/20 py-24">
+    <section className="bg-gradient-to-br from-accent/20 to-gold/20 py-24">
       <div className="mx-auto max-w-3xl px-6 text-center">
         <h2 className="text-3xl font-bold text-white md:text-4xl">{title}</h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-slate-300">

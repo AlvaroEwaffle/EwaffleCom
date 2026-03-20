@@ -61,7 +61,7 @@ const services = [
   {
     title: "Gamification Design",
     desc: "Points, badges, leaderboards, and narrative worlds. Proven to increase completion rates by 40%.",
-    color: "border-teal",
+    color: "border-gold",
   },
   {
     title: "AI-Powered Course Design",

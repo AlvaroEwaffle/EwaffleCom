@@ -6,11 +6,13 @@
   --color-navy-800: #1a2240;
   --color-navy-700: #243056;
   --color-navy-600: #2e3e6c;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #2563eb;
-  --color-teal: #14b8a6;
-  --color-teal-hover: #0d9488;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --color-accent: #ff5991;
+  --color-accent-hover: #e6407a;
+  --color-gold: #f6c869;
+  --color-gold-hover: #e0b45e;
+  --color-deep-purple: #28244a;
+  --color-sky: #90cbf2;
+  --font-sans: var(--font-poppins), "Poppins", system-ui, -apple-system, sans-serif;
 }
 
 html {
