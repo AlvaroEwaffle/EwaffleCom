@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Book a Call",
@@ -81,10 +82,10 @@ export default function BookACallPage() {
           <p className="text-sm text-slate-400">
             Prefer email? Reach us at{" "}
             <a
-              href="mailto:hello@ewaffle.com"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="font-semibold text-accent transition-colors hover:text-accent-hover"
             >
-              hello@ewaffle.com
+              {CONTACT_EMAIL}
             </a>
           </p>
         </div>

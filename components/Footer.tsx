@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
 const footerSections = [
   {
-    title: "Company",
-    links: [
+      title: "Company",
+      links: [
       { href: "/about", label: "About" },
       { href: "/blog", label: "Blog" },
-      { href: "mailto:hello@ewaffle.com", label: "Contact" },
+      { href: `mailto:${CONTACT_EMAIL}`, label: "Contact" },
     ],
   },
   {
@@ -85,10 +86,10 @@ export default function Footer() {
               LinkedIn
             </a>
             <a
-              href="mailto:hello@ewaffle.com"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="text-sm text-slate-400 transition-colors hover:text-white"
             >
-              hello@ewaffle.com
+              {CONTACT_EMAIL}
             </a>
           </div>
         </div>

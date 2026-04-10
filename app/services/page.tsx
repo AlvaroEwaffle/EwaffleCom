@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "From SCORM packages to full gamification systems — we handle the production so you can focus on growing your business.",
+    "From SCORM packages to 360 onboarding experiences, we handle learning production so you can focus on growing your business.",
 };
 
 const services = [
@@ -78,6 +77,23 @@ const services = [
     accent: "text-purple-400",
     bg: "bg-purple-400/10",
   },
+  {
+    title: "360 Video Generation for E-Learning Onboarding",
+    desc: "Immersive onboarding and training experiences built from real environments and delivered with LMS readiness in mind.",
+    details:
+      "We design 360 video learning experiences that help teams understand spaces, procedures, and expectations before they step into the real environment. From onboarding journeys and compliance walkthroughs to operational simulations, we combine instructional design, immersive storytelling, and LMS-ready packaging so your training can scale without losing context.",
+    features: [
+      "360 scenario design for onboarding and training",
+      "Interactive hotspots, prompts, and guided flows",
+      "Voiceover, captions, and multilingual-ready structure",
+      "Safety, operations, and facility walkthroughs",
+      "SCORM/xAPI export strategy for LMS tracking",
+      "Support for blended learning and facilitator-led rollouts",
+    ],
+    color: "border-cyan-400",
+    accent: "text-cyan-300",
+    bg: "bg-cyan-400/10",
+  },
 ];
 
 export default function ServicesPage() {
@@ -90,9 +106,48 @@ export default function ServicesPage() {
             Everything You Need to Scale Course Production
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-            From SCORM packages to full gamification systems — we handle the
-            production so you can focus on growing your business.
+            From SCORM packages to immersive 360 onboarding experiences, we
+            handle production so you can focus on growing your business.
           </p>
+        </div>
+      </section>
+
+      <section className="bg-navy-950 pb-8">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="rounded-[2rem] border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 via-navy-900 to-navy-950 p-8 md:p-10">
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div>
+                <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                  Featured for onboarding
+                </span>
+                <h2 className="mt-5 text-3xl font-bold text-white">
+                  Add immersive 360 video to your onboarding stack
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300">
+                  When procedures, spaces, or equipment are hard to explain in a
+                  slide deck, 360 learning creates the missing context. We help
+                  L&amp;D teams and training providers launch immersive onboarding
+                  experiences that are engaging for learners and practical for
+                  enterprise LMS rollouts.
+                </p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  "New hire ramp-up",
+                  "Safety orientation",
+                  "Site and facility walkthroughs",
+                  "Customer or partner enablement",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-navy-950/70 px-5 py-4 text-sm font-medium text-slate-200"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -101,10 +156,10 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-6xl px-6">
           <SectionHeading
             title="Our Services"
-            subtitle="Four ways we help training companies produce better courses, faster."
+            subtitle="Five ways we help training companies produce better courses, faster."
           />
           <div className="mt-16 space-y-12">
-            {services.map((s, i) => (
+            {services.map((s) => (
               <div
                 key={s.title}
                 className={`rounded-2xl border-l-4 ${s.color} bg-navy-900 p-8 md:p-12`}
@@ -158,8 +213,9 @@ export default function ServicesPage() {
 
       {/* CTA */}
       <CTASection
-        title="Not sure which service you need?"
-        description="Book a call and we'll help you decide. We'll assess your needs and recommend the right approach for your business."
+        title="Planning an onboarding or immersive training initiative?"
+        description="Book a call and we&apos;ll map the right mix of 360 video, course production, and LMS delivery for your learning goals."
+        primaryCTA="Book a Call About Your Project"
       />
     </>
   );

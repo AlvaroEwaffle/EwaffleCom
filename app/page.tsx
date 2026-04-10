@@ -73,6 +73,11 @@ const services = [
     desc: "White-labeled learning platforms deployed and customized with your branding.",
     color: "border-navy-600",
   },
+  {
+    title: "360 Video Generation for Onboarding",
+    desc: "Immersive training experiences designed for safety, operations, and role-based onboarding in LMS-ready formats.",
+    color: "border-cyan-400",
+  },
 ];
 
 const metrics = [
@@ -255,6 +260,91 @@ export default function Home() {
             >
               View all services &rarr;
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 360 onboarding teaser */}
+      <section className="bg-navy-900 py-24">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+              New Service
+            </span>
+            <h2 className="mt-6 text-3xl font-bold text-white md:text-4xl">
+              360 Video Generation for Immersive Onboarding and Training
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-300">
+              Bring new hires and frontline teams into real-world scenarios
+              before day one. We turn your SOPs, site footage, and training
+              goals into guided 360 learning experiences that are ready for LMS
+              delivery and blended onboarding programs.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                "Scenario-based onboarding journeys",
+                "Safety, operations, and facility walkthroughs",
+                "Voiceover, hotspots, and guided decision points",
+                "LMS-ready delivery with SCORM/xAPI tracking",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-navy-950 px-5 py-4 text-sm text-slate-300"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Link
+                href="/book-a-call"
+                className="rounded-lg bg-accent px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+              >
+                Discuss Your 360 Onboarding Project
+              </Link>
+              <Link
+                href="/services"
+                className="rounded-lg border border-white/20 px-8 py-4 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/5"
+              >
+                Explore the Service
+              </Link>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyan-400/10 via-navy-950 to-navy-950 p-8 shadow-2xl shadow-cyan-950/30">
+            <div className="rounded-[1.5rem] border border-white/10 bg-navy-950/80 p-6 backdrop-blur">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
+                Ideal Use Cases
+              </p>
+              <div className="mt-6 space-y-4">
+                {[
+                  {
+                    title: "Workplace onboarding",
+                    desc: "Help employees understand spaces, equipment, and expectations before entering the floor.",
+                  },
+                  {
+                    title: "Partner and contractor training",
+                    desc: "Standardize site access, procedures, and compliance messaging across distributed teams.",
+                  },
+                  {
+                    title: "Customer education",
+                    desc: "Show complex environments and processes in a format that feels concrete, memorable, and scalable.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+                  >
+                    <h3 className="text-base font-semibold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
