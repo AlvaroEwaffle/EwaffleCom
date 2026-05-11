@@ -3,28 +3,28 @@ import { CONTACT_EMAIL } from "@/lib/contact";
 
 const footerSections = [
   {
-      title: "Company",
+      title: "Empresa",
       links: [
-      { href: "/about", label: "About" },
+      { href: "/about", label: "Sobre Ewaffle" },
       { href: "/blog", label: "Blog" },
-      { href: `mailto:${CONTACT_EMAIL}`, label: "Contact" },
+      { href: `mailto:${CONTACT_EMAIL}`, label: "Contacto" },
     ],
   },
   {
-    title: "Services",
+    title: "Servicios",
     links: [
-      { href: "/services", label: "Course Production" },
-      { href: "/services", label: "Gamification" },
-      { href: "/services", label: "AI Design" },
-      { href: "/services", label: "LMS" },
+      { href: "/services", label: "LMS a medida" },
+      { href: "/services", label: "Onboarding masivo" },
+      { href: "/services", label: "Alertas tempranas" },
+      { href: "/services", label: "WhatsApp learning" },
     ],
   },
   {
-    title: "Resources",
+      title: "Recursos",
     links: [
-      { href: "/case-studies", label: "Case Studies" },
-      { href: "/pricing", label: "Pricing" },
-      { href: "/book-a-call", label: "Book a Call" },
+      { href: "/case-studies", label: "Casos" },
+      { href: "/pricing", label: "Modelo comercial" },
+      { href: "/book-a-call", label: "Agendar discovery" },
     ],
   },
 ];
@@ -38,14 +38,14 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2">
               <img src="/favicon.png" alt="Ewaffle" className="h-8 w-8" />
-              <span className="text-xl font-bold text-white">Ewaffle</span>
+              <span className="text-xl font-bold text-white">Ewaffle.com</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              Gamified course production powered by AI. Built for training
-              companies that demand results.
+              LMS a medida para empresas grandes con primera linea,
+              onboarding masivo y capacitacion trazable.
             </p>
             <p className="mt-4 text-sm text-slate-500">
-              Based in Latin America. Serving the world.
+              Sub-marca de Ewaffle, construida desde Chile para LATAM.
             </p>
           </div>
 
@@ -74,7 +74,8 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
           <p className="text-sm text-slate-500">
-            &copy; {new Date().getFullYear()} Ewaffle. All rights reserved.
+            &copy; {new Date().getFullYear()} Ewaffle. Todos los derechos
+            reservados.
           </p>
           <div className="flex items-center gap-6">
             <a

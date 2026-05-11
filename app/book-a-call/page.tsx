@@ -2,26 +2,26 @@ import type { Metadata } from "next";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Book a Call",
+  title: "Agendar Discovery",
   description:
-    "Book a free 30-minute discovery call with Ewaffle. We'll discuss your course production needs and show you how we can help.",
+    "Agenda una discovery de 30 minutos para evaluar si Ewaffle.com puede construir una plataforma LMS a medida para tu organizacion.",
 };
 
 const steps = [
   {
     num: "1",
-    title: "We Listen",
-    desc: "Tell us about your courses, your clients, and your production challenges.",
+    title: "Entendemos la necesidad",
+    desc: "Revisamos onboarding, primera linea, compliance, sistema actual y resultado esperado.",
   },
   {
     num: "2",
-    title: "We Advise",
-    desc: "We share how we have helped similar companies and what approach we recommend.",
+    title: "Definimos un caso",
+    desc: "Si calza, elegimos un caso de uso concreto para convertirlo en demo con tu contexto.",
   },
   {
     num: "3",
-    title: "We Propose",
-    desc: "You receive a tailored proposal with scope, timeline, and pricing within 48 hours.",
+    title: "Proponemos con alcance",
+    desc: "Recibes alcance, timeline, inversion y criterios de exito. Sin promesas vagas.",
   },
 ];
 
@@ -32,11 +32,11 @@ export default function BookACallPage() {
       <section className="bg-gradient-to-b from-navy-900 to-navy-950 py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h1 className="text-4xl font-extrabold text-white md:text-5xl">
-            Book Your Free Discovery Call
+            Agenda una discovery
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-            30 minutes. No pressure. We&apos;ll discuss your course production
-            needs and show you how we can help.
+            30 minutos para entender si hay necesidad real, presupuesto,
+            responsable y un caso que valga la pena convertir en demo.
           </p>
         </div>
       </section>
@@ -49,7 +49,7 @@ export default function BookACallPage() {
               src="https://capu.villelab.com/schedule/book-a-call"
               className="w-full rounded-xl border-0"
               style={{ height: "700px", minHeight: "600px" }}
-              title="Book a call with Alvaro"
+              title="Agendar llamada con Alvaro"
               allow="clipboard-write"
             />
           </div>
@@ -60,7 +60,7 @@ export default function BookACallPage() {
       <section className="bg-navy-950 py-24">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-center text-2xl font-bold text-white">
-            What to Expect
+            Que esperar
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {steps.map((step) => (
@@ -80,7 +80,7 @@ export default function BookACallPage() {
       <section className="bg-navy-900 py-16">
         <div className="mx-auto max-w-2xl px-6 text-center">
           <p className="text-sm text-slate-400">
-            Prefer email? Reach us at{" "}
+            Prefieres email? Escribeme a{" "}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="font-semibold text-accent transition-colors hover:text-accent-hover"

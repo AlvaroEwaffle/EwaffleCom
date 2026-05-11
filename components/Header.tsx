@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navLinks = [
-  { href: "/services", label: "Services" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/case-studies", label: "Case Studies" },
+  { href: "/services", label: "Servicios" },
+  { href: "/pricing", label: "Modelo comercial" },
+  { href: "/case-studies", label: "Casos" },
   { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "Sobre Ewaffle" },
 ];
 
 export default function Header() {
@@ -20,7 +20,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <img src="/favicon.png" alt="Ewaffle" className="h-8 w-8" />
-          <span className="text-xl font-bold text-white">Ewaffle</span>
+          <span className="text-xl font-bold text-white">Ewaffle.com</span>
         </Link>
 
         {/* Desktop nav */}
@@ -38,7 +38,7 @@ export default function Header() {
             href="/book-a-call"
             className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
           >
-            Book a Call
+            Agendar discovery
           </Link>
         </nav>
 
@@ -46,7 +46,7 @@ export default function Header() {
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="flex flex-col gap-1.5 md:hidden"
-          aria-label="Toggle menu"
+          aria-label="Abrir menu"
         >
           <span
             className={`h-0.5 w-6 bg-white transition-transform ${mobileOpen ? "translate-y-2 rotate-45" : ""}`}
@@ -79,7 +79,7 @@ export default function Header() {
               onClick={() => setMobileOpen(false)}
               className="mt-2 rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
             >
-              Book a Call
+              Agendar discovery
             </Link>
           </div>
         </nav>

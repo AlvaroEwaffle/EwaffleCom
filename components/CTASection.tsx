@@ -12,7 +12,7 @@ interface CTASectionProps {
 export default function CTASection({
   title,
   description,
-  primaryCTA = "Book a Discovery Call",
+  primaryCTA = "Agendar discovery",
   primaryHref = "/book-a-call",
   secondaryCTA,
   secondaryHref,

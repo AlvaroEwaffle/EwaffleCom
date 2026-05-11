@@ -13,19 +13,19 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ewaffle — Gamified Course Production Powered by AI",
+    default: "Ewaffle.com — LMS a medida para empresas grandes",
     template: "%s — Ewaffle",
   },
   description:
-    "AI-powered SCORM course production for training companies. White-label ready. Delivered in 4 weeks.",
+    "Plataformas LMS a medida para empresas con primera linea, onboarding masivo, compliance y capacitacion trazable.",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Ewaffle — Gamified Course Production Powered by AI",
+    title: "Ewaffle.com — LMS a medida para empresas grandes",
     description:
-      "AI-powered SCORM course production for training companies. White-label ready. Delivered in 4 weeks.",
+      "Plataformas LMS a medida para primera linea, onboarding masivo y capacitacion trazable.",
     url: "https://e-waffle.com",
     siteName: "Ewaffle",
     type: "website",
@@ -38,14 +38,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${poppins.variable}`}>
+    <html lang="es" className={`h-full antialiased ${poppins.variable}`}>
       <body className={`min-h-full flex flex-col ${poppins.className}`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
         {/* WhatsApp Float Button */}
         <a
-          href="https://wa.me/56920115198?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Ewaffle%20%F0%9F%91%8B"
+          href="https://wa.me/56920115198?text=Hola%2C%20me%20interesa%20conocer%20Ewaffle.com%20para%20una%20plataforma%20LMS%20a%20medida"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contáctanos por WhatsApp"

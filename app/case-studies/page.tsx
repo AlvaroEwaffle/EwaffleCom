@@ -1,57 +1,61 @@
 import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
+import CaseStudyVisualMockup from "@/components/CaseStudyVisualMockup";
 
 export const metadata: Metadata = {
-  title: "Case Studies",
+  title: "Casos",
   description:
-    "See how training companies scale their course production with Ewaffle. Real results from real clients.",
+    "Casos de uso de Ewaffle.com para LMS a medida, onboarding masivo y capacitacion trazable.",
 };
 
 const caseStudies = [
   {
-    category: "Corporate Training",
-    metric: "Scaled from 5 to 30 courses per quarter",
-    company: "TrainForward Inc.",
+    category: "Educacion escolar",
+    metric: "LMS activo para acompañar rutas de aprendizaje escolar",
+    company: "Colegios SIP",
     description:
-      "TrainForward needed to 6x their course production to meet growing client demand. We embedded a dedicated production team and delivered consistent, high-quality courses on a rolling schedule.",
+      "Una plataforma ya configurada permite mostrar usuarios, cursos, avance y soporte de adopcion en un contexto real. Es una base concreta para demostrar como Ewaffle.com acompaña programas con seguimiento continuo.",
     highlights: [
-      "6x production increase",
-      "Zero additional hires needed",
-      "Consistent quality across all courses",
-      "Rolling delivery schedule",
+      "Plataforma LMS activa",
+      "Demo basada en contexto real",
+      "Seguimiento de cohortes y avance",
+      "Evidencia util para nuevas propuestas",
     ],
+    visual: "sip" as const,
     color: "border-accent",
     accent: "text-accent",
     bg: "bg-accent/10",
   },
   {
-    category: "HR / Compliance",
-    metric: "Launched gamified compliance training for Fortune 500 clients",
-    company: "Apex Learning Solutions",
+    category: "Primera linea",
+    metric: "Piloto de onboarding mobile para equipos en terreno",
+    company: "Buffalo Waffles",
     description:
-      "Apex won a major Fortune 500 contract but needed 12 gamified compliance courses in under 8 weeks. We delivered all 12 on time with full SCORM compliance and interactive scenarios.",
+      "El caso Buffalo es ideal para mostrar un flujo de bienvenida simple: capsulas breves, checklist por rol, activacion por WhatsApp y una vista para que el supervisor sepa quien avanzo.",
     highlights: [
-      "12 courses in 8 weeks",
-      "Fortune 500 quality standards met",
-      "Full SCORM compliance",
-      "Interactive scenarios & branching",
+      "Demo personalizada para primer turno",
+      "Capsulas cortas mobile-first",
+      "WhatsApp como hilo de activacion",
+      "Vista de avance para supervisor",
     ],
+    visual: "buffalo" as const,
     color: "border-gold",
     accent: "text-gold",
     bg: "bg-gold/10",
   },
   {
-    category: "Technology Training",
-    metric: "Increased course completion rates from 45% to 82%",
-    company: "NovaTech Training",
+    category: "Capacitacion masiva",
+    metric: "Propuesta para trazabilidad ejecutiva y certificacion",
+    company: "AIEP / empresas grandes",
     description:
-      "NovaTech's technology courses had a completion problem. We redesigned their top 10 courses with gamification, interactive scenarios, and modern visual design. Completion rates nearly doubled.",
+      "Para organizaciones grandes, el valor esta en conectar contenido, avance y decisiones. La plataforma debe mostrar rutas, certificacion, cohortes y señales accionables para responsables ejecutivos y equipos de implementacion.",
     highlights: [
-      "Completion rates: 45% to 82%",
-      "10 courses redesigned",
-      "Gamification framework implemented",
-      "Modern visual redesign",
+      "Capacitacion masiva trazable",
+      "Dashboard para decision ejecutiva",
+      "Señales de seguimiento por cohorte",
+      "Alcance listo para propuesta",
     ],
+    visual: "aiep" as const,
     color: "border-yellow-400",
     accent: "text-yellow-400",
     bg: "bg-yellow-400/10",
@@ -65,66 +69,78 @@ export default function CaseStudiesPage() {
       <section className="bg-gradient-to-b from-navy-900 to-navy-950 py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h1 className="text-4xl font-extrabold text-white md:text-5xl">
-            See How We Help Training Companies Scale
+            Casos de uso para activar aprendizaje en terreno
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-            Real results from real partnerships. Here&apos;s what happens when
-            training companies outsource production to Ewaffle.
+            Tres contextos concretos para mostrar como una plataforma LMS a
+            medida puede activar usuarios, medir avance y abrir conversaciones
+            comerciales con una demo cercana al negocio del cliente.
           </p>
         </div>
       </section>
 
-      {/* Case Studies */}
+      {/* Casos */}
       <section className="bg-navy-950 py-24">
-        <div className="mx-auto max-w-5xl px-6 space-y-12">
-          {caseStudies.map((cs) => (
+        <div className="mx-auto max-w-6xl space-y-12 px-6">
+          {caseStudies.map((cs, index) => (
             <article
               key={cs.company}
-              className={`rounded-2xl border-l-4 ${cs.color} bg-navy-900 p-8 md:p-12`}
+              className={`rounded-2xl border-l-4 ${cs.color} bg-navy-900 p-6 md:p-8`}
             >
-              <div className="flex flex-wrap items-center gap-4">
-                <span
-                  className={`rounded-full ${cs.bg} px-4 py-1.5 text-xs font-semibold ${cs.accent}`}
-                >
-                  {cs.category}
-                </span>
-                <span className="text-sm text-slate-500">{cs.company}</span>
-              </div>
-              <h2 className="mt-6 text-2xl font-bold text-white md:text-3xl">
-                {cs.metric}
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-slate-400 md:text-base">
-                {cs.description}
-              </p>
-              <div className="mt-8">
-                <h4
-                  className={`text-xs font-semibold uppercase tracking-wider ${cs.accent}`}
-                >
-                  Key results
-                </h4>
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {cs.highlights.map((h) => (
-                    <li
-                      key={h}
-                      className="flex items-start gap-3 text-sm text-slate-300"
+              <div
+                className={`grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-center ${
+                  index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                <div>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <span
+                      className={`rounded-full ${cs.bg} px-4 py-1.5 text-xs font-semibold ${cs.accent}`}
                     >
-                      <svg
-                        className={`mt-0.5 h-4 w-4 shrink-0 ${cs.accent}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="m4.5 12.75 6 6 9-13.5"
-                        />
-                      </svg>
-                      {h}
-                    </li>
-                  ))}
-                </ul>
+                      {cs.category}
+                    </span>
+                    <span className="text-sm text-slate-500">
+                      {cs.company}
+                    </span>
+                  </div>
+                  <h2 className="mt-6 text-2xl font-bold text-white md:text-3xl">
+                    {cs.metric}
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-400 md:text-base">
+                    {cs.description}
+                  </p>
+                  <div className="mt-8">
+                    <h4
+                      className={`text-xs font-semibold uppercase tracking-wider ${cs.accent}`}
+                    >
+                      Señales clave
+                    </h4>
+                    <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                      {cs.highlights.map((h) => (
+                        <li
+                          key={h}
+                          className="flex items-start gap-3 text-sm text-slate-300"
+                        >
+                          <svg
+                            className={`mt-0.5 h-4 w-4 shrink-0 ${cs.accent}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m4.5 12.75 6 6 9-13.5"
+                            />
+                          </svg>
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <CaseStudyVisualMockup variant={cs.visual} />
               </div>
             </article>
           ))}
@@ -133,8 +149,8 @@ export default function CaseStudiesPage() {
 
       {/* CTA */}
       <CTASection
-        title="Want Results Like These?"
-        description="Book a discovery call and let's talk about how we can help your training company scale."
+        title="Mostremos tu caso funcionando"
+        description="En 30 minutos entendemos la necesidad, el responsable ejecutivo, el presupuesto y la demo que podria abrir una propuesta."
       />
     </>
   );

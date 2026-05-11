@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block internal paths
+Disallow: /_next/
+
+# LLM / AI guidance
+# Structured overview for AI: https://ewaffle.com/llms.txt

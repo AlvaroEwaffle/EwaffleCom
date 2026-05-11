@@ -3,92 +3,92 @@ import SectionHeading from "@/components/SectionHeading";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Servicios",
   description:
-    "From SCORM packages to 360 onboarding experiences, we handle learning production so you can focus on growing your business.",
+    "Servicios de Ewaffle.com para LMS a medida, onboarding masivo, WhatsApp learning, reportería ejecutiva y produccion de capsulas.",
 };
 
 const services = [
   {
-    title: "SCORM & xAPI Course Production",
-    desc: "Publish-ready packages compatible with any LMS.",
+    title: "LMS a medida",
+    desc: "Plataformas branded para operaciones con usuarios, cohortes, avance y soporte.",
     details:
-      "We produce SCORM 1.2, SCORM 2004, and xAPI compliant courses that work seamlessly with 50+ LMS platforms including Cornerstone, Absorb, Docebo, TalentLMS, Moodle, Canvas, and more. Every course includes responsive design, quiz integration, and completion tracking.",
+      "Diseñamos y configuramos una experiencia LMS que no se siente generica: marca, rutas, usuarios, roles, dashboard y reglas de seguimiento listas para operar con equipos reales.",
     features: [
-      "SCORM 1.2 & 2004 compliance",
-      "xAPI (Tin Can) support",
-      "50+ LMS compatibility",
-      "Responsive design (desktop + mobile)",
-      "Quiz & assessment integration",
-      "Completion tracking & reporting",
+      "Arquitectura de rutas y cohortes",
+      "Marca y experiencia visual",
+      "Usuarios, roles y permisos",
+      "Dashboard ejecutivo",
+      "Soporte de adopcion",
+      "Go-live con criterios de salida",
     ],
     color: "border-accent",
     accent: "text-accent",
     bg: "bg-accent/10",
   },
   {
-    title: "Gamification Design",
-    desc: "Points, badges, leaderboards, and narrative worlds.",
+    title: "Onboarding de primera linea",
+    desc: "Capsulas cortas para equipos de sala, cocina, tiendas, planta o terreno.",
     details:
-      "Our gamification frameworks are proven to increase completion rates by 40% on average. We design engagement systems that make learning addictive — from simple badge mechanics to fully immersive narrative worlds with branching storylines.",
+      "Convertimos procedimientos, protocolos y tareas criticas en experiencias breves que una persona puede completar antes o durante su primer turno.",
     features: [
-      "Points & scoring systems",
-      "Badges & achievements",
-      "Leaderboards & competition",
-      "Narrative & storytelling",
-      "Branching scenarios",
-      "Progress visualization",
+      "Pasaporte de onboarding",
+      "Checklist por rol",
+      "Microcapsulas mobile-first",
+      "Simulaciones y escenarios",
+      "Validacion del supervisor",
+      "Reporte de avance por local o unidad",
     ],
     color: "border-gold",
     accent: "text-gold",
     bg: "bg-gold/10",
   },
   {
-    title: "AI-Powered Course Design",
-    desc: "Cut instructional design time in half with AI.",
+    title: "WhatsApp learning",
+    desc: "Activacion directa cuando el usuario no entra solo al LMS.",
     details:
-      "Our proprietary AI workflows accelerate every stage of course development — from content analysis and storyboarding to visual design and assessment generation. Human experts review every output to ensure quality and pedagogical integrity.",
+      "Usamos WhatsApp y email como canales de empuje para recordatorios, capsulas, confirmaciones y alertas. El objetivo es mover avance, no solo publicar contenido.",
     features: [
-      "AI content analysis & structuring",
-      "Automated storyboard generation",
-      "Smart assessment creation",
-      "Visual design acceleration",
-      "Human expert review",
-      "50% faster production cycles",
+      "Flujos de activacion",
+      "Mensajes por etapa",
+      "Recordatorios y nudges",
+      "Confirmaciones de completion",
+      "Alertas a supervisores",
+      "Integracion con reportería",
     ],
     color: "border-yellow-400",
     accent: "text-yellow-400",
     bg: "bg-yellow-400/10",
   },
   {
-    title: "LMS Solutions",
-    desc: "White-labeled learning platforms with your branding.",
+    title: "Reportería y alertas tempranas",
+    desc: "Señales accionables antes de que la cohorte abandone.",
     details:
-      "Need an LMS? We deploy, configure, and customize learning platforms under your brand. From selecting the right platform to migrating existing content and training your team, we handle the full lifecycle.",
+      "Transformamos datos de uso en una vista ejecutiva simple: avance, prioridades, usuarios bloqueados, cohortes lentas y acciones sugeridas para el equipo cliente.",
     features: [
-      "Platform selection & setup",
-      "White-label branding",
-      "Content migration",
-      "User management",
-      "Custom integrations",
-      "Ongoing support & maintenance",
+      "Indicadores de avance",
+      "Riesgo por cohorte",
+      "Usuarios sin traccion",
+      "Reporte semanal",
+      "Playbooks de intervencion",
+      "Vista ejecutiva para responsables",
     ],
     color: "border-purple-400",
     accent: "text-purple-400",
     bg: "bg-purple-400/10",
   },
   {
-    title: "360 Video Generation for E-Learning Onboarding",
-    desc: "Immersive onboarding and training experiences built from real environments and delivered with LMS readiness in mind.",
+    title: "Produccion de capsulas",
+    desc: "Ewaffle.cl produce contenido; Ewaffle.com lo convierte en tecnologia aplicable.",
     details:
-      "We design 360 video learning experiences that help teams understand spaces, procedures, and expectations before they step into the real environment. From onboarding journeys and compliance walkthroughs to operational simulations, we combine instructional design, immersive storytelling, and LMS-ready packaging so your training can scale without losing context.",
+      "Ewaffle.cl mantiene la capacidad de produccion de capsulas. Ewaffle.com toma esa base y la transforma en soluciones con plataforma, canales, soporte y modelo comercial claro.",
     features: [
-      "360 scenario design for onboarding and training",
-      "Interactive hotspots, prompts, and guided flows",
-      "Voiceover, captions, and multilingual-ready structure",
-      "Safety, operations, and facility walkthroughs",
-      "SCORM/xAPI export strategy for LMS tracking",
-      "Support for blended learning and facilitator-led rollouts",
+      "Guion instruccional",
+      "Diseño visual y animacion",
+      "Capsulas SCORM/xAPI cuando aplica",
+      "Video 360 para onboarding",
+      "Gamificacion sobria",
+      "QA pedagogico y tecnico",
     ],
     color: "border-cyan-400",
     accent: "text-cyan-300",
@@ -99,44 +99,40 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero */}
       <section className="bg-gradient-to-b from-navy-900 to-navy-950 py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h1 className="text-4xl font-extrabold text-white md:text-5xl">
-            Everything You Need to Scale Course Production
+            Servicios para convertir capacitacion en operacion
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-            From SCORM packages to immersive 360 onboarding experiences, we
-            handle production so you can focus on growing your business.
+            Ewaffle.com vende soluciones LMS a medida para empresas que necesitan
+            activar, medir y sostener aprendizaje en equipos grandes.
           </p>
         </div>
       </section>
 
       <section className="bg-navy-950 pb-8">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="rounded-[2rem] border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 via-navy-900 to-navy-950 p-8 md:p-10">
+          <div className="rounded-2xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 via-navy-900 to-navy-950 p-8 md:p-10">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <div>
                 <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
-                  Featured for onboarding
+                  Tecnologia aplicada a capacitacion
                 </span>
                 <h2 className="mt-5 text-3xl font-bold text-white">
-                  Add immersive 360 video to your onboarding stack
+                  Priorizamos oportunidades con potencial real de compra
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300">
-                  When procedures, spaces, or equipment are hard to explain in a
-                  slide deck, 360 learning creates the missing context. We help
-                  L&amp;D teams and training providers launch immersive onboarding
-                  experiences that are engaging for learners and practical for
-                  enterprise LMS rollouts.
+                  La web debe ayudar a vender: explicar el modelo, mostrar casos
+                  vivos y llevar a una discovery con necesidad, responsable y presupuesto.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
-                  "New hire ramp-up",
-                  "Safety orientation",
-                  "Site and facility walkthroughs",
-                  "Customer or partner enablement",
+                  "Colegios SIP",
+                  "Buffalo Waffles",
+                  "AIEP / empresas grandes",
+                  "Google Ads listo para test",
                 ].map((item) => (
                   <div
                     key={item}
@@ -151,12 +147,11 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services */}
       <section className="bg-navy-950 py-24">
         <div className="mx-auto max-w-6xl px-6">
           <SectionHeading
-            title="Our Services"
-            subtitle="Five ways we help training companies produce better courses, faster."
+            title="Servicios"
+            subtitle="Cinco piezas para pasar de contenido suelto a sistema de aprendizaje operativo."
           />
           <div className="mt-16 space-y-12">
             {services.map((s) => (
@@ -166,7 +161,7 @@ export default function ServicesPage() {
               >
                 <div className="grid gap-8 md:grid-cols-2">
                   <div>
-                    <h3 className={`text-2xl font-bold text-white`}>
+                    <h3 className="text-2xl font-bold text-white">
                       {s.title}
                     </h3>
                     <p className="mt-2 text-lg text-slate-300">{s.desc}</p>
@@ -178,7 +173,7 @@ export default function ServicesPage() {
                     <h4
                       className={`text-sm font-semibold uppercase tracking-wider ${s.accent}`}
                     >
-                      What&apos;s included
+                      Incluye
                     </h4>
                     <ul className="mt-4 space-y-3">
                       {s.features.map((f) => (
@@ -211,11 +206,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <CTASection
-        title="Planning an onboarding or immersive training initiative?"
-        description="Book a call and we&apos;ll map the right mix of 360 video, course production, and LMS delivery for your learning goals."
-        primaryCTA="Book a Call About Your Project"
+        title="Definamos la demo que abre la propuesta"
+        description="En discovery elegimos un caso de uso, un owner cliente y el paquete comercial correcto."
+        primaryCTA="Agendar discovery"
       />
     </>
   );

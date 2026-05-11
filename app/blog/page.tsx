@@ -1,48 +1,47 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Practical guides, data-driven insights, and industry perspectives to help you grow your training business.",
+    "Ideas practicas sobre LMS a medida, onboarding, reportería y aprendizaje operativo.",
 };
 
 const posts = [
   {
-    category: "Outsourcing",
-    title: "How to Outsource E-Learning Development Without Losing Quality",
-    readTime: "8 min read",
-    date: "March 2026",
+    category: "Revenue",
+    title: "Como convertir una conversacion activa en piloto comercial",
+    readTime: "8 min lectura",
+    date: "Mayo 2026",
     description:
-      "Outsourcing course production can save you time and money — but only if you do it right. Here are the frameworks and red flags every training company should know before choosing a production partner.",
+      "Un piloto funciona cuando muestra el caso del cliente, reduce incertidumbre y deja claro el camino hacia una propuesta completa.",
     color: "bg-accent/10 text-accent",
   },
   {
-    category: "Technical",
-    title: "SCORM vs. xAPI: Which Standard Does Your Training Company Need?",
-    readTime: "6 min read",
-    date: "February 2026",
+    category: "LMS",
+    title: "Por que un LMS a medida necesita canal activo, no solo login",
+    readTime: "6 min lectura",
+    date: "Mayo 2026",
     description:
-      "Both standards have their place, but choosing the wrong one can limit your analytics, compatibility, and future flexibility. We break down the differences with practical recommendations.",
+      "En primera linea, el usuario no siempre entra al LMS. WhatsApp, email y alertas convierten repositorio en sistema de activacion.",
     color: "bg-gold/10 text-gold",
   },
   {
-    category: "Business",
-    title: "The True Cost of Building E-Learning Courses In-House",
-    readTime: "10 min read",
-    date: "January 2026",
+    category: "Operacion",
+    title: "La reportería que un responsable ejecutivo realmente necesita",
+    readTime: "7 min lectura",
+    date: "Mayo 2026",
     description:
-      "When you factor in salaries, benefits, tools, management overhead, and opportunity cost, building courses in-house is more expensive than most training companies realize.",
+      "Completion importa, pero no basta. El responsable necesita saber avance, cohortes lentas, usuarios bloqueados y acciones recomendadas.",
     color: "bg-yellow-400/10 text-yellow-400",
   },
   {
-    category: "Gamification",
-    title: "Gamification in Corporate Training: ROI Data from 200+ Courses",
-    readTime: "12 min read",
-    date: "December 2025",
+    category: "Contenido",
+    title: "Ewaffle.cl produce capsulas; Ewaffle.com vende sistemas",
+    readTime: "5 min lectura",
+    date: "Mayo 2026",
     description:
-      "We analyzed completion rates, engagement metrics, and learner satisfaction across 200+ courses to quantify the real impact of gamification on training outcomes.",
+      "La diferencia entre una fabrica de contenido y una propuesta enterprise esta en alcance, soporte, canales y medicion.",
     color: "bg-purple-400/10 text-purple-400",
   },
 ];
@@ -50,20 +49,18 @@ const posts = [
 export default function BlogPage() {
   return (
     <>
-      {/* Hero */}
       <section className="bg-gradient-to-b from-navy-900 to-navy-950 py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h1 className="text-4xl font-extrabold text-white md:text-5xl">
-            Insights for Training Companies
+            Ideas para vender y operar aprendizaje
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-            Practical guides, data-driven insights, and industry perspectives to
-            help you grow your training business.
+            Notas breves para ordenar oportunidades, propuestas, demos y sistemas LMS
+            con foco en resultados comerciales.
           </p>
         </div>
       </section>
 
-      {/* Blog posts */}
       <section className="bg-navy-950 py-24">
         <div className="mx-auto max-w-5xl px-6">
           <div className="grid gap-8 md:grid-cols-2">
@@ -91,7 +88,7 @@ export default function BlogPage() {
                 <div className="mt-6 flex items-center justify-between">
                   <span className="text-xs text-slate-500">{post.date}</span>
                   <span className="text-xs font-semibold text-slate-500">
-                    Coming Soon
+                    Proximamente
                   </span>
                 </div>
               </article>
@@ -100,37 +97,37 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Newsletter */}
       <section className="bg-navy-900 py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl font-bold text-white">Stay in the Loop</h2>
+          <h2 className="text-3xl font-bold text-white">
+            Newsletter comercial
+          </h2>
           <p className="mx-auto mt-4 max-w-xl text-slate-400">
-            Get our latest articles, guides, and industry insights delivered to
-            your inbox.
+            Recibe ideas sobre LMS, onboarding y venta consultiva de soluciones
+            de aprendizaje.
           </p>
           <form className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder="Tu email"
               className="flex-1 rounded-lg border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-accent"
             />
             <button
               type="submit"
               className="rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
             >
-              Subscribe
+              Suscribirme
             </button>
           </form>
           <p className="mt-3 text-xs text-slate-500">
-            No spam. Unsubscribe anytime.
+            Sin spam. Puedes salir cuando quieras.
           </p>
         </div>
       </section>
 
-      {/* CTA */}
       <CTASection
-        title="Ready to Start a Conversation?"
-        description="Book a free discovery call and let's talk about how we can help your training company produce better courses."
+        title="Convirtamos una idea en propuesta"
+        description="Partamos por un lead real, una demo acotada y un modelo comercial defendible."
       />
     </>
   );
