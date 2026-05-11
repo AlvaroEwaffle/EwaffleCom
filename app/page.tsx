@@ -1,5 +1,6 @@
 import Link from "next/link";
 import HeroDemoMockup from "@/components/HeroDemoMockup";
+import HeroAnimatedBackground from "@/components/HeroAnimatedBackground";
 import MotionReveal from "@/components/MotionReveal";
 
 const clients = ["ACHS", "AIEP", "Duoc UC", "SIP", "LATAM", "UGM"];
@@ -69,17 +70,10 @@ const stack = [
 export default function Home() {
   return (
     <>
-      <section
-        className="relative overflow-hidden bg-navy-950 text-white"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, rgba(15,22,41,0.82), rgba(10,14,26,0.98)), url('/assets/HeroBackground.png')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      >
+      <section className="relative overflow-hidden bg-navy-950 text-white">
+        <HeroAnimatedBackground />
         <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
-        <div className="mx-auto grid h-[calc(100svh-65px)] min-h-[720px] max-h-[820px] max-w-7xl gap-5 overflow-hidden px-6 py-8 md:gap-8 md:py-12 lg:h-[calc(100vh-73px)] lg:max-h-[840px] lg:min-h-[640px] lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+        <div className="relative mx-auto grid h-[calc(100svh-65px)] min-h-[720px] max-h-[820px] max-w-7xl gap-5 overflow-hidden px-6 py-8 md:gap-8 md:py-12 lg:h-[calc(100vh-73px)] lg:max-h-[840px] lg:min-h-[640px] lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <MotionReveal>
             <div className="inline-flex rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-200">
               Ewaffle.com · Tecnologia aplicada
