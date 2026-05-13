@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import Analytics from "@/components/Analytics";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const GTM_ID = "GTM-55QPCXTK";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,23 +16,46 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://e-waffle.com"),
   title: {
     default: "Ewaffle.com — LMS a medida para empresas grandes",
     template: "%s — Ewaffle",
   },
   description:
-    "Plataformas LMS a medida para empresas con primera linea, onboarding masivo, compliance y capacitacion trazable.",
+    "Plataformas LMS a medida para empresas con primera línea, onboarding masivo, compliance y capacitación trazable.",
+  keywords: [
+    "Ewaffle",
+    "LMS a medida",
+    "onboarding gamificado",
+    "capacitación corporativa",
+    "first line",
+    "capacitación masiva",
+    "WhatsApp learning",
+    "reportería ejecutiva",
+  ],
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: [{ url: "/favicon.ico" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
   },
   openGraph: {
     title: "Ewaffle.com — LMS a medida para empresas grandes",
     description:
-      "Plataformas LMS a medida para primera linea, onboarding masivo y capacitacion trazable.",
+      "Plataformas LMS a medida para primera línea, onboarding masivo y capacitación trazable.",
     url: "https://e-waffle.com",
     siteName: "Ewaffle",
     type: "website",
+    locale: "es_CL",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ewaffle.com — LMS a medida para empresas grandes",
+    description:
+      "Plataformas LMS a medida para primera línea, onboarding masivo y capacitación trazable.",
   },
 };
 
@@ -39,7 +66,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`h-full antialiased ${poppins.variable}`}>
+      <head>
+        <Script id="google-tag-manager" strategy="beforeInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${GTM_ID}');
+          `}
+        </Script>
+      </head>
       <body className={`min-h-full flex flex-col ${poppins.className}`}>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <Analytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
@@ -49,6 +96,9 @@ export default function RootLayout({
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contáctanos por WhatsApp"
+          data-track-event="cta_click"
+          data-track-category="whatsapp"
+          data-track-label="float_button"
           style={{
             position: "fixed",
             bottom: "24px",

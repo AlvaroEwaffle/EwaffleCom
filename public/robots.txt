@@ -6,3 +6,4 @@ Disallow: /_next/
 
 # LLM / AI guidance
 # Structured overview for AI: https://ewaffle.com/llms.txt
+Sitemap: https://e-waffle.com/sitemap.xml

@@ -14,7 +14,7 @@ const tiers = [
     monthly: "USD 1.8K",
     desc: "Para validar un caso de uso acotado con una unidad, un canal y una cohorte inicial.",
     features: [
-      "Discovery + sistema de diseno branded",
+      "Discovery + sistema de diseño branded",
       "1 unidad o flujo principal",
       "LMS branded con usuarios y avance",
       "Canal activo: WhatsApp o email",
@@ -26,12 +26,12 @@ const tiers = [
     name: "Standard",
     implementation: "USD 70K",
     monthly: "USD 2.8K",
-    desc: "El paquete base para empresas con onboarding, compliance o capacitacion masiva.",
+    desc: "El paquete base para empresas con onboarding, compliance o capacitación masiva.",
     features: [
       "3 unidades iniciales",
       "SSO o integracion liviana",
       "WhatsApp Business + email",
-      "Playbooks de intervencion",
+      "Playbooks de intervención",
       "Dashboard ejecutivo",
       "Reporte semanal automatico",
       "Soporte y ajustes continuos",

@@ -1,33 +1,32 @@
-# Ewaffle.com — LMS a medida y tecnologia para capacitacion
+# Ewaffle.com
 
-> Linea tecnologica de Ewaffle para empresas que necesitan activar, medir y sostener aprendizaje en equipos grandes.
+Línea tecnológica de Ewaffle para empresas que necesitan activar, medir y sostener aprendizaje en equipos grandes.
 
-Ewaffle.com diseña plataformas LMS a medida, onboarding mobile, rutas de aprendizaje, automatizaciones, canales de activacion y reportería ejecutiva.
-
-**Modalidad:** Remoto desde Chile para LATAM.
-**CTA principal:** Agendar reunion de descubrimiento. Si hay match, demo visual gratis.
-
-## Servicios
+## Lo que hacemos
 
 - LMS a medida con marca, usuarios, cohortes y avance.
-- Onboarding mobile para primera linea y equipos en terreno.
-- WhatsApp learning y email como canales de activacion.
-- Reporterías ejecutivas y señales de seguimiento.
-- Produccion de capsulas junto a la capacidad e-learning de Ewaffle.
+- Onboarding gamificado para primera línea y operaciones distribuidas.
+- WhatsApp learning y email como canales de activación.
+- Reportería ejecutiva y señales de seguimiento.
+- Producción de cápsulas junto a la capacidad e-learning de Ewaffle.
 
 ## Modelo comercial
 
-Cada propuesta separa dos componentes:
-
-- Implementation fee: diseño, configuracion, build y go-live.
+- Implementation fee: diseño, configuración, build y go-live.
 - Mensualidad: soporte, hosting, canales, reportería y mejora continua.
+
+## Prioridad comercial
+
+- Reunión de descubrimiento.
+- Si hay match, demo visual gratis.
+- Luego propuesta con alcance cerrado.
 
 ## Equipo
 
 - Alvaro Villena: producto, estrategia y discovery.
-- Jose Antonio: comercial y relacion con clientes.
+- Jose Antonio: comercial y relación con clientes.
 - Bruno Santimaria: developer.
 
-## Clientes y experiencia
+## Contexto
 
-ACHS, AIEP, Duoc UC, SIP, LATAM, UGM y otros contextos de capacitacion.
+ACHS, AIEP, Duoc UC, SIP, LATAM, UGM y otros contextos de capacitación.

@@ -1,17 +1,38 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import HeroDemoMockup from "@/components/HeroDemoMockup";
+import LeadCaptureForm from "@/components/LeadCaptureForm";
 import MotionReveal from "@/components/MotionReveal";
+
+export const metadata: Metadata = {
+  title: "Ewaffle.com",
+  description:
+    "Onboarding gamificado y LMS a medida para empresas con equipos grandes, distribuidos o con alta rotación.",
+  openGraph: {
+    title: "Ewaffle.com",
+    description:
+      "Onboarding gamificado y LMS a medida para empresas con equipos grandes, distribuidos o con alta rotación.",
+    url: "https://e-waffle.com",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ewaffle.com",
+    description:
+      "Onboarding gamificado y LMS a medida para empresas con equipos grandes, distribuidos o con alta rotación.",
+  },
+};
 
 const clients = ["ACHS", "AIEP", "Duoc UC", "SIP", "LATAM", "UGM"];
 
 const priorities = [
   {
-    title: "Alta rotacion",
-    body: "Onboarding y capacitacion para equipos que cambian seguido y necesitan llegar a productividad rapido: tiendas, planta, reparto, cocina o terreno.",
+    title: "Alta rotación",
+    body: "Onboarding y capacitación para equipos que cambian seguido y necesitan llegar a productividad rápido: tiendas, planta, reparto, cocina o terreno.",
   },
   {
-    title: "Churn de adopcion",
-    body: "Usuarios que entran una vez, no vuelven o se quedan a medias. Detectamos senales blandas antes de que se transforme en abandono.",
+    title: "Churn de adopción",
+    body: "Usuarios que entran una vez, no vuelven o se quedan a medias. Detectamos señales blandas antes de que se transforme en abandono.",
   },
   {
     title: "Seguimiento que actua",
@@ -23,17 +44,17 @@ const hotUseCases = [
   {
     label: "Colegios SIP",
     title: "LMS ya instanciado",
-    body: "Base real para demostrar plataforma viva, usuarios, cursos, seguimiento y soporte de adopcion.",
+    body: "Base real para demostrar plataforma viva, usuarios, cursos, seguimiento y soporte de adopción.",
   },
   {
     label: "Buffalo Waffles",
     title: "Piloto de onboarding",
-    body: "Demo mobile para primer turno, checklist por rol, activacion por WhatsApp y vista de avance para supervision.",
+    body: "Demo mobile para primer turno, checklist por rol, activación por WhatsApp y vista de avance para supervisión.",
   },
   {
     label: "AIEP / empresas grandes",
-    title: "Capacitacion masiva trazable",
-    body: "Casos donde completion, permanencia, certificacion y reportería ejecutiva importan en serio.",
+    title: "Capacitación masiva trazable",
+    body: "Casos donde completion, permanencia, certificación y reportería ejecutiva importan en serio.",
   },
 ];
 
@@ -41,7 +62,7 @@ const method = [
   {
     step: "01",
     title: "Reunion de descubrimiento",
-    body: "Entendemos la necesidad, quien decide, cual es el sistema actual y que resultado necesita el responsable ejecutivo.",
+    body: "Entendemos la necesidad, quién decide, cuál es el sistema actual y qué resultado necesita el responsable ejecutivo.",
   },
   {
     step: "02",
@@ -51,7 +72,7 @@ const method = [
   {
     step: "03",
     title: "Build en 8-10 semanas",
-    body: "Plataforma, capsulas iniciales, canales, dashboard y handover. 50% upfront, 50% al go-live.",
+    body: "Plataforma, cápsulas iniciales, canales, dashboard y handover. 50% upfront, 50% al go-live.",
   },
 ];
 
@@ -62,8 +83,8 @@ const stack = [
   "SCORM/xAPI cuando aplica",
   "Dashboard ejecutivo",
   "Alertas tempranas",
-  "Reporteria semanal",
-  "Playbooks de intervencion",
+  "Reportería semanal",
+  "Playbooks de intervención",
 ];
 
 export default function Home() {
@@ -71,41 +92,47 @@ export default function Home() {
     <>
       <section
         className="relative overflow-hidden bg-navy-950 text-white"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, rgba(15,22,41,0.82), rgba(10,14,26,0.98)), url('/assets/HeroBackground.png')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
       >
         <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
-        <div className="mx-auto grid h-[calc(100svh-65px)] min-h-[720px] max-h-[820px] max-w-7xl gap-5 overflow-hidden px-6 py-8 md:gap-8 md:py-12 lg:h-[calc(100vh-73px)] lg:max-h-[840px] lg:min-h-[640px] lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+        <div className="mx-auto grid min-h-[calc(100svh-65px)] max-w-7xl gap-8 px-6 pb-16 pt-10 md:gap-10 md:pb-20 md:pt-12 lg:h-[calc(100vh-73px)] lg:max-h-[840px] lg:min-h-[640px] lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:overflow-hidden lg:pb-24">
           <MotionReveal>
             <div className="inline-flex rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-200">
               Ewaffle.com · Tecnologia aplicada
             </div>
             <h1 className="mt-5 max-w-4xl text-3xl font-extrabold leading-[1.04] tracking-tight text-white md:text-5xl xl:text-6xl">
-              Onboarding gamificado para empresas que necesitan capacitar
-              equipos grandes, distribuidos o con alta rotacion.
+              Onboarding gamificado para equipos distribuidos.
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 md:mt-5 md:text-xl md:leading-8">
-              Diseñamos plataformas AI-native que reducen abandono, aceleran
-              adopcion y convierten la capacitacion en una experiencia trazable.
-              No es solo un portal de cursos: es una capa de activacion para que
-              tu gente llegue a productividad mas rapido y se quede.
+              Plataformas AI-native para primera línea y alta rotación.
+              Activan usuarios, reducen abandono y aceleran productividad.
             </p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/book-a-call"
+                data-track-event="cta_click"
+                data-track-category="hero"
+                data-track-label="agendar_discovery_hero"
                 className="rounded-lg bg-accent px-7 py-4 text-center text-sm font-bold text-white shadow-lg shadow-accent/20 transition hover:bg-accent-hover focus:outline-none focus:ring-4 focus:ring-accent/30"
               >
                 Agendar discovery
               </Link>
               <Link
                 href="/case-studies"
+                data-track-event="cta_click"
+                data-track-category="hero"
+                data-track-label="ver_pruebas_y_casos"
                 className="rounded-lg border border-white/15 bg-white/[0.04] px-7 py-4 text-center text-sm font-bold text-white transition hover:border-white/30 hover:bg-white/[0.08] focus:outline-none focus:ring-4 focus:ring-white/20"
               >
                 Ver pruebas y casos
+              </Link>
+              <Link
+                href="#contact"
+                data-track-event="cta_click"
+                data-track-category="hero"
+                data-track-label="dejar_datos_hero"
+                className="rounded-lg border border-sky-300/25 bg-sky-300/10 px-7 py-4 text-center text-sm font-bold text-sky-100 transition hover:border-sky-300/40 hover:bg-sky-300/15 focus:outline-none focus:ring-4 focus:ring-sky-300/20"
+              >
+                Dejar datos
               </Link>
             </div>
             <div className="mt-8 hidden sm:block">
@@ -122,6 +149,10 @@ export default function Home() {
                   </span>
                 ))}
               </div>
+            </div>
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-200">
+              <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-300" />
+              Conexión vía WhatsApp para activación y seguimiento.
             </div>
           </MotionReveal>
 
@@ -158,9 +189,21 @@ export default function Home() {
               </div>
               <Link
                 href="/book-a-call"
+                data-track-event="cta_click"
+                data-track-category="demo_guarantee"
+                data-track-label="agendar_reunion"
                 className="rounded-lg bg-accent px-7 py-4 text-center text-sm font-bold text-white shadow-lg shadow-accent/20 transition hover:bg-accent-hover focus:outline-none focus:ring-4 focus:ring-accent/30"
               >
                 Agendar reunion
+              </Link>
+              <Link
+                href="#contact"
+                data-track-event="cta_click"
+                data-track-category="demo_guarantee"
+                data-track-label="dejar_datos"
+                className="rounded-lg border border-white/15 bg-white/[0.04] px-7 py-4 text-center text-sm font-bold text-white transition hover:border-white/30 hover:bg-white/[0.08] focus:outline-none focus:ring-4 focus:ring-white/20"
+              >
+                Dejar datos primero
               </Link>
             </div>
           </div>
@@ -174,7 +217,7 @@ export default function Home() {
               Los dolores reales
             </p>
             <h2 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-              La rotacion, el abandono y la baja adopcion cuestan mas que el
+              La rotación, el abandono y la baja adopción cuestan más que el
               contenido.
             </h2>
           </div>
@@ -199,16 +242,16 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-300">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-300">
               Oportunidades activas
-              </p>
-              <h2 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-                Partimos desde oportunidades reales, no desde teoria.
-              </h2>
-              <p className="mt-5 text-lg leading-8 text-slate-300">
-                Ewaffle.com prioriza conversaciones con potencial real de
-                compra. El sistema de venta existe para convertir casos vivos
-                en demos, demos en propuestas y propuestas en continuidad.
+            </p>
+            <h2 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+                Partimos desde oportunidades reales, no desde teoría.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-300">
+              Ewaffle.com prioriza conversaciones con potencial real de
+              compra. El sistema de venta existe para convertir casos vivos
+              en demos, demos en propuestas y propuestas en continuidad.
               </p>
             </div>
             <div className="grid gap-5">
@@ -238,7 +281,7 @@ export default function Home() {
               Como trabajamos
             </p>
             <h2 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-              Demo primero. Propuesta despues. Build con alcance cerrado.
+              Demo primero. Propuesta después. Build con alcance cerrado.
             </h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -271,8 +314,8 @@ export default function Home() {
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
               Cada proyecto agrega piezas reutilizables al kit Ewaffle.com:
-              autenticacion, cohortes, capsulas, canales, reporting y
-              playbooks. La customizacion vive en la marca, la logica del
+              autenticación, cohortes, cápsulas, canales, reporting y
+              playbooks. La customización vive en la marca, la lógica del
               cliente y sus integraciones.
             </p>
           </div>
@@ -288,6 +331,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <LeadCaptureForm />
 
       <section className="bg-slate-950 py-20 text-white">
         <div className="mx-auto max-w-4xl px-6 text-center">
@@ -305,12 +350,18 @@ export default function Home() {
           <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/book-a-call"
+              data-track-event="cta_click"
+              data-track-category="home_bottom_cta"
+              data-track-label="agendar_discovery_footer"
               className="rounded-lg bg-orange-500 px-7 py-4 text-sm font-bold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300"
             >
               Agendar discovery
             </Link>
             <Link
               href="/pricing"
+              data-track-event="cta_click"
+              data-track-category="home_bottom_cta"
+              data-track-label="ver_modelo_comercial"
               className="rounded-lg border border-white/20 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/20"
             >
               Ver modelo comercial

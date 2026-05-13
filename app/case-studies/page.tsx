@@ -5,21 +5,21 @@ import CaseStudyVisualMockup from "@/components/CaseStudyVisualMockup";
 export const metadata: Metadata = {
   title: "Casos",
   description:
-    "Casos de uso de Ewaffle.com para LMS a medida, onboarding masivo y capacitacion trazable.",
+    "Casos de uso de Ewaffle.com para LMS a medida, onboarding masivo y capacitación trazable.",
 };
 
 const caseStudies = [
   {
-    category: "Educacion escolar",
+    category: "Educación escolar",
     metric: "LMS activo para acompañar rutas de aprendizaje escolar",
     company: "Colegios SIP",
     description:
-      "Una plataforma ya configurada permite mostrar usuarios, cursos, avance y soporte de adopcion en un contexto real. Es una base concreta para demostrar como Ewaffle.com acompaña programas con seguimiento continuo.",
+      "Una plataforma ya configurada permite mostrar usuarios, cursos, avance y soporte de adopción en un contexto real. Es una base concreta para demostrar cómo Ewaffle.com acompaña programas con seguimiento continuo.",
     highlights: [
       "Plataforma LMS activa",
       "Demo basada en contexto real",
       "Seguimiento de cohortes y avance",
-      "Evidencia util para nuevas propuestas",
+      "Evidencia útil para nuevas propuestas",
     ],
     visual: "sip" as const,
     color: "border-accent",
@@ -27,15 +27,15 @@ const caseStudies = [
     bg: "bg-accent/10",
   },
   {
-    category: "Primera linea",
+    category: "Primera línea",
     metric: "Piloto de onboarding mobile para equipos en terreno",
     company: "Buffalo Waffles",
     description:
-      "El caso Buffalo es ideal para mostrar un flujo de bienvenida simple: capsulas breves, checklist por rol, activacion por WhatsApp y una vista para que el supervisor sepa quien avanzo.",
+      "El caso Buffalo es ideal para mostrar un flujo de bienvenida simple: cápsulas breves, checklist por rol, activación por WhatsApp y una vista para que el supervisor sepa quién avanzó.",
     highlights: [
       "Demo personalizada para primer turno",
       "Capsulas cortas mobile-first",
-      "WhatsApp como hilo de activacion",
+      "WhatsApp como hilo de activación",
       "Vista de avance para supervisor",
     ],
     visual: "buffalo" as const,
@@ -44,13 +44,13 @@ const caseStudies = [
     bg: "bg-gold/10",
   },
   {
-    category: "Capacitacion masiva",
-    metric: "Propuesta para trazabilidad ejecutiva y certificacion",
+    category: "Capacitación masiva",
+    metric: "Propuesta para trazabilidad ejecutiva y certificación",
     company: "AIEP / empresas grandes",
     description:
-      "Para organizaciones grandes, el valor esta en conectar contenido, avance y decisiones. La plataforma debe mostrar rutas, certificacion, cohortes y señales accionables para responsables ejecutivos y equipos de implementacion.",
+      "Para organizaciones grandes, el valor está en conectar contenido, avance y decisiones. La plataforma debe mostrar rutas, certificación, cohortes y señales accionables para responsables ejecutivos y equipos de implementación.",
     highlights: [
-      "Capacitacion masiva trazable",
+      "Capacitación masiva trazable",
       "Dashboard para decision ejecutiva",
       "Señales de seguimiento por cohorte",
       "Alcance listo para propuesta",
@@ -72,7 +72,7 @@ export default function CaseStudiesPage() {
             Casos de uso para activar aprendizaje en terreno
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-            Tres contextos concretos para mostrar como una plataforma LMS a
+            Tres contextos concretos para mostrar cómo una plataforma LMS a
             medida puede activar usuarios, medir avance y abrir conversaciones
             comerciales con una demo cercana al negocio del cliente.
           </p>

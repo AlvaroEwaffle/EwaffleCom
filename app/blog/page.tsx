@@ -4,7 +4,7 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Ideas practicas sobre LMS a medida, onboarding, reportería y aprendizaje operativo.",
+    "Ideas prácticas sobre LMS a medida, onboarding, reportería y aprendizaje operativo.",
 };
 
 const posts = [
@@ -19,11 +19,11 @@ const posts = [
   },
   {
     category: "LMS",
-    title: "Por que un LMS a medida necesita canal activo, no solo login",
+    title: "Por qué un LMS a medida necesita canal activo, no solo login",
     readTime: "6 min lectura",
     date: "Mayo 2026",
     description:
-      "En primera linea, el usuario no siempre entra al LMS. WhatsApp, email y alertas convierten repositorio en sistema de activacion.",
+      "En primera línea, el usuario no siempre entra al LMS. WhatsApp, email y alertas convierten repositorio en sistema de activación.",
     color: "bg-gold/10 text-gold",
   },
   {
@@ -37,7 +37,7 @@ const posts = [
   },
   {
     category: "Contenido",
-    title: "Ewaffle.cl produce capsulas; Ewaffle.com vende sistemas",
+    title: "Ewaffle.cl produce cápsulas; Ewaffle.com vende sistemas",
     readTime: "5 min lectura",
     date: "Mayo 2026",
     description:

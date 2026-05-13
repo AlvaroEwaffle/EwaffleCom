@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -19,7 +20,13 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <img src="/favicon.png" alt="Ewaffle" className="h-8 w-8" />
+          <Image
+            src="/favicon.png"
+            alt="Ewaffle"
+            width={32}
+            height={32}
+            className="h-8 w-8 shrink-0"
+          />
           <span className="text-xl font-bold text-white">Ewaffle.com</span>
         </Link>
 
@@ -36,6 +43,9 @@ export default function Header() {
           ))}
           <Link
             href="/book-a-call"
+            data-track-event="cta_click"
+            data-track-category="header"
+            data-track-label="agendar_discovery_header"
             className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
           >
             Agendar discovery
@@ -77,6 +87,9 @@ export default function Header() {
             <Link
               href="/book-a-call"
               onClick={() => setMobileOpen(false)}
+              data-track-event="cta_click"
+              data-track-category="header"
+              data-track-label="agendar_discovery_mobile"
               className="mt-2 rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
             >
               Agendar discovery

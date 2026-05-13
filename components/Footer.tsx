@@ -37,15 +37,15 @@ export default function Footer() {
           {/* Brand column */}
           <div>
             <Link href="/" className="flex items-center gap-2">
-              <img src="/favicon.png" alt="Ewaffle" className="h-8 w-8" />
+              <img src="/icon.svg" alt="Ewaffle" className="h-8 w-8" />
               <span className="text-xl font-bold text-white">Ewaffle.com</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              LMS a medida para empresas grandes con primera linea,
-              onboarding masivo y capacitacion trazable.
+              LMS a medida para empresas grandes con primera línea,
+              onboarding masivo y capacitación trazable.
             </p>
             <p className="mt-4 text-sm text-slate-500">
-              Sub-marca de Ewaffle, construida desde Chile para LATAM.
+              Submarca de Ewaffle, construida desde Chile para LATAM.
             </p>
           </div>
 

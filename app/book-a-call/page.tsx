@@ -4,14 +4,14 @@ import { CONTACT_EMAIL } from "@/lib/contact";
 export const metadata: Metadata = {
   title: "Agendar Discovery",
   description:
-    "Agenda una discovery de 30 minutos para evaluar si Ewaffle.com puede construir una plataforma LMS a medida para tu organizacion.",
+    "Agenda una discovery de 30 minutos para evaluar si Ewaffle.com puede construir una plataforma LMS a medida para tu organización.",
 };
 
 const steps = [
   {
     num: "1",
     title: "Entendemos la necesidad",
-    desc: "Revisamos onboarding, primera linea, compliance, sistema actual y resultado esperado.",
+    desc: "Revisamos onboarding, primera línea, compliance, sistema actual y resultado esperado.",
   },
   {
     num: "2",
@@ -21,7 +21,7 @@ const steps = [
   {
     num: "3",
     title: "Proponemos con alcance",
-    desc: "Recibes alcance, timeline, inversion y criterios de exito. Sin promesas vagas.",
+    desc: "Recibes alcance, timeline, inversión y criterios de éxito. Sin promesas vagas.",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function BookACallPage() {
       <section className="bg-navy-950 py-24">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-center text-2xl font-bold text-white">
-            Que esperar
+            Qué esperar
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {steps.map((step) => (
@@ -80,7 +80,7 @@ export default function BookACallPage() {
       <section className="bg-navy-900 py-16">
         <div className="mx-auto max-w-2xl px-6 text-center">
           <p className="text-sm text-slate-400">
-            Prefieres email? Escribeme a{" "}
+            ¿Prefieres email? Escríbeme a{" "}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="font-semibold text-accent transition-colors hover:text-accent-hover"

@@ -5,7 +5,7 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "Servicios",
   description:
-    "Servicios de Ewaffle.com para LMS a medida, onboarding masivo, WhatsApp learning, reportería ejecutiva y produccion de capsulas.",
+    "Servicios de Ewaffle.com para LMS a medida, onboarding masivo, WhatsApp learning, reportería ejecutiva y producción de cápsulas.",
 };
 
 const services = [
@@ -19,7 +19,7 @@ const services = [
       "Marca y experiencia visual",
       "Usuarios, roles y permisos",
       "Dashboard ejecutivo",
-      "Soporte de adopcion",
+      "Soporte de adopción",
       "Go-live con criterios de salida",
     ],
     color: "border-accent",
@@ -27,7 +27,7 @@ const services = [
     bg: "bg-accent/10",
   },
   {
-    title: "Onboarding de primera linea",
+    title: "Onboarding de primera línea",
     desc: "Capsulas cortas para equipos de sala, cocina, tiendas, planta o terreno.",
     details:
       "Convertimos procedimientos, protocolos y tareas criticas en experiencias breves que una persona puede completar antes o durante su primer turno.",
@@ -47,9 +47,9 @@ const services = [
     title: "WhatsApp learning",
     desc: "Activacion directa cuando el usuario no entra solo al LMS.",
     details:
-      "Usamos WhatsApp y email como canales de empuje para recordatorios, capsulas, confirmaciones y alertas. El objetivo es mover avance, no solo publicar contenido.",
+      "Usamos WhatsApp y email como canales de empuje para recordatorios, cápsulas, confirmaciones y alertas. El objetivo es mover avance, no solo publicar contenido.",
     features: [
-      "Flujos de activacion",
+      "Flujos de activación",
       "Mensajes por etapa",
       "Recordatorios y nudges",
       "Confirmaciones de completion",
@@ -70,7 +70,7 @@ const services = [
       "Riesgo por cohorte",
       "Usuarios sin traccion",
       "Reporte semanal",
-      "Playbooks de intervencion",
+      "Playbooks de intervención",
       "Vista ejecutiva para responsables",
     ],
     color: "border-purple-400",
@@ -79,9 +79,9 @@ const services = [
   },
   {
     title: "Produccion de capsulas",
-    desc: "Ewaffle.cl produce contenido; Ewaffle.com lo convierte en tecnologia aplicable.",
+    desc: "Ewaffle.cl produce contenido; Ewaffle.com lo convierte en tecnología aplicable.",
     details:
-      "Ewaffle.cl mantiene la capacidad de produccion de capsulas. Ewaffle.com toma esa base y la transforma en soluciones con plataforma, canales, soporte y modelo comercial claro.",
+      "Ewaffle.cl mantiene la capacidad de producción de cápsulas. Ewaffle.com toma esa base y la transforma en soluciones con plataforma, canales, soporte y modelo comercial claro.",
     features: [
       "Guion instruccional",
       "Diseño visual y animacion",
@@ -102,7 +102,7 @@ export default function ServicesPage() {
       <section className="bg-gradient-to-b from-navy-900 to-navy-950 py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h1 className="text-4xl font-extrabold text-white md:text-5xl">
-            Servicios para convertir capacitacion en operacion
+            Servicios para convertir capacitación en operación
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
             Ewaffle.com vende soluciones LMS a medida para empresas que necesitan
@@ -117,7 +117,7 @@ export default function ServicesPage() {
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <div>
                 <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
-                  Tecnologia aplicada a capacitacion
+                  Tecnología aplicada a capacitación
                 </span>
                 <h2 className="mt-5 text-3xl font-bold text-white">
                   Priorizamos oportunidades con potencial real de compra

@@ -6,12 +6,12 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "Sobre Ewaffle",
   description:
-    "Ewaffle.com es el frente tecnologico de Ewaffle para LMS a medida, onboarding mobile y capacitacion trazable.",
+    "Ewaffle.com es el frente tecnológico de Ewaffle para LMS a medida, onboarding mobile y capacitación trazable.",
 };
 
 const metrics = [
   { value: "50+", label: "organizaciones atendidas" },
-  { value: "200+", label: "capsulas y cursos producidos" },
+  { value: "200+", label: "cápsulas y cursos producidos" },
   { value: "5+", label: "años en EdTech" },
   { value: "3", label: "frentes activos de venta" },
 ];
@@ -26,7 +26,7 @@ const team = [
   },
   {
     name: "Jose Antonio",
-    role: "Comercial y relacion con clientes",
+    role: "Comercial y relación con clientes",
     bio: "Acompaña oportunidades, propuestas y conversaciones para convertir necesidades reales en proyectos viables.",
     initials: "JA",
   },
@@ -75,12 +75,12 @@ export default function AboutPage() {
               Parte de Ewaffle
             </p>
             <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white md:text-6xl">
-              El equipo tecnologico que convierte capacitacion en plataforma
+              El equipo tecnológico que convierte capacitación en plataforma
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              Ewaffle.com es la linea tecnologica de Ewaffle: diseña LMS a
+              Ewaffle.com es la línea tecnológica de Ewaffle: diseña LMS a
               medida, onboarding mobile, automatizaciones y reportería para que
-              la capacitacion no termine en un archivo, sino en una experiencia
+              la capacitación no termine en un archivo, sino en una experiencia
               medible.
             </p>
           </div>
@@ -129,9 +129,9 @@ export default function AboutPage() {
           <SectionHeading title="Desde donde venimos" />
           <div className="mt-10 space-y-6 text-sm leading-relaxed text-slate-400 md:text-base">
             <p>
-              Ewaffle ya tiene experiencia produciendo capsulas, cursos y
+              Ewaffle ya tiene experiencia produciendo cápsulas, cursos y
               experiencias de aprendizaje para organizaciones. Ewaffle.com toma
-              esa capacidad y la lleva al terreno tecnologico: plataformas,
+              esa capacidad y la lleva al terreno tecnológico: plataformas,
               rutas, usuarios, canales, dashboards y seguimiento.
             </p>
             <p>
@@ -140,9 +140,9 @@ export default function AboutPage() {
               un alcance claro desde el primer dia.
             </p>
             <p>
-              Esta linea existe para empresas que necesitan activar usuarios en
-              contextos reales: colegios, primera linea, operaciones
-              distribuidas, compliance, onboarding y capacitacion masiva.
+              Esta línea existe para empresas que necesitan activar usuarios en
+              contextos reales: colegios, primera línea, operaciones
+              distribuidas, compliance, onboarding y capacitación masiva.
             </p>
           </div>
         </div>
