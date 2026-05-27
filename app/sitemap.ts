@@ -10,6 +10,8 @@ const routes = [
   "/pricing",
   "/blog",
   "/book-a-call",
+  "/gracias",
+  "/demos/whatsapp-learning",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

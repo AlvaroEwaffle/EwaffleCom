@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import CTASection from "@/components/CTASection";
 
@@ -59,6 +60,8 @@ const services = [
     color: "border-yellow-400",
     accent: "text-yellow-400",
     bg: "bg-yellow-400/10",
+    demoHref: "/demos/whatsapp-learning",
+    demoLabel: "Probar el demo en mi WhatsApp",
   },
   {
     title: "Reportería y alertas tempranas",
@@ -198,6 +201,14 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
+                    {"demoHref" in s && s.demoHref && (
+                      <Link
+                        href={s.demoHref}
+                        className={`mt-6 inline-flex items-center gap-2 rounded-lg border border-yellow-400/40 bg-yellow-400/10 px-4 py-2 text-sm font-semibold ${s.accent} transition hover:bg-yellow-400/20`}
+                      >
+                        {s.demoLabel ?? "Probar demo"} →
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
