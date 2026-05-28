@@ -17,19 +17,28 @@ export type EnrollResponse = {
 };
 
 export type StatusResponse = {
-  status: "awaiting-keyword" | "in-progress" | "completed" | "abandoned-manual";
+  status:
+    | "awaiting-keyword"
+    | "in-progress"
+    | "awaiting-next-lesson"
+    | "completed"
+    | "abandoned-manual"
+    | "abandoned-timeout";
   currentLesson: number;
   totalLessons: number;
   lastInboundAt: string | null;
   completedAt: string | null;
 };
 
-const STUDIO_URL =
+// LMS backend (was EwaffleIO Studio). Keep NEXT_PUBLIC_STUDIO_URL env var
+// name for backwards compat with anything that already overrides it.
+const LMS_API_URL =
+  process.env.NEXT_PUBLIC_LMS_API_URL ??
   process.env.NEXT_PUBLIC_STUDIO_URL ??
-  "https://ewaffleioback-production.up.railway.app";
+  "https://server-production-f530.up.railway.app";
 
 export async function enrollDemo(payload: EnrollPayload): Promise<EnrollResponse> {
-  const response = await fetch(`${STUDIO_URL}/api/public/whatsapp-demo/enroll`, {
+  const response = await fetch(`${LMS_API_URL}/api/whatsapp/enroll`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(payload),
@@ -50,7 +59,7 @@ export async function enrollDemo(payload: EnrollPayload): Promise<EnrollResponse
 
 export async function fetchStatus(shareKey: string): Promise<StatusResponse> {
   const response = await fetch(
-    `${STUDIO_URL}/api/public/whatsapp-demo/sessions/${shareKey}/status`,
+    `${LMS_API_URL}/api/whatsapp/enrollments/${shareKey}/status`,
   );
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);

@@ -21,9 +21,12 @@ const INITIAL_STATE: FormState = {
 
 const STATUS_LABEL: Record<StatusResponse["status"], string> = {
   "awaiting-keyword": "Esperando que envíes el keyword en WhatsApp",
-  "in-progress": "Demo en curso — responde a cada lección",
-  completed: "Demo completado",
+  "in-progress": "Demo en curso — responde a cada pregunta",
+  "awaiting-next-lesson":
+    "Lección entregada. La siguiente llega automáticamente — revisa tu WhatsApp.",
+  completed: "Demo completado 🎉",
   "abandoned-manual": "Demo cancelado",
+  "abandoned-timeout": "Sin actividad reciente — pausamos el demo",
 };
 
 export default function WhatsAppDemoForm() {
