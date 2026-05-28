@@ -12,6 +12,7 @@ export type EnrollResponse = {
   shareKey: string;
   keyword: string;
   fullKeyword: string;
+  prefilledMessage?: string;
   waLink: string;
   demoNumber: string;
 };
