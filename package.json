@@ -6,7 +6,8 @@
     "dev": "next dev -p 3006",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "npm run build && npx --yes wrangler@latest pages deploy ./out --project-name=ewafflecom"
   },
   "dependencies": {
     "next": "16.2.0",
