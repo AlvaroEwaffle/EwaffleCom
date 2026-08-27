@@ -49,7 +49,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${archivo.variable} ${plexMono.variable}`}>
+    /* suppressHydrationWarning: el script de abajo agrega la clase `js` al <html> durante el
+       parseo, o sea antes de que React hidrate. React compara su className esperado contra el
+       del DOM, ve la clase de más y avisa. La diferencia es intencional —es el mecanismo que
+       hace que la página se vea igual cuando el JS no corre— así que el aviso es ruido: en dev
+       encendía el badge "1 Issue" en todas las páginas y tapaba avisos que sí importan. */
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`h-full antialiased ${archivo.variable} ${plexMono.variable}`}
+    >
       <body className={`min-h-full flex flex-col ${archivo.className}`}>
         {/* La entrada por scroll parte oculta. Si el JS no corre, esta clase
             nunca se agrega y el contenido se ve igual en vez de quedar en
