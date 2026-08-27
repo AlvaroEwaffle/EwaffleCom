@@ -1,69 +1,93 @@
 import Link from "next/link";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
-const footerSections = [
+/* La columna "Services" apuntaba cuatro veces a /services con etiquetas
+   distintas —Experience Design, Simulation & Games, AI-built Learning, LMS
+   Included— que parecían páginas y no lo eran. Se reemplaza por las piezas
+   públicas: enlaces que abren algo real, que es el argumento de todo el sitio. */
+const columnas = [
   {
-      title: "Company",
-      links: [
-      { href: "/about", label: "About" },
-      { href: "/blog", label: "Blog" },
-      { href: `mailto:${CONTACT_EMAIL}`, label: "Contact" },
-    ],
-  },
-  {
-    title: "Services",
+    t: "Studio",
     links: [
-      { href: "/services", label: "Experience Design" },
-      { href: "/services", label: "Simulation & Games" },
-      { href: "/services", label: "AI-built Learning" },
-      { href: "/services", label: "LMS Included" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { href: "/case-studies", label: "Case Studies" },
+      { href: "/services", label: "What we build" },
+      { href: "/case-studies", label: "Work" },
       { href: "/pricing", label: "Pricing" },
-      { href: "/book-a-call", label: "Book a Call" },
+      { href: "/about", label: "About the studio" },
+    ],
+  },
+  {
+    t: "Open a real piece",
+    links: [
+      { href: "https://ewaffle.cl/demos/los-heroes-decidir-mas-cerca", label: "Branching narrative", fuera: true },
+      { href: "https://ewaffle.cl/demos/juegos-demo", label: "Game mechanics", fuera: true },
+      { href: "https://ewaffle.cl/demos/buffalo-induccion", label: "Interactive guide", fuera: true },
+      { href: "https://ewaffle.cl/demos/lms-sim", label: "SCORM, verified", fuera: true },
+    ],
+  },
+  {
+    t: "Talk to us",
+    links: [
+      { href: "/book-a-call", label: "Book the diagnosis call" },
+      { href: "/blog", label: "Notes from the Lab" },
+      { href: `mailto:${CONTACT_EMAIL}`, label: CONTACT_EMAIL },
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-navy-950">
-      <div className="mx-auto max-w-7xl px-6 py-16">
+    <footer className="border-t border-white/10 bg-[var(--sala)]">
+      <div className="mx-auto max-w-[1340px] px-5 py-16 sm:px-10 lg:px-14">
         <div className="grid gap-12 md:grid-cols-4">
-          {/* Brand column */}
           <div>
-            <Link href="/" className="flex items-center gap-2">
-              <img src="/favicon.png" alt="Ewaffle" className="h-8 w-8" />
-              <span className="text-xl font-bold text-white">Ewaffle</span>
+            <Link href="/" className="flex items-center gap-2.5">
+              <img src="/favicon.png" alt="" className="h-7 w-7" />
+              <span className="text-[17px] font-extrabold tracking-[-0.03em] text-[var(--tiza)]">
+                Ewaffle
+              </span>
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              Learning Experience Studio. We design the intervention, not the
-              course — and deliver it running.
+            <p className="mono mt-4 text-[10px] leading-[2] text-[var(--haz)]">
+              Learning
+              <br />
+              Experience
+              <br />
+              Studio
             </p>
-            <p className="mt-4 text-sm text-slate-500">
-              Based in Latin America. Serving the world.
+            <p className="mt-5 max-w-[34ch] text-[14.5px] leading-relaxed text-[var(--niebla)]">
+              We design the intervention, not the course — and deliver it running. In your LMS, or
+              in ours.
+            </p>
+            <p className="mono mt-5 text-[10px] text-[var(--niebla)]">
+              Latin America · ES · EN · PT-BR
             </p>
           </div>
 
-          {/* Link columns */}
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-300">
-                {section.title}
-              </h4>
-              <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-slate-400 transition-colors hover:text-white"
-                    >
-                      {link.label}
-                    </Link>
+          {columnas.map((c) => (
+            <div key={c.t}>
+              <h2 className="mono text-[10.5px] text-[var(--niebla)]">{c.t}</h2>
+              <ul className="mt-5 space-y-3">
+                {c.links.map((l) => (
+                  <li key={l.label}>
+                    {"fuera" in l && l.fuera ? (
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-[14.5px] text-[var(--niebla)] transition-colors hover:text-[var(--tiza)]"
+                      >
+                        {l.label}
+                        <span aria-hidden="true" className="text-[11px] opacity-60">
+                          ↗
+                        </span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={l.href}
+                        className="text-[14.5px] text-[var(--niebla)] transition-colors hover:text-[var(--tiza)]"
+                      >
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -71,23 +95,22 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
-          <p className="text-sm text-slate-500">
-            &copy; {new Date().getFullYear()} Ewaffle. All rights reserved.
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 md:flex-row md:items-center">
+          <p className="mono text-[10px] text-[var(--niebla)]">
+            © {new Date().getFullYear()} Ewaffle
           </p>
           <div className="flex items-center gap-6">
             <a
               href="https://www.linkedin.com/company/ewaffle"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-slate-400 transition-colors hover:text-white"
+              className="text-[14px] text-[var(--niebla)] transition-colors hover:text-[var(--tiza)]"
             >
               LinkedIn
             </a>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="text-sm text-slate-400 transition-colors hover:text-white"
+              className="text-[14px] text-[var(--niebla)] transition-colors hover:text-[var(--tiza)]"
             >
               {CONTACT_EMAIL}
             </a>

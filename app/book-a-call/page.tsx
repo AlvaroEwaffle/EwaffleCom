@@ -1,95 +1,152 @@
 import type { Metadata } from "next";
+import Reveal from "@/components/studio/Reveal";
+import PageHero from "@/components/studio/PageHero";
+import Escena from "@/components/studio/Escena";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOOK A CALL · la llamada de diagnóstico
+   ───────────────────────────────────────────────────────────────────────────
+   Antes decía "Book Your Free Discovery Call — 30 minutes. No pressure. We'll
+   discuss your course production needs". Dos problemas: "course production
+   needs" presupone que lo que se compra es producción, y "no pressure" es la
+   frase de alguien que sabe que la llamada es un pitch.
+
+   Esta llamada tiene un producto: sale con la conducta escrita como algo
+   observable, o con un "esto no es un problema de aprendizaje" fundamentado.
+   Decirlo de entrada filtra mejor que cualquier promesa de no presionar, y
+   además prepara al cliente para la pregunta con la que abre la reunión.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 export const metadata: Metadata = {
-  title: "Book a Call",
+  title: "Book the diagnosis call",
   description:
-    "Book a free 30-minute discovery call with Ewaffle. We'll discuss your course production needs and show you how we can help.",
+    "Forty-five minutes on the behaviour that is not changing. You leave with it written as something observable — or with an honest reason why this is not a learning problem.",
 };
 
-const steps = [
+const pasos = [
   {
-    num: "1",
-    title: "We Listen",
-    desc: "Tell us about your courses, your clients, and your production challenges.",
+    n: "01",
+    t: "You describe the floor",
+    d: "Not the course you had in mind. What people are doing that they should not be, who they are, and what makes the wrong choice the easy one where they work.",
   },
   {
-    num: "2",
-    title: "We Advise",
-    desc: "We share how we have helped similar companies and what approach we recommend.",
+    n: "02",
+    t: "We write it as a behaviour",
+    d: "Together, out loud, until it is something you could watch happen or not happen — and until we have named the evidence that would tell us it moved.",
   },
   {
-    num: "3",
-    title: "We Propose",
-    desc: "You receive a tailored proposal with scope, timeline, and pricing within 48 hours.",
+    n: "03",
+    t: "You get a straight answer",
+    d: "Either the shape of an intervention and what it would take, or our honest read that this is a process, tool or incentive problem and no experience will fix it.",
   },
+];
+
+const traer = [
+  "The behaviour, not the brief — and one real example of it going wrong.",
+  "Who the audience actually is, including the ones without a computer.",
+  "What you already measure, even if it is nowhere near the behaviour.",
+  "What has been tried before, and what happened to it.",
 ];
 
 export default function BookACallPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-navy-900 to-navy-950 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h1 className="text-4xl font-extrabold text-white md:text-5xl">
-            Book Your Free Discovery Call
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-            30 minutes. No pressure. We&apos;ll discuss your course production
-            needs and show you how we can help.
-          </p>
-        </div>
-      </section>
+    <div className="relative">
+      <Reveal />
 
-      {/* Scheduling iframe */}
-      <section className="bg-navy-950 py-12">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-900">
+      <PageHero
+        claqueta="Ewaffle · Diagnosis call"
+        titulo={
+          <>
+            Forty-five minutes
+            <br />
+            on <em>one behaviour</em>.
+          </>
+        }
+        bajada="This is not a capability demo and it is not a quote. It is the first step of the Lab, run for free: we take the thing that is not changing in your organisation and work it into something specific enough to design against."
+        nota="Worst case for you is a clear no. Some behaviours are not a learning problem, and we would rather say so on this call than six weeks into a project."
+      />
+
+      <section className="border-t border-white/10 px-5 py-14 sm:px-10 lg:px-14">
+        <div className="mx-auto max-w-[1180px]">
+          <div
+            className="overflow-hidden rounded-2xl border border-white/10 bg-[var(--sala-2)]"
+            data-motion
+          >
             <iframe
               src="https://capu.villelab.com/schedule/book-a-call"
-              className="w-full rounded-xl border-0"
+              className="w-full border-0"
               style={{ height: "700px", minHeight: "600px" }}
-              title="Book a call with Alvaro"
+              title="Book the diagnosis call with Álvaro"
               allow="clipboard-write"
             />
           </div>
-        </div>
-      </section>
-
-      {/* Process steps */}
-      <section className="bg-navy-950 py-24">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-center text-2xl font-bold text-white">
-            What to Expect
-          </h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {steps.map((step) => (
-              <div key={step.num} className="text-center">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/20 text-lg font-bold text-accent">
-                  {step.num}
-                </div>
-                <h3 className="text-lg font-bold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm text-slate-400">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Alternative contact */}
-      <section className="bg-navy-900 py-16">
-        <div className="mx-auto max-w-2xl px-6 text-center">
-          <p className="text-sm text-slate-400">
-            Prefer email? Reach us at{" "}
+          <p className="mt-5 text-[15px] text-[var(--niebla)]" data-motion>
+            Prefer email?{" "}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="font-semibold text-accent transition-colors hover:text-accent-hover"
+              className="font-semibold text-[var(--haz)] underline underline-offset-4"
             >
               {CONTACT_EMAIL}
-            </a>
+            </a>{" "}
+            — describe the behaviour in three lines and we will reply with whether it sounds like an
+            intervention.
           </p>
         </div>
       </section>
-    </>
+
+      <Escena
+        n="01"
+        rotulo="How it goes"
+        fondo
+        titulo={
+          <>
+            Three moves, and <em>a real answer</em>.
+          </>
+        }
+      >
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {pasos.map((p, i) => (
+            <div
+              key={p.n}
+              className="rounded-2xl border border-white/10 bg-[var(--sala-2)] p-6"
+              data-motion
+              style={{ ["--retardo" as string]: `${i * 80}ms` }}
+            >
+              <span className="mono text-[11px] text-[var(--haz)]">{p.n}</span>
+              <h3 className="mt-3 text-[1.2rem] font-bold tracking-[-0.024em] text-[var(--tiza)]">
+                {p.t}
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-[var(--niebla)]">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </Escena>
+
+      <Escena
+        n="02"
+        rotulo="What to bring"
+        titulo={
+          <>
+            Four things that make it <em>a good call</em>.
+          </>
+        }
+        bajada="None of them require preparation you do not already have. If you can only bring the first one, bring the first one."
+      >
+        <ul className="mt-10 grid gap-3 md:grid-cols-2" data-motion>
+          {traer.map((x) => (
+            <li
+              key={x}
+              className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-5 leading-relaxed text-[var(--tiza)]"
+            >
+              <span aria-hidden="true" className="text-[var(--haz)]">
+                →
+              </span>
+              <span>{x}</span>
+            </li>
+          ))}
+        </ul>
+      </Escena>
+    </div>
   );
 }

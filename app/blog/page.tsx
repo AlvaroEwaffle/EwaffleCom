@@ -1,137 +1,126 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Reveal from "@/components/studio/Reveal";
+import PageHero from "@/components/studio/PageHero";
+import Escena from "@/components/studio/Escena";
 import CTASection from "@/components/CTASection";
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   NOTES · lo que estamos escribiendo
+   ───────────────────────────────────────────────────────────────────────────
+   Cuatro cosas cambiaron acá.
+
+   1. Los temas. Eran los de una fábrica de producción —"How to Outsource
+      E-Learning Development", "The True Cost of Building In-House"— escritos
+      para un comprador que evalúa proveedores de producción. Bajo esta posición
+      el lector es alguien con una conducta que no cambia.
+   2. "ROI Data from 200+ Courses" prometía un análisis sobre 200 cursos que no
+      existe y una cifra que no medimos. Fuera.
+   3. El formulario de newsletter no tenía `action` ni handler: se tragaba el
+      correo en silencio. Un formulario roto es peor que no tenerlo, así que
+      salió. Cuando haya con qué, va conectado o no va.
+   4. Todo sigue marcado "coming" porque no hay ni un artículo publicado. Es
+      honesto y también es un argumento para sacar /blog del nav hasta que lo
+      haya — decisión pendiente de Álvaro.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Notes",
   description:
-    "Practical guides, data-driven insights, and industry perspectives to help you grow your training business.",
+    "Notes from the Lab: how we diagnose a behaviour, why the format is never the input, and what we have learned building simulations, narrative and games.",
 };
 
-const posts = [
+const notas = [
   {
-    category: "Outsourcing",
-    title: "How to Outsource E-Learning Development Without Losing Quality",
-    readTime: "8 min read",
-    date: "March 2026",
-    description:
-      "Outsourcing course production can save you time and money — but only if you do it right. Here are the frameworks and red flags every training company should know before choosing a production partner.",
-    color: "bg-accent/10 text-accent",
+    n: "01",
+    tema: "Diagnosis",
+    t: "The brief that arrives, and the brief we write back",
+    d: "Almost every request names the format before anyone has said what is failing. Here is the set of questions we use to get from “we need a gamified course” to a behaviour written as something you could actually watch happen — and what to do when the answer turns out not to be training at all.",
   },
   {
-    category: "Technical",
-    title: "SCORM vs. xAPI: Which Standard Does Your Training Company Need?",
-    readTime: "6 min read",
-    date: "February 2026",
-    description:
-      "Both standards have their place, but choosing the wrong one can limit your analytics, compatibility, and future flexibility. We break down the differences with practical recommendations.",
-    color: "bg-gold/10 text-gold",
+    n: "02",
+    tema: "Method",
+    t: "Five real users in week three",
+    d: "The single step that separates a studio from an agency, and the one clients push back on hardest because it looks like a delay. Why a rough prototype in real hands beats three rounds of stakeholder review, and how to run the session so it produces decisions instead of opinions.",
   },
   {
-    category: "Business",
-    title: "The True Cost of Building E-Learning Courses In-House",
-    readTime: "10 min read",
-    date: "January 2026",
-    description:
-      "When you factor in salaries, benefits, tools, management overhead, and opportunity cost, building courses in-house is more expensive than most training companies realize.",
-    color: "bg-yellow-400/10 text-yellow-400",
+    n: "03",
+    tema: "Delivery",
+    t: "The people your LMS rollout quietly loses",
+    d: "Field crews, shift workers, contractors, drivers: no corporate email, no computer, no patience for an account-creation flow. What actually reaches them, why WhatsApp keeps winning that argument, and how to decide the channel during design rather than after launch.",
   },
   {
-    category: "Gamification",
-    title: "Gamification in Corporate Training: ROI Data from 200+ Courses",
-    readTime: "12 min read",
-    date: "December 2025",
-    description:
-      "We analyzed completion rates, engagement metrics, and learner satisfaction across 200+ courses to quantify the real impact of gamification on training outcomes.",
-    color: "bg-purple-400/10 text-purple-400",
+    n: "04",
+    tema: "Measurement",
+    t: "Completion rate is not evidence",
+    d: "It measures that a file was opened and closed. What to agree on instead before a project starts — the observable behaviour, the evidence that already exists inside your systems, and who is going to look at it ninety days later.",
   },
 ];
 
 export default function BlogPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-navy-900 to-navy-950 py-24">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h1 className="text-4xl font-extrabold text-white md:text-5xl">
-            Insights for Training Companies
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-            Practical guides, data-driven insights, and industry perspectives to
-            help you grow your training business.
-          </p>
-        </div>
-      </section>
+    <div className="relative">
+      <Reveal />
 
-      {/* Blog posts */}
-      <section className="bg-navy-950 py-24">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="grid gap-8 md:grid-cols-2">
-            {posts.map((post) => (
-              <article
-                key={post.title}
-                className="group rounded-2xl border border-white/10 bg-navy-900 p-8 transition-colors hover:border-white/20"
-              >
-                <div className="flex items-center gap-3">
-                  <span
-                    className={`rounded-full ${post.color} px-3 py-1 text-xs font-semibold`}
-                  >
-                    {post.category}
-                  </span>
-                  <span className="text-xs text-slate-500">
-                    {post.readTime}
-                  </span>
-                </div>
-                <h2 className="mt-5 text-xl font-bold text-white">
-                  {post.title}
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
-                  {post.description}
-                </p>
-                <div className="mt-6 flex items-center justify-between">
-                  <span className="text-xs text-slate-500">{post.date}</span>
-                  <span className="text-xs font-semibold text-slate-500">
-                    Coming Soon
-                  </span>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="bg-navy-900 py-24">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl font-bold text-white">Stay in the Loop</h2>
-          <p className="mx-auto mt-4 max-w-xl text-slate-400">
-            Get our latest articles, guides, and industry insights delivered to
-            your inbox.
-          </p>
-          <form className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 rounded-lg border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-accent"
-            />
-            <button
-              type="submit"
-              className="rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
-            >
-              Subscribe
-            </button>
-          </form>
-          <p className="mt-3 text-xs text-slate-500">
-            No spam. Unsubscribe anytime.
-          </p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <CTASection
-        title="Ready to Start a Conversation?"
-        description="Book a free discovery call and let's talk about how we can help your training company produce better courses."
+      <PageHero
+        claqueta="Ewaffle · Notes"
+        titulo={
+          <>
+            Notes from
+            <br />
+            <em>the Lab</em>.
+          </>
+        }
+        bajada="What we are learning while designing interventions — the diagnosis questions that work, the steps clients resist, the delivery problems that sink good design. Written for whoever owns a behaviour that is not changing."
+        nota="None of these are published yet. They are listed because writing them down is how we commit to them — and because it is more useful than four placeholder posts about outsourcing."
+        cta={{ label: "Book the diagnosis call", href: "/book-a-call" }}
       />
-    </>
+
+      <Escena
+        n="01"
+        rotulo="In the queue"
+        titulo={
+          <>
+            Four we are <em>writing</em>.
+          </>
+        }
+      >
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
+          {notas.map((p, i) => (
+            <article
+              key={p.n}
+              className="flex flex-col rounded-2xl border border-white/10 bg-[var(--sala-2)] p-6 sm:p-7"
+              data-motion
+              style={{ ["--retardo" as string]: `${i * 70}ms` }}
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="mono text-[11px] text-[var(--haz)]">
+                  {p.n} · {p.tema}
+                </span>
+                <span className="mono rounded-full border border-white/15 px-2.5 py-1 text-[9.5px] text-[var(--niebla)]">
+                  Coming
+                </span>
+              </div>
+              <h2 className="mt-4 text-[1.28rem] font-bold leading-snug tracking-[-0.024em] text-[var(--tiza)]">
+                {p.t}
+              </h2>
+              <p className="mt-3 text-[15px] leading-relaxed text-[var(--niebla)]">{p.d}</p>
+            </article>
+          ))}
+        </div>
+
+        <p className="mt-10 max-w-[66ch] text-[var(--niebla)]" data-motion>
+          If one of these is the problem you are sitting on right now, the call is faster than
+          waiting for the article — and you get the version with your own case in it.
+        </p>
+      </Escena>
+
+      <CTASection
+        title="Skip the reading list."
+        description="Bring the behaviour that is not changing. Forty-five minutes, and you leave knowing whether an experience is the right answer to it."
+        primaryCTA="Book the diagnosis call"
+        secondaryCTA="See the work"
+        secondaryHref="/case-studies"
+      />
+    </div>
   );
 }
