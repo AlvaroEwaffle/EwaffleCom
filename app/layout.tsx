@@ -1,31 +1,42 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const poppins = Poppins({
+/* Archivo lleva el peso y IBM Plex Mono la capa técnica —numeración de pasos,
+   etiquetas, canales—. Es la misma pareja del catálogo de ewaffle.cl: el mono
+   es lo que hace que un fondo oscuro se lea como instrumental y no como una
+   landing oscura más. */
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Ewaffle — Gamified Course Production Powered by AI",
+    default: "Ewaffle — Learning Experience Studio",
     template: "%s — Ewaffle",
   },
   description:
-    "AI-powered SCORM course production for training companies. White-label ready. Delivered in 4 weeks.",
+    "We design learning interventions, not courses. Simulations, narrative, games and AI-built experiences — delivered running, in your LMS or in ours. SCORM and beyond.",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Ewaffle — Gamified Course Production Powered by AI",
+    title: "Ewaffle — Learning Experience Studio",
     description:
-      "AI-powered SCORM course production for training companies. White-label ready. Delivered in 4 weeks.",
+      "We design learning interventions, not courses. Simulations, narrative, games and AI-built experiences — delivered running, in your LMS or in ours.",
     url: "https://e-waffle.com",
     siteName: "Ewaffle",
     type: "website",
@@ -38,8 +49,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${poppins.variable}`}>
-      <body className={`min-h-full flex flex-col ${poppins.className}`}>
+    <html lang="en" className={`h-full antialiased ${archivo.variable} ${plexMono.variable}`}>
+      <body className={`min-h-full flex flex-col ${archivo.className}`}>
+        {/* La entrada por scroll parte oculta. Si el JS no corre, esta clase
+            nunca se agrega y el contenido se ve igual en vez de quedar en
+            blanco — que es como falla siempre este patrón. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js')`,
+          }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

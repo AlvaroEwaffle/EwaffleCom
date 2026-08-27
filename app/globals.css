@@ -12,7 +12,8 @@
   --color-gold-hover: #e0b45e;
   --color-deep-purple: #28244a;
   --color-sky: #90cbf2;
-  --font-sans: var(--font-poppins), "Poppins", system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-archivo), "Archivo", system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
 html {
@@ -20,12 +21,78 @@ html {
 }
 
 body {
-  background: var(--color-navy-950);
-  color: #f1f5f9;
+  background: #0a0812;
+  color: #f4f2fb;
   font-family: var(--font-sans);
 }
 
 ::selection {
   background: var(--color-accent);
   color: white;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   STUDIO — el sistema visual del catálogo de ewaffle.cl, traído acá
+   ───────────────────────────────────────────────────────────────────────────
+   Mismo suelo oscuro con sesgo violeta, misma pareja tipográfica (Archivo para
+   el peso, IBM Plex Mono para la capa técnica) y las mismas escenas numeradas.
+   Los tokens `navy-*` que ya usaba el sitio se quedan: las páginas viejas
+   siguen funcionando mientras se migran una por una.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  --sala: #0a0812;
+  --sala-2: #14112b;
+  --haz: #ffb148;
+  --rosa: #fd5a93;
+  --tiza: #f4f2fb;
+  --niebla: #a9a3c4;
+  --linea: rgba(255, 255, 255, 0.09);
+  --linea-viva: rgba(255, 255, 255, 0.18);
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* El preflight de Tailwind pone `list-style: none` en todo ul/ol; donde la
+   viñeta aporta hay que devolverla a mano. */
+.lista-disco { list-style: disc; }
+.lista-num { list-style: decimal; }
+
+.claqueta {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11.5px; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--haz);
+}
+.claqueta__punto {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--rosa);
+  box-shadow: 0 0 0 4px rgba(253, 90, 147, 0.18);
+}
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+
+.titular {
+  font-size: clamp(2.5rem, 6.4vw, 4.4rem);
+  font-weight: 800; line-height: 0.98; letter-spacing: -0.042em; text-wrap: balance;
+}
+.titular em { font-style: normal; color: var(--haz); }
+.rubro {
+  font-size: clamp(1.9rem, 4.1vw, 3rem);
+  font-weight: 800; line-height: 1.06; letter-spacing: -0.035em; text-wrap: balance;
+}
+.rubro em { font-style: normal; color: var(--haz); }
+
+/* Entrada por scroll. Sin JS quedan visibles: la clase la agrega el observador,
+   pero `no-js` nunca la agregaría y la página se vería vacía. Por eso el estado
+   oculto se activa recién cuando el script confirma que corre. */
+.js [data-motion] {
+  opacity: 0; transform: translate3d(0, 24px, 0);
+  transition: opacity 700ms var(--curva), transform 700ms var(--curva);
+  transition-delay: var(--retardo, 0ms);
+}
+.js [data-motion].es-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-motion] { opacity: 1 !important; transform: none !important; }
+  *, *::before, *::after { animation: none !important; transition-duration: 1ms !important; }
 }

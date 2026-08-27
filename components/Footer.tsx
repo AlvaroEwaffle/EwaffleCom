@@ -13,10 +13,10 @@ const footerSections = [
   {
     title: "Services",
     links: [
-      { href: "/services", label: "Course Production" },
-      { href: "/services", label: "Gamification" },
-      { href: "/services", label: "AI Design" },
-      { href: "/services", label: "LMS" },
+      { href: "/services", label: "Experience Design" },
+      { href: "/services", label: "Simulation & Games" },
+      { href: "/services", label: "AI-built Learning" },
+      { href: "/services", label: "LMS Included" },
     ],
   },
   {
@@ -41,8 +41,8 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">Ewaffle</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              Gamified course production powered by AI. Built for training
-              companies that demand results.
+              Learning Experience Studio. We design the intervention, not the
+              course — and deliver it running.
             </p>
             <p className="mt-4 text-sm text-slate-500">
               Based in Latin America. Serving the world.
