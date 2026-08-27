@@ -5,48 +5,47 @@ import Escena from "@/components/studio/Escena";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   BOOK A CALL · la llamada de diagnóstico
+   AGENDAR · la llamada de diagnóstico
    ───────────────────────────────────────────────────────────────────────────
    Antes decía "Book Your Free Discovery Call — 30 minutes. No pressure. We'll
    discuss your course production needs". Dos problemas: "course production
    needs" presupone que lo que se compra es producción, y "no pressure" es la
    frase de alguien que sabe que la llamada es un pitch.
 
-   Esta llamada tiene un producto: sale con la conducta escrita como algo
+   Esta llamada tiene un producto: sales con la conducta escrita como algo
    observable, o con un "esto no es un problema de aprendizaje" fundamentado.
-   Decirlo de entrada filtra mejor que cualquier promesa de no presionar, y
-   además prepara al cliente para la pregunta con la que abre la reunión.
+   Decirlo de entrada filtra mejor que cualquier promesa de no presionar.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const metadata: Metadata = {
-  title: "Book the diagnosis call",
+  title: "Agenda 45 minutos",
   description:
-    "Forty-five minutes on the behaviour that is not changing. You leave with it written as something observable — or with an honest reason why this is not a learning problem.",
+    "Cuarenta y cinco minutos sobre la conducta que no está cambiando. Sales con ella escrita como algo observable, o con una razón honesta de por qué esto no es un problema de aprendizaje.",
 };
 
 const pasos = [
   {
     n: "01",
-    t: "You describe the floor",
-    d: "Not the course you had in mind. What people are doing that they should not be, who they are, and what makes the wrong choice the easy one where they work.",
+    t: "Nos cuentas qué pasa en terreno",
+    d: "No el curso que tenías en mente. Qué está haciendo la gente que no debería, quiénes son, y qué vuelve fácil la opción equivocada donde trabajan.",
   },
   {
     n: "02",
-    t: "We write it as a behaviour",
-    d: "Together, out loud, until it is something you could watch happen or not happen — and until we have named the evidence that would tell us it moved.",
+    t: "Lo escribimos como conducta",
+    d: "Juntos y en voz alta, hasta que sea algo que podrías ver pasar o no pasar — y hasta tener nombrada la evidencia que nos diría que se movió.",
   },
   {
     n: "03",
-    t: "You get a straight answer",
-    d: "Either the shape of an intervention and what it would take, or our honest read that this is a process, tool or incentive problem and no experience will fix it.",
+    t: "Te damos una respuesta derecha",
+    d: "O la forma de una intervención y qué tomaría hacerla, o nuestra lectura honesta de que esto es un problema de proceso, de herramienta o de incentivo, y ninguna experiencia lo va a arreglar.",
   },
 ];
 
 const traer = [
-  "The behaviour, not the brief — and one real example of it going wrong.",
-  "Who the audience actually is, including the ones without a computer.",
-  "What you already measure, even if it is nowhere near the behaviour.",
-  "What has been tried before, and what happened to it.",
+  "La conducta, no el encargo — y un ejemplo real de cuando salió mal.",
+  "Quién es de verdad la audiencia, incluidos los que no tienen computador.",
+  "Qué mides hoy, aunque esté lejísimos de la conducta.",
+  "Qué se intentó antes, y en qué terminó.",
 ];
 
 export default function BookACallPage() {
@@ -55,56 +54,43 @@ export default function BookACallPage() {
       <Reveal />
 
       <PageHero
-        claqueta="Ewaffle · Diagnosis call"
+        claqueta="Ewaffle · Llamada de diagnóstico"
         titulo={
           <>
-            Forty-five minutes
+            Cuarenta y cinco minutos
             <br />
-            on <em>one behaviour</em>.
+            sobre <em>una conducta</em>.
           </>
         }
-        bajada="This is not a capability demo and it is not a quote. It is the first step of the Lab, run for free: we take the thing that is not changing in your organisation and work it into something specific enough to design against."
-        nota="Worst case for you is a clear no. Some behaviours are not a learning problem, and we would rather say so on this call than six weeks into a project."
+        bajada="No es una demo de capacidades y no es una cotización. Es el primer paso del Lab, corrido gratis: tomamos eso que no está cambiando en tu organización y lo trabajamos hasta que sea lo bastante específico como para diseñar contra ello."
+        nota="Lo peor que te puede pasar es un no claro. Hay conductas que no son un problema de aprendizaje, y preferimos decirlo en esta llamada y no seis semanas dentro del proyecto."
       />
 
       <section className="border-t border-white/10 px-5 py-14 sm:px-10 lg:px-14">
         <div className="mx-auto max-w-[1180px]">
-          <div
-            className="overflow-hidden rounded-2xl border border-white/10 bg-[var(--sala-2)]"
-            data-motion
-          >
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[var(--sala-2)]" data-motion>
             <iframe
               src="https://capu.villelab.com/schedule/book-a-call"
               className="w-full border-0"
               style={{ height: "700px", minHeight: "600px" }}
-              title="Book the diagnosis call with Álvaro"
+              title="Agenda la llamada de diagnóstico con Álvaro"
               allow="clipboard-write"
             />
           </div>
           <p className="mt-5 text-[15px] text-[var(--niebla)]" data-motion>
-            Prefer email?{" "}
+            ¿Prefieres correo?{" "}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="font-semibold text-[var(--haz)] underline underline-offset-4"
             >
               {CONTACT_EMAIL}
             </a>{" "}
-            — describe the behaviour in three lines and we will reply with whether it sounds like an
-            intervention.
+            — descríbenos la conducta en tres líneas y te respondemos si suena a intervención.
           </p>
         </div>
       </section>
 
-      <Escena
-        n="01"
-        rotulo="How it goes"
-        fondo
-        titulo={
-          <>
-            Three moves, and <em>a real answer</em>.
-          </>
-        }
-      >
+      <Escena n="01" rotulo="Cómo va la llamada" fondo titulo={<>Tres movidas y una respuesta real.</>}>
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           {pasos.map((p, i) => (
             <div
@@ -125,13 +111,9 @@ export default function BookACallPage() {
 
       <Escena
         n="02"
-        rotulo="What to bring"
-        titulo={
-          <>
-            Four things that make it <em>a good call</em>.
-          </>
-        }
-        bajada="None of them require preparation you do not already have. If you can only bring the first one, bring the first one."
+        rotulo="Qué traer"
+        titulo={<>Cuatro cosas que la hacen una buena llamada.</>}
+        bajada="Ninguna pide preparación que no tengas ya. Si solo puedes traer la primera, trae la primera."
       >
         <ul className="mt-10 grid gap-3 md:grid-cols-2" data-motion>
           {traer.map((x) => (

@@ -24,35 +24,35 @@ import CTASection from "@/components/CTASection";
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const metadata: Metadata = {
-  title: "Notes",
+  title: "Notas",
   description:
-    "Notes from the Lab: how we diagnose a behaviour, why the format is never the input, and what we have learned building simulations, narrative and games.",
+    "Notas del Lab: cómo diagnosticamos una conducta, por qué el formato nunca es lo que se encarga, y qué aprendimos construyendo simuladores, narrativa y juegos.",
 };
 
 const notas = [
   {
     n: "01",
-    tema: "Diagnosis",
-    t: "The brief that arrives, and the brief we write back",
-    d: "Almost every request names the format before anyone has said what is failing. Here is the set of questions we use to get from “we need a gamified course” to a behaviour written as something you could actually watch happen — and what to do when the answer turns out not to be training at all.",
+    tema: "Diagnóstico",
+    t: "El encargo que llega, y el que escribimos de vuelta",
+    d: "Casi todo encargo nombra el formato antes de que nadie haya dicho qué está fallando. Estas son las preguntas con las que pasamos de «necesitamos un curso gamificado» a una conducta escrita como algo que podrías ver pasar — y qué hacer cuando la respuesta resulta no ser capacitación.",
   },
   {
     n: "02",
-    tema: "Method",
-    t: "Five real users in week three",
-    d: "The single step that separates a studio from an agency, and the one clients push back on hardest because it looks like a delay. Why a rough prototype in real hands beats three rounds of stakeholder review, and how to run the session so it produces decisions instead of opinions.",
+    tema: "Método",
+    t: "Cinco personas reales en la semana 3",
+    d: "El único paso que separa a un estudio de una agencia, y el que más resistencia genera porque parece una demora. Por qué un prototipo tosco en manos reales le gana a tres rondas de revisión con la jefatura, y cómo correr la sesión para que produzca decisiones y no opiniones.",
   },
   {
     n: "03",
-    tema: "Delivery",
-    t: "The people your LMS rollout quietly loses",
-    d: "Field crews, shift workers, contractors, drivers: no corporate email, no computer, no patience for an account-creation flow. What actually reaches them, why WhatsApp keeps winning that argument, and how to decide the channel during design rather than after launch.",
+    tema: "Entrega",
+    t: "La gente que tu despliegue de LMS pierde en silencio",
+    d: "Cuadrillas en terreno, turnos, contratistas, conductores: sin correo corporativo, sin computador y sin paciencia para crear una cuenta. Qué les llega de verdad, por qué WhatsApp sigue ganando esa discusión, y cómo decidir el canal durante el diseño y no después del lanzamiento.",
   },
   {
     n: "04",
-    tema: "Measurement",
-    t: "Completion rate is not evidence",
-    d: "It measures that a file was opened and closed. What to agree on instead before a project starts — the observable behaviour, the evidence that already exists inside your systems, and who is going to look at it ninety days later.",
+    tema: "Medición",
+    t: "La tasa de completitud no es evidencia",
+    d: "Mide que un archivo se abrió y se cerró. Qué acordar en su lugar antes de partir: la conducta observable, la evidencia que ya existe dentro de tus sistemas, y quién la va a mirar noventa días después.",
   },
 ];
 
@@ -62,25 +62,25 @@ export default function BlogPage() {
       <Reveal />
 
       <PageHero
-        claqueta="Ewaffle · Notes"
+        claqueta="Ewaffle · Notas"
         titulo={
           <>
-            Notes from
+            Notas
             <br />
-            <em>the Lab</em>.
+            <em>del Lab</em>.
           </>
         }
-        bajada="What we are learning while designing interventions — the diagnosis questions that work, the steps clients resist, the delivery problems that sink good design. Written for whoever owns a behaviour that is not changing."
-        nota="None of these are published yet. They are listed because writing them down is how we commit to them — and because it is more useful than four placeholder posts about outsourcing."
-        cta={{ label: "Book the diagnosis call", href: "/book-a-call" }}
+        bajada="Lo que vamos aprendiendo mientras diseñamos intervenciones: las preguntas de diagnóstico que sirven, los pasos que los clientes resisten, los problemas de entrega que hunden un buen diseño. Escrito para quien tiene a cargo una conducta que no cambia."
+        nota="Ninguna está publicada todavía. Están listadas porque escribirlas acá es cómo nos comprometemos con ellas — y porque es más útil que cuatro artículos de relleno sobre tercerización."
+        cta={{ label: "Agenda 45 minutos", href: "/book-a-call" }}
       />
 
       <Escena
         n="01"
-        rotulo="In the queue"
+        rotulo="En la fila"
         titulo={
           <>
-            Four we are <em>writing</em>.
+            Cuatro que estamos escribiendo.
           </>
         }
       >
@@ -97,7 +97,7 @@ export default function BlogPage() {
                   {p.n} · {p.tema}
                 </span>
                 <span className="mono rounded-full border border-white/15 px-2.5 py-1 text-[9.5px] text-[var(--niebla)]">
-                  Coming
+                  Pronto
                 </span>
               </div>
               <h2 className="mt-4 text-[1.28rem] font-bold leading-snug tracking-[-0.024em] text-[var(--tiza)]">
@@ -109,16 +109,16 @@ export default function BlogPage() {
         </div>
 
         <p className="mt-10 max-w-[66ch] text-[var(--niebla)]" data-motion>
-          If one of these is the problem you are sitting on right now, the call is faster than
-          waiting for the article — and you get the version with your own case in it.
+          Si alguno de estos es el problema que tienes encima ahora mismo, la llamada es más rápida
+          que esperar el artículo — y te llevas la versión con tu propio caso adentro.
         </p>
       </Escena>
 
       <CTASection
-        title="Skip the reading list."
-        description="Bring the behaviour that is not changing. Forty-five minutes, and you leave knowing whether an experience is the right answer to it."
-        primaryCTA="Book the diagnosis call"
-        secondaryCTA="See the work"
+        title="Sáltate la lista de lectura."
+        description="Trae la conducta que no está cambiando. Cuarenta y cinco minutos, y sales sabiendo si una experiencia es la respuesta correcta."
+        primaryCTA="Agenda 45 minutos"
+        secondaryCTA="Mira los trabajos"
         secondaryHref="/case-studies"
       />
     </div>

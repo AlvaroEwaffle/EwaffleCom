@@ -80,7 +80,7 @@ export default function ExperienceLab({ piezas }: { piezas: Pieza[] }) {
   return (
     <>
       <p className="mono mb-6 text-[11px] text-[var(--niebla)]">
-        <span className="text-[var(--haz)]">{vistas.length}</span> of {piezas.length} opened
+        <span className="text-[var(--haz)]">{vistas.length}</span> de {piezas.length} vistas
       </p>
 
       <div className="grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(330px,1fr))]">
@@ -104,7 +104,7 @@ export default function ExperienceLab({ piezas }: { piezas: Pieza[] }) {
               <span className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(20,17,43,0.92)]" />
               {vistas.includes(p.id) && (
                 <span className="mono absolute right-3 top-3 z-10 rounded-full bg-[rgba(15,122,82,0.92)] px-2.5 py-1 text-[9.5px] font-semibold text-[#eafaf3]">
-                  Opened
+                  Visto
                 </span>
               )}
             </div>
@@ -151,7 +151,7 @@ export default function ExperienceLab({ piezas }: { piezas: Pieza[] }) {
           >
             <header className="flex items-center justify-between gap-4 border-b border-white/10 bg-[rgba(10,8,18,0.6)] px-4 py-2.5">
               <p className="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-1">
-                <span className="mono text-[10px] text-[var(--haz)]">Running</span>
+                <span className="mono text-[10px] text-[var(--haz)]">Corriendo</span>
                 <b className="text-[14.5px] font-bold tracking-[-0.015em] text-[var(--tiza)]">{abierta.titulo}</b>
                 <span className="text-[13px] text-[var(--niebla)]">{abierta.nota}</span>
               </p>
@@ -162,13 +162,13 @@ export default function ExperienceLab({ piezas }: { piezas: Pieza[] }) {
                   rel="noreferrer"
                   className="hidden min-h-[40px] items-center rounded-[9px] border border-white/20 px-3 text-[13px] font-semibold text-[var(--niebla)] hover:border-white/40 hover:text-[var(--tiza)] sm:inline-flex"
                 >
-                  Open in a tab
+                  Abrir en otra pestaña
                 </a>
                 <button
                   type="button"
                   data-cerrar
                   onClick={cerrar}
-                  aria-label="Close"
+                  aria-label="Cerrar"
                   className="grid h-11 w-11 cursor-pointer place-items-center rounded-[10px] border border-white/20 bg-white/5 text-[var(--tiza)] hover:bg-white/15"
                 >
                   <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round">
@@ -205,8 +205,8 @@ export default function ExperienceLab({ piezas }: { piezas: Pieza[] }) {
             </div>
 
             <footer className="mono flex items-center justify-between gap-3 border-t border-white/10 px-4 py-2.5 text-[10.5px] text-[var(--niebla)]">
-              <span>Real client build · runs in Spanish, the mechanics are the point</span>
-              <span className="shrink-0 opacity-70">Esc to close</span>
+              <span>Construcción real de un cliente · el mismo archivo que recibió su gente</span>
+              <span className="shrink-0 opacity-70">Esc para cerrar</span>
             </footer>
           </div>
         </div>

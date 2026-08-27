@@ -6,141 +6,113 @@ import Escena from "@/components/studio/Escena";
 import CTASection from "@/components/CTASection";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   PRICING · las tres formas de trabajar juntos
+   PRECIOS
    ───────────────────────────────────────────────────────────────────────────
    Los tres rangos en dólares se mantienen —decisión de Álvaro, 27-ago-2026—
-   pero cambia lo que compran. Antes la unidad era el curso: Starter era "1
-   curso SCORM de hasta 60 minutos", Professional "3 a 5 cursos", Enterprise
-   "cursos ilimitados por trimestre". Se compraba volumen de producción, y los
-   escalones se diferenciaban por rondas de revisión y velocidad de entrega.
+   pero cambia lo que compran. Antes la unidad era el curso: Starter era "1 curso
+   SCORM de hasta 60 minutos", Professional "3 a 5 cursos", Enterprise "cursos
+   ilimitados por trimestre". Se compraba volumen de producción y los escalones
+   se diferenciaban por rondas de revisión y velocidad de entrega.
 
-   Ahora la unidad es la EXPERIENCIA. Lab Sprint es una intervención sobre una
-   conducta; Programme es un sistema de experiencias encadenadas con su
-   ecosistema; Studio Partner es capacidad reservada. El mismo dinero compra
-   otra cosa, y la tabla lo dice explícitamente en vez de dejarlo implícito.
-
-   Salió también toda la sección "in-house vs outsourcing", que comparaba el
-   costo contra contratar un diseñador instruccional en Estados Unidos. Ese
-   argumento es el de una fábrica de producción barata: le concede al comprador
-   que lo que compra es capacidad de producir, cuando lo que compra es criterio.
+   Ahora la unidad es la experiencia. Salió también toda la sección "in-house vs
+   outsourcing": ese argumento le concede al comprador que lo que compra es
+   capacidad de producir horas, cuando lo que compra es criterio.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Precios",
   description:
-    "Three ways to work with a learning experience studio: Lab Sprint, Programme and Studio Partner. Priced by the behaviour that has to move, not by how many courses come out.",
+    "Lab Sprint, Programa y Studio Partner: tres formas de trabajar con nosotros, con qué incluye cada una. Se cotiza por el problema que resuelve, no por cuántos cursos salen.",
 };
 
 const formas = [
   {
     n: "01",
     t: "Lab Sprint",
-    precio: "$3,000 – $5,000",
-    unidad: "One intervention. One behaviour.",
-    d: "The way in. You pick the problem that is actually costing you something, and we run the full Lab on it — diagnosis, experience design, a prototype tested with five real users, production and deployment. Small enough to check the method with, real enough to matter on its own.",
+    precio: "USD 3.000 – 5.000",
+    unidad: "Una intervención, una conducta.",
+    d: "La puerta de entrada. Eliges el problema que de verdad te está costando algo y le corremos el Lab completo: diagnóstico, diseño, un prototipo probado con cinco personas reales, producción y despliegue. Chico como para probar el método, real como para importar por sí solo.",
     trae: [
-      "The behaviour written as something observable, and the evidence we will be judged on",
-      "A playable prototype in real hands by week three — not a storyboard",
-      "The finished experience, in the format the diagnosis chose",
-      "Delivered running: your LMS, a link, WhatsApp, or ours",
+      "La conducta escrita como algo observable, y la evidencia con la que nos vas a evaluar",
+      "Un prototipo funcionando en manos reales en la semana 3 — no un storyboard",
+      "La experiencia terminada, en el formato que eligió el diagnóstico",
+      "Entregada funcionando: tu LMS, un link, WhatsApp, o la nuestra",
     ],
-    cta: "Start with one problem",
+    cta: "Parte con un problema",
     destacado: false,
   },
   {
     n: "02",
-    t: "Programme",
-    precio: "$8,000 – $15,000",
-    unidad: "A journey as a system of experiences.",
-    d: "Several interventions that build on each other, plus the ecosystem that holds them together: the platform, the tracking, the comms that get people in, and the measurement that tells you whether any of it moved. This is where the included LMS earns its place.",
+    t: "Programa",
+    precio: "USD 8.000 – 15.000",
+    unidad: "Un trayecto como sistema de experiencias.",
+    d: "Varias intervenciones que se encadenan, más el ecosistema que las sostiene: la plataforma, el seguimiento, las comunicaciones que hacen que la gente entre, y la medición que te dice si algo se movió. Acá es donde el LMS incluido más pesa.",
     trae: [
-      "Multiple linked interventions, sequenced by how the behaviour actually develops",
-      "Learning platform included, under your brand, no per-user licence",
-      "Comms and nudges, because a rollout nobody enters is not a rollout",
-      "Measured on behaviour and evidence, not on completion rates",
+      "Varias intervenciones encadenadas, en el orden en que la conducta se desarrolla",
+      "Plataforma incluida, con tu marca y sin licencia por usuario",
+      "Comunicaciones y recordatorios, porque un despliegue al que nadie entra no es un despliegue",
+      "Medido por conducta y evidencia, no por tasas de completitud",
     ],
-    cta: "Scope a programme",
+    cta: "Arma un programa",
     destacado: true,
   },
   {
     n: "03",
     t: "Studio Partner",
-    precio: "$20,000+",
-    unidad: "We are your learning experience team.",
-    d: "Reserved capacity by the quarter, with the diagnosis running continuously instead of restarting with every brief. For organisations where the demand does not stop and the cost of scoping each project from zero has become its own problem.",
+    precio: "USD 20.000+",
+    unidad: "Somos tu equipo de experiencias.",
+    d: "Capacidad reservada por trimestre, con el diagnóstico corriendo de forma continua en vez de partir de cero con cada encargo. Para organizaciones donde la demanda no se detiene y cotizar cada proyecto desde cero ya es un problema en sí mismo.",
     trae: [
-      "Reserved studio capacity, quarter by quarter",
-      "Standing diagnosis: we see the problems before they arrive as briefs",
-      "Your roadmap, our studio — including the pieces that turn out not to need us",
-      "Priority on the instruments already built, so new work starts from a running engine",
+      "Capacidad reservada, trimestre a trimestre",
+      "Diagnóstico permanente: vemos los problemas antes de que lleguen como encargo",
+      "Tu hoja de ruta, nuestro estudio — incluidas las piezas que resulten no necesitarnos",
+      "Prioridad sobre lo ya construido, así lo nuevo parte desde un motor que corre",
     ],
-    cta: "Talk about a partnership",
+    cta: "Conversemos una alianza",
     destacado: false,
   },
 ];
 
-/* El contraste que justifica el cambio de unidad sin decir "subimos el
-   precio": el mismo dinero, otra cosa comprada. */
 const antesDespues = [
-  {
-    k: "The unit",
-    antes: "A course, priced per minute of finished content.",
-    ahora: "An intervention, priced by the behaviour it has to move.",
-  },
-  {
-    k: "What decides the scope",
-    antes: "How many modules you asked for.",
-    ahora: "What the diagnosis found, including when the answer is smaller than the brief.",
-  },
-  {
-    k: "The format",
-    antes: "Named in the purchase order.",
-    ahora: "Concluded in step 03, after we know who fails and why.",
-  },
-  {
-    k: "Revisions",
-    antes: "Two rounds. Three on the bigger tier.",
-    ahora: "A prototype tested with five real users, while changing course is still cheap.",
-  },
-  {
-    k: "Done means",
-    antes: "The zip is delivered.",
-    ahora: "The experience is running where your people are, and being measured.",
-  },
+  { k: "La unidad", antes: "Un curso, cotizado por minuto de contenido terminado.", ahora: "Una intervención, cotizada por la conducta que tiene que mover." },
+  { k: "Qué define el alcance", antes: "Cuántos módulos pediste.", ahora: "Lo que encontró el diagnóstico, incluso cuando es menos de lo que pediste." },
+  { k: "El formato", antes: "Va nombrado en la orden de compra.", ahora: "Se concluye en el paso 3, cuando sabemos quién falla y por qué." },
+  { k: "Las revisiones", antes: "Dos rondas. Tres en el plan grande.", ahora: "Un prototipo probado con cinco personas, mientras cambiar de rumbo aún es barato." },
+  { k: "Terminado significa", antes: "El ZIP está entregado.", ahora: "La experiencia está corriendo donde está tu gente, y se está midiendo." },
 ];
 
 const faqs = [
   {
-    q: "Why is a Lab Sprint priced like a course used to be, if it is more work?",
-    a: "Because the diagnosis and the prototype replace work that used to be wasted rather than adding to it. Most of the cost in traditional production goes into building the wrong thing well and then revising it. Testing with five real users in week three is cheaper than three rounds of stakeholder review in week ten.",
+    q: "¿Por qué un Lab Sprint vale lo mismo que valía un curso, si es más trabajo?",
+    a: "Porque el diagnóstico y el prototipo reemplazan trabajo que antes se perdía, en vez de sumarse. Buena parte del costo de la producción tradicional se va en construir bien lo equivocado y después corregirlo. Probar con cinco personas reales en la semana 3 sale más barato que tres rondas de revisión con la jefatura en la semana 10.",
   },
   {
-    q: "What if the diagnosis says we do not need you?",
-    a: "Then we say so, and you have paid for the diagnosis rather than for a course you did not need. It happens. Some behaviours are not a learning problem at all — they are a process, a tool or an incentive problem, and no experience we build will move them.",
+    q: "¿Y si el diagnóstico dice que no nos necesitan?",
+    a: "Te lo decimos, y habrás pagado por el diagnóstico en vez de por un curso que no necesitabas. Pasa. Hay conductas que no son un problema de aprendizaje: son de proceso, de herramienta o de incentivo, y ninguna experiencia que construyamos las va a mover.",
   },
   {
-    q: "Do you work with the LMS we already have?",
-    a: "Yes, and we can show you exactly what it will receive before it gets there. We deliver SCORM 1.2, SCORM 2004 and xAPI, and we verify the package against a live call log rather than shipping a zip and hoping. If you do not have a platform, ours is included from the Programme tier up.",
+    q: "¿Trabajan con el LMS que ya tenemos?",
+    a: "Sí, y te mostramos exactamente qué va a recibir antes de que llegue. Entregamos SCORM 1.2, SCORM 2004 y xAPI, y verificamos el paquete contra un registro de llamadas en vivo en vez de mandar un ZIP y cruzar los dedos. Si no tienes plataforma, la nuestra viene incluida desde el plan Programa.",
   },
   {
-    q: "What does “LMS included” actually mean?",
-    a: "A white-labelled learning platform — your logo, your palette, your domain — with no per-user licence, holding the experiences we build for you. Most studios hand over a file and where to put it becomes your problem. If you later want to move to your own platform, the content is standards-compliant and goes with you.",
+    q: "¿Qué significa exactamente «plataforma incluida»?",
+    a: "Un LMS con tu marca —tu logo, tu paleta, tu dominio— sin licencia por usuario, alojando las experiencias que construimos para ti. La mayoría entrega un archivo y dónde ponerlo pasa a ser tu problema. Si más adelante quieres moverte a tu propia plataforma, el contenido cumple estándares y se va contigo.",
   },
   {
-    q: "How long does a Lab Sprint take?",
-    a: "The prototype is in real hands around week three; the finished experience typically lands between weeks six and ten, depending on how much production the chosen format needs. A WhatsApp sequence and a multiplayer simulation are not the same build, and the diagnosis is what tells us which one you are getting.",
+    q: "¿Cuánto demora un Lab Sprint?",
+    a: "El prototipo está en manos reales alrededor de la semana 3; la experiencia terminada suele caer entre la semana 6 y la 10, según cuánta producción pida el formato elegido. Una secuencia de WhatsApp y un simulador multijugador no son el mismo desarrollo, y el diagnóstico es lo que dice cuál te toca.",
   },
   {
-    q: "Can you white-label the work for our clients?",
-    a: "Yes. If you are an OTEC, a consultancy or a training provider, the work ships under your brand and your clients never see ours. We have done it for years — it is how a good part of our catalogue was built.",
+    q: "¿Pueden trabajar con nuestra marca, para nuestros clientes?",
+    a: "Sí. Si eres OTEC, consultora o empresa de capacitación, el trabajo sale con tu marca y tus clientes nunca ven la nuestra. Lo hacemos hace años — así se construyó buena parte de nuestro catálogo.",
   },
   {
-    q: "What languages do you work in?",
-    a: "Spanish, English and Brazilian Portuguese. We are based in Latin America, and bilingual delivery — including voice — is routine rather than a surcharge line.",
+    q: "¿En qué idiomas trabajan?",
+    a: "Español, inglés y portugués de Brasil. Estamos en Chile, y la entrega bilingüe —incluida la locución— es rutina y no una línea con recargo.",
   },
   {
-    q: "How do we start?",
-    a: "A 45-minute call where you describe what is going wrong on the floor. If it looks like an intervention, you get a written proposal that opens with the problem, the experience and the result — in that order, with the price at the end.",
+    q: "¿Cómo partimos?",
+    a: "Una llamada de 45 minutos donde nos cuentas qué está saliendo mal en terreno. Si parece una intervención, recibes una propuesta escrita que abre con el problema, la experiencia y el resultado — en ese orden, y con el precio al final.",
   },
 ];
 
@@ -150,27 +122,23 @@ export default function PricingPage() {
       <Reveal />
 
       <PageHero
-        claqueta="Ewaffle · Working together"
+        claqueta="Ewaffle · Precios"
         titulo={
           <>
-            Priced by the <em>problem</em>.
+            Tres formas de entrar,
             <br />
-            Not by the runtime.
+            y qué <em>incluye</em> cada una.
           </>
         }
-        bajada="Three ways in. They are not sizes of the same thing — they differ by how much of your world the studio is looking at: one behaviour, one journey, or your whole roadmap. What you are buying in all three is the decision about which experience will move it, and then the experience itself, running."
-        nota="Every engagement opens with the diagnosis. If it concludes that the cheapest fix is not something we build, that is a legitimate outcome and we will put it in writing."
-        cta={{ label: "Book the diagnosis call", href: "/book-a-call" }}
+        bajada="No son tamaños de lo mismo: se diferencian por cuánto de tu mundo está mirando el estudio — una conducta, un trayecto, o tu hoja de ruta completa. En las tres, lo que compras es la decisión sobre qué experiencia va a mover eso, y después la experiencia misma, funcionando."
+        nota="Toda relación parte con el diagnóstico. Si concluye que lo más barato no es algo que nosotros construyamos, es un resultado legítimo y te lo dejamos por escrito."
+        cta={{ label: "Agenda 45 minutos", href: "/book-a-call" }}
       />
 
       <Escena
         n="01"
-        rotulo="The three ways"
-        titulo={
-          <>
-            One behaviour, one journey, or <em>the whole roadmap</em>.
-          </>
-        }
+        rotulo="Las tres formas"
+        titulo={<>Una conducta, un trayecto, o toda la hoja de ruta.</>}
       >
         <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {formas.map((f, i) => (
@@ -188,7 +156,7 @@ export default function PricingPage() {
                 <span className="mono text-[11px] text-[var(--haz)]">{f.n}</span>
                 {f.destacado && (
                   <span className="mono rounded-full bg-[var(--haz)] px-2.5 py-1 text-[9.5px] font-bold text-[#1a1206]">
-                    Most chosen
+                    El más elegido
                   </span>
                 )}
               </div>
@@ -201,7 +169,7 @@ export default function PricingPage() {
               <p className="mt-6 text-[2rem] font-extrabold tabular-nums tracking-[-0.035em] text-[var(--tiza)]">
                 {f.precio}
               </p>
-              <p className="mono mt-1 text-[10px] text-[var(--niebla)]">USD · per engagement</p>
+              <p className="mono mt-1 text-[10px] text-[var(--niebla)]">Por proyecto</p>
 
               <p className="mt-6 text-[15px] leading-relaxed text-[var(--niebla)]">{f.d}</p>
 
@@ -231,32 +199,28 @@ export default function PricingPage() {
         </div>
 
         <p className="mt-8 max-w-[68ch] text-[var(--niebla)]" data-motion>
-          Where an engagement lands inside its range is a function of the diagnosis — how many roles
-          are involved, whether the space has to be captured, whether the experience has to run in
-          two languages. Nothing on this page is priced by minutes of content, because minutes of
-          content is not what changes anyone&apos;s behaviour.
+          Dónde cae exactamente dentro del rango lo dice el diagnóstico: cuántos roles hay
+          involucrados, si hay que capturar el espacio, si la experiencia tiene que correr en dos
+          idiomas. Y si el alcance resulta menor de lo previsto, el valor baja. Nada de esta página
+          se cotiza por minutos de contenido.
         </p>
       </Escena>
 
       <Escena
         n="02"
-        rotulo="What changed"
+        rotulo="Qué cambió"
         fondo
-        titulo={
-          <>
-            Same numbers. <em>Different thing bought.</em>
-          </>
-        }
-        bajada="These figures used to buy volume: one course, three to five courses, unlimited courses per quarter. They now buy interventions. It is worth being explicit about the swap, because it is the whole argument."
+        titulo={<>Los mismos números, comprando otra cosa.</>}
+        bajada="Estas cifras antes compraban volumen: un curso, tres a cinco cursos, cursos ilimitados por trimestre. Ahora compran intervenciones. Vale la pena decirlo explícito, porque es el argumento completo."
       >
         <div className="mt-10 overflow-hidden rounded-2xl border border-white/10" data-motion>
           <div className="grid grid-cols-1 md:grid-cols-[190px_1fr_1fr]">
             <div className="hidden md:block" />
             <div className="border-b border-white/10 bg-white/[0.02] px-5 py-4 md:border-l">
-              <p className="mono text-[10.5px] text-[var(--niebla)]">A production shop sells</p>
+              <p className="mono text-[10.5px] text-[var(--niebla)]">Una productora vende</p>
             </div>
             <div className="border-b border-l border-white/10 bg-[rgba(255,177,72,0.06)] px-5 py-4">
-              <p className="mono text-[10.5px] text-[var(--haz)]">A studio sells</p>
+              <p className="mono text-[10.5px] text-[var(--haz)]">Un estudio vende</p>
             </div>
 
             {antesDespues.map((f) => (
@@ -268,7 +232,9 @@ export default function PricingPage() {
                   <p className="text-[15px] leading-relaxed text-[var(--niebla)]">{f.antes}</p>
                 </div>
                 <div className="border-b border-l border-white/10 bg-[rgba(255,177,72,0.035)] px-5 py-4">
-                  <p className="text-[15px] font-medium leading-relaxed text-[var(--tiza)]">{f.ahora}</p>
+                  <p className="text-[15px] font-medium leading-relaxed text-[var(--tiza)]">
+                    {f.ahora}
+                  </p>
                 </div>
               </div>
             ))}
@@ -276,15 +242,7 @@ export default function PricingPage() {
         </div>
       </Escena>
 
-      <Escena
-        n="03"
-        rotulo="Questions"
-        titulo={
-          <>
-            The ones worth <em>asking us</em>.
-          </>
-        }
-      >
+      <Escena n="03" rotulo="Preguntas" titulo={<>Las que vale la pena hacernos.</>}>
         <div className="mt-10 grid gap-3 md:grid-cols-2">
           {faqs.map((f, i) => (
             <div
@@ -301,10 +259,10 @@ export default function PricingPage() {
       </Escena>
 
       <CTASection
-        title="The diagnosis is where this starts."
-        description="Not with a quote, and not with a format. Tell us what your people are doing that they should not be, and we will tell you whether we are the right answer."
-        primaryCTA="Book the diagnosis call"
-        secondaryCTA="See the instruments"
+        title="Esto parte con el diagnóstico."
+        description="No con una cotización y no con un formato. Cuéntanos qué está haciendo tu gente que no debería, y te decimos si somos la respuesta correcta."
+        primaryCTA="Agenda 45 minutos"
+        secondaryCTA="Mira qué construimos"
         secondaryHref="/services"
       />
     </div>

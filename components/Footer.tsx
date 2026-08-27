@@ -7,28 +7,28 @@ import { CONTACT_EMAIL } from "@/lib/contact";
    públicas: enlaces que abren algo real, que es el argumento de todo el sitio. */
 const columnas = [
   {
-    t: "Studio",
+    t: "El estudio",
     links: [
-      { href: "/services", label: "What we build" },
-      { href: "/case-studies", label: "Work" },
-      { href: "/pricing", label: "Pricing" },
-      { href: "/about", label: "About the studio" },
+      { href: "/services", label: "Qué hacemos" },
+      { href: "/case-studies", label: "Trabajos" },
+      { href: "/pricing", label: "Precios" },
+      { href: "/about", label: "Quiénes somos" },
     ],
   },
   {
-    t: "Open a real piece",
+    t: "Ábrelas y pruébalas",
     links: [
-      { href: "https://ewaffle.cl/demos/los-heroes-decidir-mas-cerca", label: "Branching narrative", fuera: true },
-      { href: "https://ewaffle.cl/demos/juegos-demo", label: "Game mechanics", fuera: true },
-      { href: "https://ewaffle.cl/demos/buffalo-induccion", label: "Interactive guide", fuera: true },
-      { href: "https://ewaffle.cl/demos/lms-sim", label: "SCORM, verified", fuera: true },
+      { href: "https://ewaffle.cl/demos/los-heroes-decidir-mas-cerca", label: "Narrativa ramificada", fuera: true },
+      { href: "https://ewaffle.cl/demos/juegos-demo", label: "Mecánicas de juego", fuera: true },
+      { href: "https://ewaffle.cl/demos/buffalo-induccion", label: "Guía interactiva", fuera: true },
+      { href: "https://ewaffle.cl/demos/lms-sim", label: "SCORM, verificado", fuera: true },
     ],
   },
   {
-    t: "Talk to us",
+    t: "Hablemos",
     links: [
-      { href: "/book-a-call", label: "Book the diagnosis call" },
-      { href: "/blog", label: "Notes from the Lab" },
+      { href: "/book-a-call", label: "Agenda 45 minutos" },
+      { href: "/blog", label: "Notas del Lab" },
       { href: `mailto:${CONTACT_EMAIL}`, label: CONTACT_EMAIL },
     ],
   },
@@ -47,18 +47,18 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mono mt-4 text-[10px] leading-[2] text-[var(--haz)]">
-              Learning
+              Experiencias
               <br />
-              Experience
+              de
               <br />
-              Studio
+              aprendizaje
             </p>
             <p className="mt-5 max-w-[34ch] text-[14.5px] leading-relaxed text-[var(--niebla)]">
-              We design the intervention, not the course — and deliver it running. In your LMS, or
-              in ours.
+              Diseñamos y construimos la experiencia completa, y te la entregamos funcionando —
+              en tu LMS o en el nuestro.
             </p>
             <p className="mono mt-5 text-[10px] text-[var(--niebla)]">
-              Latin America · ES · EN · PT-BR
+              Chile · ES · EN · PT-BR
             </p>
           </div>
 

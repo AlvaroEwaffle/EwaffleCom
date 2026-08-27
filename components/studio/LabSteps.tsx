@@ -15,7 +15,7 @@ export default function LabSteps({ pasos }: { pasos: Paso[] }) {
 
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-[var(--sala-2)]">
-      <div role="tablist" aria-label="The Lab process" className="grid grid-cols-2 md:grid-cols-5">
+      <div role="tablist" aria-label="El proceso del Lab" className="grid grid-cols-2 md:grid-cols-5">
         {pasos.map((p, i) => {
           const suyo = p.k === activo;
           return (
@@ -55,7 +55,7 @@ export default function LabSteps({ pasos }: { pasos: Paso[] }) {
       >
         <h3 className="text-xl font-bold tracking-[-0.022em] text-[var(--tiza)]">{paso.t}</h3>
         <p className="mt-2 max-w-[62ch] text-[var(--niebla)]">{paso.d}</p>
-        <p className="mono mt-5 text-[10.5px] text-[var(--niebla)]">What you get</p>
+        <p className="mono mt-5 text-[10.5px] text-[var(--niebla)]">Qué te llevas</p>
         <p className="mt-1 max-w-[62ch] font-semibold text-[var(--tiza)]">{paso.sale}</p>
       </div>
     </div>

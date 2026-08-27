@@ -2,254 +2,302 @@ import Link from "next/link";
 import Reveal from "@/components/studio/Reveal";
 import LabSteps, { type Paso } from "@/components/studio/LabSteps";
 import ExperienceLab, { type Pieza } from "@/components/studio/ExperienceLab";
+import Logos from "@/components/studio/Logos";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   HOME · Learning Experience Studio
+   HOME · Ewaffle
    ───────────────────────────────────────────────────────────────────────────
-   La versión anterior vendía producción: "mándanos tu PPT y te devolvemos un
-   curso SCORM", con precio por curso y comparación contra agencias y
-   freelancers. Ese pitch tiene un problema de fondo: producir contenido se está
-   commoditizando, y competir por ser más rápido y más barato es competirle a
-   una herramienta que el cliente ya tiene abierta en otra pestaña.
+   Reescrita el 27-ago-2026. La versión anterior era correcta y no servía: el
+   hero decía "Learning Experience Studio" y una bajada sobre conductas que no
+   cambian, y el visitante llegaba al final sin saber qué vendemos, a quién ni
+   qué gana. Además todos los titulares eran la misma figura —"X. No Y."— y
+   todas las secciones el mismo bloque: rótulo mono, titular gigante con una
+   palabra en ámbar, párrafo, grilla de tarjetas. Cinco veces. Se lee como algo
+   generado, no como algo escrito.
 
-   Lo que no se commoditiza es decidir QUÉ EXPERIENCIA hace que alguien cambie
-   cómo trabaja. Esta página vende eso. Tres decisiones la ordenan:
+   Lo que cambia:
 
-   1. La unidad es la intervención, no el curso: Problema → Experiencia →
-      Resultado. La escena 01 es literalmente ese contraste.
-   2. El producto se muestra corriendo. Seis construcciones reales se abren y
-      funcionan dentro de la página. Una página que vende experiencias no puede
-      pedir que le crean.
-   3. El formato nunca es el input. El Lab decide el formato recién en el paso
-      03, después de diagnosticar — y la página lo dice en vez de listar
-      servicios por herramienta.
+   - El hero dice las tres cosas, en ese orden: QUÉ hacemos (simuladores,
+     juegos, guías, 360, video), PARA QUIÉN (mutuales, universidades e
+     institutos, empresas con equipos grandes en terreno) y QUÉ GANAS (cuatro
+     beneficios concretos, con visto, no en prosa).
+   - Los logos de clientes van justo debajo, no en el pie. Es lo único de la
+     página que el visitante no tiene que creernos.
+   - Los títulos de sección nombran la cosa —Qué hacemos, Cómo trabajamos,
+     Míralo funcionando, Dónde llega, Cuánto cuesta— en vez de ser frases.
+   - Español de Chile: el hero nombra clientes chilenos, y un hero en inglés
+     que nombra a la ACHS le habla a alguien que no existe. La versión en
+     inglés irá en /en cuando haya a quién mostrársela.
+
+   Lo que se mantiene: el sistema visual del catálogo de ewaffle.cl y las seis
+   piezas que se abren y CORREN dentro de la página. Eso último es el argumento
+   entero: una web que vende experiencias no puede pedir que le crean.
 
    La oferta completa vive en VPM/Ewaffle/learning-experience-studio.md.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const metadata = {
-  title: "Learning Experience Studio",
+  title: "Capacitación que tu gente sí hace",
   description:
-    "We design learning interventions, not courses. Simulations, narrative, games and AI-built experiences — delivered running, in your LMS or in ours.",
+    "Simuladores, juegos, guías interactivas, recorridos 360 y video para mutuales, universidades e institutos, y empresas con equipos grandes en terreno. Te lo entregamos funcionando, en tu LMS o en el nuestro. Prototipo probado en la semana 3.",
 };
 
 const escenas = [
-  { id: "start", n: "00", t: "Start" },
-  { id: "shift", n: "01", t: "The shift" },
-  { id: "lab", n: "02", t: "The Lab" },
-  { id: "experiences", n: "03", t: "Experiences" },
-  { id: "ecosystem", n: "04", t: "Delivery" },
-  { id: "work", n: "05", t: "Work with us" },
+  { id: "inicio", n: "00", t: "Inicio" },
+  { id: "que-hacemos", n: "01", t: "Qué hacemos" },
+  { id: "como", n: "02", t: "Cómo trabajamos" },
+  { id: "piezas", n: "03", t: "Míralo funcionando" },
+  { id: "entrega", n: "04", t: "Dónde llega" },
+  { id: "precio", n: "05", t: "Cuánto cuesta" },
 ];
 
-/* El contraste que ordena toda la posición. A la izquierda el encargo que
-   llega; a la derecha el mismo caso reescrito como intervención. El ejemplo es
-   uno solo y concreto a propósito: dos columnas de abstracciones no convencen
-   a nadie. */
+/* Los cuatro beneficios del hero. Concretos y comprobables: cada uno se puede
+   contrastar contra algo —una semana, una licencia, un canal, un estándar—. Un
+   beneficio que no se puede contrastar es una promesa, y de esas ya hay muchas
+   en este mercado. */
+const beneficios = [
+  "Ves un prototipo funcionando en la semana 3, probado con 5 personas de tu equipo",
+  "Plataforma incluida, con tu marca y sin licencia por usuario",
+  "Llega a quien no tiene computador ni correo: por WhatsApp o un link sin clave",
+  "SCORM 1.2, 2004 y xAPI, verificados contra un LMS antes de entregarte nada",
+];
+
+/* A quién le sirve esto, con el caso típico de cada uno. La lista sale de la
+   base real de clientes, no de un segmento inventado: mutuales, educación
+   superior, fundaciones de cuidado, y operaciones con primera línea. */
+const paraQuien = [
+  {
+    t: "Mutuales y prevención",
+    d: "Contenido normativo que decenas de empresas adherentes tienen que dictar, y que hoy se lee en vez de practicarse.",
+    ej: "ACHS · uso de EPP, Ley Karin, sustancias peligrosas",
+  },
+  {
+    t: "Universidades e institutos",
+    d: "Asignaturas y programas diseñados para ser online desde el principio, no clases grabadas con una prueba al final.",
+    ej: "AIEP · Duoc UC · UGM · UNIACC · U. Santo Tomás",
+  },
+  {
+    t: "Equipos grandes en terreno",
+    d: "Rotación alta, primer empleo, turnos, y una inducción que hoy depende de quién esté ese día para explicarla.",
+    ej: "Buffalo Waffles · inducción a la operación",
+  },
+  {
+    t: "Cuidado y atención de personas",
+    d: "Temas donde saberse el protocolo no basta: hay que sostener un criterio cuando nadie está mirando.",
+    ej: "Caja Los Héroes · Coanil · buen trato y cuidados",
+  },
+];
+
+/* El contraste que ordena la posición. Se mantiene porque es el argumento, pero
+   ahora vive DESPUÉS de que la página ya dijo qué vendemos: antes abría con él y
+   le pedía al visitante entender una tesis antes de saber a qué llegó. */
 const contraste = [
   {
-    k: "The brief",
-    viejo: "“Turn these 40 slides into an e-learning course.”",
-    nuevo: "“Our crews sign off on fall-arrest permits without checking the anchor point.”",
+    k: "El encargo",
+    viejo: "«Conviértanme estas 40 láminas en un curso e-learning.»",
+    nuevo: "«Mis supervisores firman el permiso de altura sin revisar el anclaje.»",
   },
   {
-    k: "The unit",
-    viejo: "A course. Priced per minute of content.",
-    nuevo: "An intervention. Priced by the behaviour it has to move.",
+    k: "Lo que se cobra",
+    viejo: "Un curso, cotizado por minuto de contenido.",
+    nuevo: "Una intervención, cotizada por la conducta que tiene que mover.",
   },
   {
-    k: "The design question",
-    viejo: "What content do we need to cover?",
-    nuevo: "What does this person have to be able to do on Monday?",
+    k: "La pregunta de diseño",
+    viejo: "¿Qué contenidos hay que cubrir?",
+    nuevo: "¿Qué tiene que ser capaz de hacer esta persona el lunes?",
   },
   {
-    k: "What they do",
-    viejo: "Watch, read, click Next, pass a quiz.",
-    nuevo: "Decide under pressure, get it wrong, see the consequence, try again.",
+    k: "Qué hace la persona",
+    viejo: "Mira, lee, aprieta Siguiente, aprueba una prueba.",
+    nuevo: "Decide con presión, se equivoca, ve la consecuencia, lo intenta de nuevo.",
   },
   {
-    k: "The deliverable",
-    viejo: "A SCORM zip. Where you put it is your problem.",
-    nuevo: "The experience running where your people already are.",
+    k: "Qué se entrega",
+    viejo: "Un ZIP SCORM. Dónde ponerlo es tu problema.",
+    nuevo: "La experiencia funcionando donde ya está tu gente.",
   },
   {
-    k: "Success looks like",
-    viejo: "94% completion rate.",
-    nuevo: "Anchor-point checks in the field audit, before and after.",
+    k: "Éxito es",
+    viejo: "94% de completitud.",
+    nuevo: "Que la revisión del anclaje aparezca en la auditoría en terreno.",
   },
 ];
 
 const pasos: Paso[] = [
   {
     n: "01",
-    k: "diagnose",
-    t: "Diagnose",
-    d: "We start in the job, not in the content. What is actually happening on the floor, who does it, what makes the wrong choice the easy one, and what evidence already exists that would tell us if it changed.",
-    sale: "The behaviour to move, written as something observable — and the measure we will hold ourselves to.",
+    k: "diagnostico",
+    t: "Diagnóstico",
+    d: "Partimos en el puesto de trabajo, no en el contenido. Qué pasa hoy, quién lo hace, qué vuelve fácil la opción equivocada, y qué evidencia ya existe que nos diría si cambió.",
+    sale: "La conducta a mover, escrita como algo observable, y la medida con la que nos vas a evaluar.",
   },
   {
     n: "02",
-    k: "design",
-    t: "Design the experience",
-    d: "We map what the person decides, where they are allowed to be wrong, and how the environment answers back. This is instructional design done as system design, not as a slide outline.",
-    sale: "A breadboard of the experience: the moments, the choices and the consequences.",
+    k: "diseno",
+    t: "Diseño de la experiencia",
+    d: "Mapeamos qué decide la persona, dónde se le permite equivocarse y cómo le responde el entorno. Es diseño instruccional hecho como diseño de sistema, no como índice de contenidos.",
+    sale: "El mapa de la experiencia: los momentos, las decisiones y las consecuencias.",
   },
   {
     n: "03",
-    k: "prototype",
-    t: "Prototype, and put it in real hands",
-    d: "A working piece, not a storyboard, tested with five people from the actual audience. This is the step that separates a studio from an agency: it turns “I like it / I don’t” into “it worked / it didn’t”, while changing course is still cheap.",
-    sale: "A playable prototype and what five real users did with it — including where they got stuck.",
+    k: "prototipo",
+    t: "Prototipo, en manos reales",
+    d: "Una pieza que funciona —no un storyboard— probada con cinco personas de tu equipo. Acá se decide el formato definitivo, con evidencia y no con preferencia. Y acá conviene cortar si nada se mueve.",
+    sale: "Un prototipo jugable y qué hicieron con él cinco personas de verdad, incluido dónde se trabaron.",
   },
   {
     n: "04",
-    k: "build",
-    t: "Build",
-    d: "Full production, with AI accelerating the work that should be fast — drafting, structuring, voice, visuals — and a human reviewing every piece before it ships. The AI moves the floor, it does not make the decisions.",
-    sale: "The complete experience, in the format the diagnosis chose. Never the format you asked for by name.",
+    k: "produccion",
+    t: "Producción",
+    d: "La experiencia completa, con IA acelerando lo que debe ser rápido —guion, estructura, voz, gráfica— y una persona revisando pieza por pieza antes de que salga.",
+    sale: "La experiencia terminada, en el formato que concluyó el diagnóstico.",
   },
   {
     n: "05",
-    k: "measure",
-    t: "Deploy and measure",
-    d: "Installed where your people already are — your LMS, a link, WhatsApp, ours — and measured against the evidence we agreed on in step 01, not against completion rates.",
-    sale: "The experience live, and an honest read on whether the behaviour moved.",
+    k: "medicion",
+    t: "Despliegue y medición",
+    d: "Instalada donde ya está tu gente —tu LMS, un link, WhatsApp, o la nuestra— y medida contra la evidencia que acordamos en el paso 01, no contra tasas de completitud.",
+    sale: "La experiencia viva, y una lectura honesta de si la conducta se movió.",
   },
 ];
 
 const piezas: Pieza[] = [
   {
     id: "sim",
-    etiqueta: "Multiplayer simulation",
-    titulo: "The whole operation, before the real one",
+    etiqueta: "Simulador multijugador",
+    titulo: "Toda la operación, antes de la operación real",
     beneficio:
-      "Four people log in as customs, carrier, shipping line and importer, and the container does not move until the paperwork actually reconciles. Getting it wrong costs nothing here and a great deal at the port.",
+      "Cuatro personas entran como aduana, transportista, naviera e importador, y el contenedor no se mueve hasta que los papeles cuadran de verdad. Equivocarse acá no cuesta nada; en el puerto cuesta muchísimo.",
     detalle: [
-      "Coordination between roles is the competence being trained.",
-      "Real trade documents: B/L, commercial invoice, customs declaration.",
-      "Runs in the browser. Our own engine, no per-seat platform licence.",
+      "La coordinación entre roles es la competencia que se entrena.",
+      "Documentos reales de comercio exterior: B/L, factura comercial, declaración de ingreso.",
+      "Corre en el navegador. Motor propio, sin licencia por usuario.",
     ],
     img: "/experiences/comex.webp",
-    alt: "Port at dusk with cranes and container ships, and the four simulator roles listed below",
+    alt: "Puerto al atardecer con grúas y portacontenedores, y los cuatro roles del simulador listados abajo",
     modo: "video",
     src: "https://tefi.villelab.com/comex-live-explainer.mp4",
     poster: "/experiences/comex.webp",
-    nota: "Narrated walkthrough",
+    nota: "Recorrido narrado",
   },
   {
-    id: "judgement",
-    etiqueta: "Branching narrative",
-    titulo: "For the topics with no clean answer",
+    id: "criterio",
+    etiqueta: "Narrativa ramificada",
+    titulo: "Para los temas que no tienen respuesta limpia",
     beneficio:
-      "Ethics, safeguarding, autonomy, prevention. The goal is not that they remember the policy — it is that they hold a line when nobody is watching. They choose, they see the cost, and they get the reasoning.",
+      "Ética, buen trato, autonomía, prevención. El objetivo no es que se acuerden del protocolo: es que sostengan un criterio cuando nadie está mirando. Eligen, ven lo que costó, y recién ahí reciben el razonamiento.",
     detalle: [
-      "Built on the real dilemmas of the job, not textbook cases.",
-      "Every option has a defensible cost, so there is nothing to game.",
+      "Construida sobre los dilemas reales del puesto, no sobre casos de manual.",
+      "Cada opción tiene un costo defendible, así que no hay nada que adivinar.",
     ],
     img: "/experiences/arbol.webp",
-    alt: "Decision-making course interface with a 24-lesson index and the first lesson open",
+    alt: "Interfaz de un curso de toma de decisiones con un índice de 24 lecciones y la primera abierta",
     modo: "iframe",
     src: "https://ewaffle.cl/demos/los-heroes-decidir-mas-cerca",
-    nota: "Caja Los Héroes · 24 lessons",
+    nota: "Caja Los Héroes · 24 lecciones",
   },
   {
-    id: "games",
-    etiqueta: "Game mechanics",
-    titulo: "Practice that people finish",
+    id: "juegos",
+    etiqueta: "Mecánicas de juego",
+    titulo: "Práctica que la gente sí termina",
     beneficio:
-      "Eight mechanics already built and tested, configured with your concepts. Your budget goes into adapting your content, not into developing an engine — and people practise the material instead of reading it.",
+      "Ocho mecánicas ya construidas y probadas, configuradas con tus conceptos. Tu presupuesto se va en adaptar tu contenido y no en desarrollar un motor — y la gente practica la materia en vez de leerla.",
     detalle: [
-      "No grade sent to the LMS and unlimited retries: practice without fear of failing.",
-      "Wheel, memory, quiz show, word search, concept ring, drag and drop, decision tree, floor-plan placement.",
+      "Sin nota enviada al LMS y con reintentos ilimitados: se practica sin miedo a reprobar.",
+      "Ruleta, memorice, quiz show, sopa de letras, anillo de conceptos, arrastrar y soltar, árbol de decisión, ubicar en plano.",
     ],
     img: "/experiences/juegos.webp",
-    alt: "Word-search activity inside a course, with clues alongside and a score counter",
+    alt: "Actividad de sopa de letras dentro de un curso, con las pistas al costado y un contador de puntaje",
     modo: "iframe",
     src: "https://ewaffle.cl/demos/juegos-demo",
-    nota: "Four mechanics chained as a real course",
+    nota: "Cuatro mecánicas encadenadas como un curso real",
   },
   {
-    id: "spatial",
-    etiqueta: "Spatial learning",
-    titulo: "Know the plant before the first shift",
+    id: "espacio",
+    etiqueta: "Aprendizaje espacial",
+    titulo: "Conocer la planta antes del primer turno",
     beneficio:
-      "When the physical space is part of what has to be learned, describing it does not work. They place each zone, its function and its risk — and the on-site induction gets shorter because they arrive oriented.",
+      "Cuando el espacio físico es parte de lo que hay que aprender, describirlo no funciona. Ubican cada zona, su función y su riesgo — y la inducción en terreno se acorta porque llegan orientados.",
     detalle: [
-      "Pairs with 360 walkthroughs when the real environment matters.",
-      "Works on a phone: every zone is a touch target, no dragging.",
+      "Se combina con recorridos 360 cuando el entorno real importa.",
+      "Funciona en el teléfono: cada zona es un toque, nada que arrastrar.",
     ],
     img: "/experiences/plano.webp",
-    alt: "Floor-plan activity with eight unlabelled zones to place",
+    alt: "Actividad de plano con ocho zonas sin rotular para ubicar",
     modo: "iframe",
     src: "https://ewaffle.cl/demos/hotspot-plano-prototipo",
-    nota: "Eight zones of a real venue",
+    nota: "Ocho zonas de un recinto real",
   },
   {
-    id: "guides",
-    etiqueta: "Interactive guides",
-    titulo: "The manual nobody opens, rebuilt",
+    id: "guias",
+    etiqueta: "Guías interactivas",
+    titulo: "El manual que nadie abre, reconstruido",
     beneficio:
-      "It becomes something people walk through and finish. It opens in a browser, with nothing to install and no account to create — so a new hire can do their induction on day one without waiting on IT for access.",
+      "Pasa a ser algo que la gente recorre y termina. Se abre en el navegador, sin instalar nada y sin crear cuenta — así alguien que entra hoy hace su inducción el día uno, sin esperar que TI le dé acceso.",
     detalle: [
-      "For induction, procedures and contractor onboarding.",
-      "Same experience on phone, tablet and desktop.",
+      "Para inducción, procedimientos y onboarding de contratistas.",
+      "La misma experiencia en teléfono, tablet y computador.",
     ],
     img: "/experiences/guias.webp",
-    alt: "Interactive guide open in a browser with a lesson index and progress bar",
+    alt: "Guía interactiva abierta en el navegador con índice de lecciones y barra de avance",
     modo: "iframe",
     src: "https://ewaffle.cl/demos/buffalo-induccion",
-    nota: "Three lessons with video and a closing check",
+    nota: "Tres lecciones con video y un cierre",
   },
   {
     id: "scorm",
-    etiqueta: "SCORM, verified",
-    titulo: "We can show you what your LMS receives",
+    etiqueta: "SCORM, verificado",
+    titulo: "Te mostramos qué recibe tu LMS",
     beneficio:
-      "Most vendors hand over a zip and hope. This is our test harness: the course on the left, the live SCORM conversation on the right — every call, in order. It is how we prove tracking works before it reaches your platform.",
+      "La mayoría entrega un ZIP y cruza los dedos. Esto es nuestro banco de pruebas: el curso a la izquierda, la conversación SCORM en vivo a la derecha, llamada por llamada. Así comprobamos que el registro funciona antes de que llegue a tu plataforma.",
     detalle: [
-      "SCORM 1.2, SCORM 2004 and xAPI.",
-      "Also how we debug a package that a client LMS is rejecting.",
+      "SCORM 1.2, SCORM 2004 y xAPI.",
+      "También es como depuramos un paquete que el LMS de un cliente está rechazando.",
     ],
     img: "/experiences/lms.webp",
-    alt: "LMS simulator with a course on the left and a console logging SCORM calls on the right",
+    alt: "Simulador de LMS con un curso a la izquierda y una consola registrando llamadas SCORM a la derecha",
     modo: "iframe",
     src: "https://ewaffle.cl/demos/lms-sim",
-    nota: "SCORM 1.2 with the call log visible",
+    nota: "SCORM 1.2 con el registro de llamadas a la vista",
   },
 ];
 
 const canales = [
-  { c: "SCORM 1.2 / 2004 / xAPI", w: "You have an LMS and need the formal record." },
-  { c: "Web link, no account, no install", w: "Contractors, suppliers, people passing through." },
-  { c: "WhatsApp", w: "Field crews and shift workers with no corporate email. One lesson per reply." },
-  { c: "360 and immersive", w: "The physical space is part of what must be learned." },
-  { c: "Multiplayer simulation", w: "Coordination between roles is the competence." },
-  { c: "Our LMS, white-labelled", w: "You do not have a platform and do not want to buy one." },
+  { c: "SCORM 1.2 / 2004 / xAPI", w: "Tienes LMS y necesitas el registro formal." },
+  { c: "Link web, sin cuenta ni instalación", w: "Contratistas, proveedores, gente de paso." },
+  { c: "WhatsApp", w: "Terreno y turnos, sin correo corporativo. Una lección por respuesta." },
+  { c: "360 e inmersivo", w: "El espacio físico es parte de lo que hay que aprender." },
+  { c: "Simulador multijugador", w: "La coordinación entre roles es la competencia." },
+  { c: "Nuestro LMS, con tu marca", w: "No tienes plataforma y no quieres comprar una." },
 ];
 
 const formas = [
   {
     n: "01",
     t: "Lab Sprint",
-    p: "One intervention, one behaviour.",
-    d: "Diagnosis, design, a prototype tested with real users, production and deployment. The way in — you get to check the method against a real problem before committing a programme to it.",
-    b: ["One behaviour, defined and measured", "Playable prototype in week three", "Delivered in the channel the diagnosis chose"],
+    precio: "USD 3.000 – 5.000",
+    p: "Una intervención, una conducta.",
+    d: "La puerta de entrada. Eliges el problema que te está costando plata y le corremos el Lab completo. Chico como para probar el método, real como para importar por sí solo.",
+    b: ["Una conducta, definida y medida", "Prototipo probado en la semana 3", "Entregado en el canal que eligió el diagnóstico"],
     destacado: false,
   },
   {
     n: "02",
-    t: "Programme",
-    p: "A journey as a system of experiences.",
-    d: "Several interventions that build on each other, plus the ecosystem around them: platform, tracking, comms and measurement. This is where the included LMS matters most.",
-    b: ["Multiple linked interventions", "Learning platform included, under your brand", "Measured on behaviour, not completions"],
+    t: "Programa",
+    precio: "USD 8.000 – 15.000",
+    p: "Un trayecto como sistema de experiencias.",
+    d: "Varias intervenciones que se encadenan, más el ecosistema que las sostiene: plataforma, seguimiento, comunicaciones y medición. Acá es donde el LMS incluido más pesa.",
+    b: ["Varias intervenciones encadenadas", "Plataforma incluida, con tu marca", "Medido por conducta, no por completitud"],
     destacado: true,
   },
   {
     n: "03",
     t: "Studio Partner",
-    p: "We are your learning experience team.",
-    d: "Reserved capacity by the quarter, with diagnosis running continuously instead of project by project. For organisations where the demand does not stop.",
-    b: ["Reserved quarterly capacity", "Standing diagnosis, not one-off briefs", "Your roadmap, our studio"],
+    precio: "USD 20.000+",
+    p: "Somos tu equipo de experiencias.",
+    d: "Capacidad reservada por trimestre, con el diagnóstico corriendo de forma continua en vez de partir de cero con cada encargo. Para cuando la demanda no se detiene.",
+    b: ["Capacidad reservada por trimestre", "Diagnóstico permanente, no encargos sueltos", "Tu hoja de ruta, nuestro estudio"],
     destacado: false,
   },
 ];
@@ -259,9 +307,8 @@ export default function Home() {
     <div className="relative">
       <Reveal />
 
-      {/* ══ Riel de escenas ══ Índice y avance a la vez. Bajo 1280px desaparece:
-           en un teléfono el índice compite con el contenido y el header sticky
-           ya cumple la función de volver. */}
+      {/* Riel de escenas: índice y avance a la vez. Bajo 1280px desaparece —en un
+          teléfono compite con el contenido y el header sticky ya cumple. */}
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-[210px] flex-col gap-7 border-r border-white/10 bg-gradient-to-b from-[rgba(20,17,43,0.9)] to-[rgba(10,8,18,0.9)] px-5 pb-8 pt-28 backdrop-blur-md xl:flex">
         <span className="mono text-[11px] font-semibold text-[var(--tiza)]">Ewaffle</span>
         <ol className="grid gap-0.5">
@@ -278,94 +325,111 @@ export default function Home() {
           ))}
         </ol>
         <p className="mono mt-auto text-[10.5px] leading-relaxed text-[var(--niebla)]">
-          Learning
+          Simuladores
           <br />
-          Experience
+          Juegos · 360
           <br />
-          Studio
+          Video · LMS
         </p>
       </aside>
 
       <div className="xl:ml-[210px]">
-        {/* ══ 00 · Start ══════════════════════════════════════════════════ */}
+        {/* ══ 00 · Hero ═══════════════════════════════════════════════════
+            Dice tres cosas y en este orden: QUÉ hacemos, PARA QUIÉN, y QUÉ
+            GANAS. Los beneficios van con visto y no en prosa porque un hero se
+            escanea, no se lee. */}
         <section
-          id="start"
-          className="relative isolate flex min-h-[min(100vh,900px)] flex-col justify-center overflow-hidden px-5 py-24 sm:px-10 lg:px-14"
+          id="inicio"
+          className="relative isolate overflow-hidden px-5 pb-16 pt-20 sm:px-10 sm:pt-24 lg:px-14"
         >
           <div className="absolute inset-0 -z-10" aria-hidden="true">
-            {/* El fotograma del puerto va desenfocado: trae el título del
-                simulador quemado encima y nítido competiría con el titular. Lo
-                que aporta es la luz, no sus palabras. */}
             <img
               src="/experiences/sala.webp"
               alt=""
-              className="h-full w-full scale-[1.14] object-cover object-[50%_46%] opacity-50 blur-[22px] saturate-[1.15]"
+              className="h-full w-full scale-[1.14] object-cover object-[50%_46%] opacity-40 blur-[26px] saturate-[1.15]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,8,18,0.34)_0%,rgba(10,8,18,0.72)_52%,#0a0812_97%),radial-gradient(115%_85%_at_16%_74%,rgba(10,8,18,0.88),transparent_64%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,8,18,0.42)_0%,rgba(10,8,18,0.78)_52%,#0a0812_97%),radial-gradient(115%_85%_at_16%_74%,rgba(10,8,18,0.9),transparent_64%)]" />
           </div>
 
-          <div className="mx-auto grid w-full max-w-[1340px] items-center gap-10 lg:grid-cols-[minmax(0,1.24fr)_minmax(0,0.76fr)] lg:gap-14">
+          <div className="mx-auto grid w-full max-w-[1340px] items-start gap-12 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] lg:gap-14">
             <div className="min-w-0">
               <p className="claqueta" data-motion>
                 <span className="claqueta__punto" />
-                Ewaffle · Learning intervention design
-              </p>
-              <h1 className="titular mt-5 lg:!text-[clamp(2.5rem,3.5vw,3.35rem)]" data-motion style={{ ["--retardo" as string]: "90ms" }}>
-                Learning Experience
-                <br />
-                <em>Studio</em>
-              </h1>
-              <p
-                className="mt-6 max-w-[60ch] text-[clamp(1.05rem,1.7vw,1.28rem)] leading-relaxed text-[var(--niebla)]"
-                data-motion
-                style={{ ["--retardo" as string]: "180ms" }}
-              >
-                You don&apos;t have a content problem. You have a behaviour that isn&apos;t changing. We
-                work out what your team has to be able to do, design the experience that gets them
-                there — simulation, narrative, game, immersive, whatever the problem actually calls
-                for — and deliver it running. In your LMS, or in ours.
+                Ewaffle · Estudio de experiencias de aprendizaje
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3" data-motion style={{ ["--retardo" as string]: "260ms" }}>
-                <a
-                  href="#shift"
-                  className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[var(--rosa)] px-7 text-base font-semibold text-white shadow-[0_14px_40px_-14px_rgba(253,90,147,0.85)] transition-transform duration-200 hover:-translate-y-0.5"
-                >
-                  How we work
-                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.1} strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 5v14M19 12l-7 7-7-7" />
-                  </svg>
-                </a>
+              <h1
+                className="titular mt-5 lg:!text-[clamp(2.5rem,3.6vw,3.45rem)]"
+                data-motion
+                style={{ ["--retardo" as string]: "80ms" }}
+              >
+                Hacemos la capacitación
+                <br />
+                que tu gente <em>sí hace</em>.
+              </h1>
+
+              {/* QUÉ + PARA QUIÉN, en una frase cada uno. */}
+              <p
+                className="mt-6 max-w-[58ch] text-[clamp(1.05rem,1.6vw,1.24rem)] leading-relaxed text-[var(--niebla)]"
+                data-motion
+                style={{ ["--retardo" as string]: "150ms" }}
+              >
+                Simuladores, juegos, guías interactivas, recorridos 360 y video.{" "}
+                <span className="text-[var(--tiza)]">
+                  Para mutuales, universidades e institutos, y empresas con equipos grandes en
+                  terreno.
+                </span>{" "}
+                Te lo entregamos funcionando: en tu LMS, o en el nuestro, que va incluido.
+              </p>
+
+              {/* QUÉ GANAS. Cuatro, todos contrastables contra algo. */}
+              <ul
+                className="mt-8 grid max-w-[62ch] gap-3"
+                data-motion
+                style={{ ["--retardo" as string]: "220ms" }}
+              >
+                {beneficios.map((b) => (
+                  <li key={b} className="flex gap-3 text-[15.5px] leading-snug text-[var(--tiza)]">
+                    <span
+                      aria-hidden="true"
+                      className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[rgba(253,90,147,0.16)] text-[10px] font-bold text-[var(--rosa)]"
+                    >
+                      ✓
+                    </span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="mt-9 flex flex-wrap gap-3"
+                data-motion
+                style={{ ["--retardo" as string]: "290ms" }}
+              >
                 <Link
                   href="/book-a-call"
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 text-base font-semibold text-[var(--tiza)] transition-transform duration-200 hover:-translate-y-0.5 hover:border-white/40"
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[var(--rosa)] px-7 text-base font-semibold text-white shadow-[0_14px_40px_-14px_rgba(253,90,147,0.85)] transition-transform duration-200 hover:-translate-y-0.5"
                 >
-                  Book a call
+                  Agenda 45 minutos
                 </Link>
+                <a
+                  href="#piezas"
+                  className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 text-base font-semibold text-[var(--tiza)] transition-transform duration-200 hover:-translate-y-0.5 hover:border-white/40"
+                >
+                  Abre una pieza real
+                  <span aria-hidden="true">↓</span>
+                </a>
               </div>
-
-              <dl
-                className="mt-10 flex flex-wrap gap-x-10 gap-y-3 border-t border-white/10 pt-6"
-                data-motion
-                style={{ ["--retardo" as string]: "340ms" }}
-              >
-                {[
-                  ["Unit of work", "1 intervention"],
-                  ["Prototype in real hands", "Week 3"],
-                  ["Learning platform", "Included"],
-                ].map(([k, v]) => (
-                  <div key={k} className="flex items-baseline gap-2.5">
-                    <dt className="mono text-[10.5px] text-[var(--niebla)]">{k}</dt>
-                    <dd className="text-[1.35rem] font-bold tracking-[-0.02em] tabular-nums">{v}</dd>
-                  </div>
-                ))}
-              </dl>
             </div>
 
-            {/* Pared de pantallas: capturas de construcciones reales. Es lo mismo
-                que hicimos en el catálogo — una portada que promete experiencias
-                y no muestra ni un pixel de experiencia se lee como agencia. */}
-            <div className="relative hidden h-[400px] min-w-0 lg:block" aria-hidden="true" data-motion style={{ ["--retardo" as string]: "200ms" }}>
+            {/* Pared de pantallas: capturas de construcciones reales. Una portada
+                que promete experiencias y no muestra un pixel se lee como agencia. */}
+            <div
+              className="relative hidden h-[430px] min-w-0 lg:block"
+              aria-hidden="true"
+              data-motion
+              style={{ ["--retardo" as string]: "200ms" }}
+            >
               <figure className="absolute right-[3%] bottom-0 z-[1] w-[55%] -rotate-[2.4deg] overflow-hidden rounded-[13px] border border-white/20 bg-[var(--sala-2)] shadow-[0_36px_90px_-28px_rgba(0,0,0,0.95)]">
                 <span className="flex items-center gap-1.5 border-b border-white/10 bg-white/[0.06] px-2.5 py-2">
                   {[0, 1, 2].map((i) => (
@@ -387,7 +451,9 @@ export default function Home() {
                   {[0, 1, 2].map((i) => (
                     <i key={i} className="h-1.5 w-1.5 rounded-full bg-white/25" />
                   ))}
-                  <em className="mono ml-1.5 not-italic text-[9px] text-[var(--niebla)]">running in the browser</em>
+                  <em className="mono ml-1.5 not-italic text-[9px] text-[var(--niebla)]">
+                    corriendo en el navegador
+                  </em>
                 </span>
                 <img src="/experiences/juegos.webp" alt="" className="block w-full" />
               </figure>
@@ -395,71 +461,88 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ══ 01 · The shift ═════════════════════════════════════════════ */}
-        <section id="shift" className="border-t border-white/10 px-5 py-24 sm:px-10 lg:px-14 lg:py-32">
+        <Logos nota="Trabajamos con" />
+
+        {/* ══ 01 · Qué hacemos ═══════════════════════════════════════════ */}
+        <section id="que-hacemos" className="px-5 py-20 sm:px-10 lg:px-14 lg:py-28">
           <div className="mx-auto max-w-[1180px]">
-            <p className="claqueta" data-motion>01 · The shift</p>
+            <p className="claqueta" data-motion>01 · Qué hacemos</p>
             <h2 className="rubro mt-5" data-motion style={{ ["--retardo" as string]: "80ms" }}>
-              Content and courses are the old unit.
-              <br />
-              <em>Problem, experience, result</em> is the new one.
+              Diseñamos y construimos la experiencia completa.
             </h2>
             <p className="mt-5 max-w-[66ch] text-[var(--niebla)]" data-motion style={{ ["--retardo" as string]: "140ms" }}>
-              Producing content is being commoditised — your team can generate a passable course with
-              the tools they already have open. What isn&apos;t commoditised is working out which
-              experience actually changes how someone works. That&apos;s the job we do, and it starts by
-              refusing to accept a brief written as a content list.
+              No producimos el curso que ya viene decidido: averiguamos qué tiene que ser capaz de
+              hacer tu gente y diseñamos la experiencia que la lleva ahí. El formato —simulador,
+              juego, guía, 360, video, WhatsApp— sale de ese diagnóstico, no del encargo.
             </p>
 
-            <div className="mt-12 overflow-hidden rounded-2xl border border-white/10" data-motion style={{ ["--retardo" as string]: "180ms" }}>
-              <div className="grid grid-cols-1 md:grid-cols-[190px_1fr_1fr]">
-                <div className="hidden md:block" />
-                <div className="border-b border-white/10 bg-white/[0.02] px-5 py-4 md:border-l">
-                  <p className="mono text-[10.5px] text-[var(--niebla)]">The brief we get</p>
-                </div>
-                <div className="border-b border-l border-white/10 bg-[rgba(255,177,72,0.06)] px-5 py-4">
-                  <p className="mono text-[10.5px] text-[var(--haz)]">The brief we write back</p>
-                </div>
-
-                {contraste.map((f) => (
-                  <div key={f.k} className="contents">
-                    <div className="border-b border-white/10 px-5 py-4">
-                      <p className="mono text-[10.5px] text-[var(--niebla)]">{f.k}</p>
-                    </div>
-                    <div className="border-b border-white/10 px-5 py-4 md:border-l">
-                      <p className="text-[15px] leading-relaxed text-[var(--niebla)]">{f.viejo}</p>
-                    </div>
-                    <div className="border-b border-l border-white/10 bg-[rgba(255,177,72,0.04)] px-5 py-4">
-                      <p className="text-[15px] font-medium leading-relaxed text-[var(--tiza)]">{f.nuevo}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="mt-11 grid gap-4 sm:grid-cols-2">
+              {paraQuien.map((q, i) => (
+                <article
+                  key={q.t}
+                  className="rounded-2xl border border-white/10 bg-[var(--sala-2)] p-6"
+                  data-motion
+                  style={{ ["--retardo" as string]: `${i * 70}ms` }}
+                >
+                  <h3 className="text-[1.2rem] font-bold tracking-[-0.024em] text-[var(--tiza)]">
+                    {q.t}
+                  </h3>
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-[var(--niebla)]">{q.d}</p>
+                  <p className="mono mt-4 text-[10px] leading-relaxed text-[var(--haz)]">{q.ej}</p>
+                </article>
+              ))}
             </div>
 
-            <p className="mt-8 max-w-[66ch] text-[var(--niebla)]" data-motion>
-              <strong className="text-[var(--tiza)]">The format is never the input.</strong>{" "}
-              Nobody
-              should be buying &ldquo;a Storyline module&rdquo; or &ldquo;a 360 video&rdquo;. The format is the
-              conclusion of the diagnosis — and if the conclusion is that a one-page job aid solves
-              it, that&apos;s what we&apos;ll tell you, even though it&apos;s the smallest invoice in the room.
-            </p>
+            <div className="mt-14" data-motion>
+              <p className="mono text-[10.5px] text-[var(--niebla)]">
+                La diferencia, en el encargo
+              </p>
+              <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
+                <div className="grid grid-cols-1 md:grid-cols-[190px_1fr_1fr]">
+                  <div className="hidden md:block" />
+                  <div className="border-b border-white/10 bg-white/[0.02] px-5 py-4 md:border-l">
+                    <p className="mono text-[10.5px] text-[var(--niebla)]">Lo que suele pedirse</p>
+                  </div>
+                  <div className="border-b border-l border-white/10 bg-[rgba(255,177,72,0.06)] px-5 py-4">
+                    <p className="mono text-[10.5px] text-[var(--haz)]">Lo que trabajamos</p>
+                  </div>
+
+                  {contraste.map((f) => (
+                    <div key={f.k} className="contents">
+                      <div className="border-b border-white/10 px-5 py-4">
+                        <p className="mono text-[10.5px] text-[var(--niebla)]">{f.k}</p>
+                      </div>
+                      <div className="border-b border-white/10 px-5 py-4 md:border-l">
+                        <p className="text-[15px] leading-relaxed text-[var(--niebla)]">{f.viejo}</p>
+                      </div>
+                      <div className="border-b border-l border-white/10 bg-[rgba(255,177,72,0.04)] px-5 py-4">
+                        <p className="text-[15px] font-medium leading-relaxed text-[var(--tiza)]">
+                          {f.nuevo}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="mt-6 max-w-[66ch] text-[var(--niebla)]">
+                Y si el diagnóstico concluye que basta con cambiar una lista de chequeo, te lo vamos
+                a decir — aunque sea la factura más chica de la sala.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* ══ 02 · The Lab ═══════════════════════════════════════════════ */}
-        <section id="lab" className="border-t border-white/10 px-5 py-24 sm:px-10 lg:px-14 lg:py-32">
+        {/* ══ 02 · Cómo trabajamos ═══════════════════════════════════════ */}
+        <section id="como" className="border-t border-white/10 bg-[rgba(20,17,43,0.42)] px-5 py-20 sm:px-10 lg:px-14 lg:py-28">
           <div className="mx-auto max-w-[1180px]">
-            <p className="claqueta" data-motion>02 · The Lab</p>
+            <p className="claqueta" data-motion>02 · Cómo trabajamos</p>
             <h2 className="rubro mt-5" data-motion style={{ ["--retardo" as string]: "80ms" }}>
-              Five steps.
-              <br />
-              <em>The format is chosen in step three.</em>
+              Cinco pasos, y ves algo funcionando en la semana 3.
             </h2>
             <p className="mt-5 max-w-[66ch] text-[var(--niebla)]" data-motion style={{ ["--retardo" as string]: "140ms" }}>
-              We work like a lab, not a production line: diagnose, design, prototype, test with real
-              people, then build. Step three is where you find out whether this works, while changing
-              direction is still cheap.
+              Trabajamos como laboratorio y no como línea de producción: diagnosticamos, diseñamos,
+              prototipamos y lo probamos con gente real antes de producir. El paso 3 es donde
+              descubres si esto sirve, mientras cambiar de rumbo todavía es barato.
             </p>
 
             <div className="mt-10" data-motion style={{ ["--retardo" as string]: "180ms" }}>
@@ -468,19 +551,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ══ 03 · Experiences ═══════════════════════════════════════════ */}
-        <section id="experiences" className="border-t border-white/10 px-5 py-24 sm:px-10 lg:px-14 lg:py-32">
+        {/* ══ 03 · Míralo funcionando ════════════════════════════════════ */}
+        <section id="piezas" className="border-t border-white/10 px-5 py-20 sm:px-10 lg:px-14 lg:py-28">
           <div className="mx-auto max-w-[1320px]">
-            <p className="claqueta" data-motion>03 · Experiences</p>
+            <p className="claqueta" data-motion>03 · Míralo funcionando</p>
             <h2 className="rubro mt-5" data-motion style={{ ["--retardo" as string]: "80ms" }}>
-              What we build,
-              <br />
-              <em>running right here.</em>
+              Seis piezas reales, abriéndose acá mismo.
             </h2>
             <p className="mt-5 max-w-[68ch] text-[var(--niebla)]" data-motion style={{ ["--retardo" as string]: "140ms" }}>
-              These are real client builds — the same files their people received — and they open and
-              work without leaving this page. A studio that sells experiences shouldn&apos;t be asking you
-              to take its word for it.
+              Son construcciones de clientes —los mismos archivos que recibió su gente— y funcionan
+              sin salir de esta página. Sin formulario, sin cuenta y sin una llamada de por medio.
             </p>
 
             <div className="mt-10">
@@ -489,20 +569,29 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ══ 04 · Delivery ══════════════════════════════════════════════ */}
-        <section id="ecosystem" className="border-t border-white/10 px-5 py-24 sm:px-10 lg:px-14 lg:py-32">
+        {/* ══ 04 · Dónde llega ═══════════════════════════════════════════ */}
+        <section id="entrega" className="border-t border-white/10 bg-[rgba(20,17,43,0.42)] px-5 py-20 sm:px-10 lg:px-14 lg:py-28">
           <div className="mx-auto max-w-[1180px]">
-            <p className="claqueta" data-motion>04 · Delivery</p>
+            <p className="claqueta" data-motion>04 · Dónde llega</p>
             <h2 className="rubro mt-5" data-motion style={{ ["--retardo" as string]: "80ms" }}>
-              SCORM, and well beyond it.
+              Y la plataforma va incluida.
             </h2>
             <p className="mt-5 max-w-[66ch] text-[var(--niebla)]" data-motion style={{ ["--retardo" as string]: "140ms" }}>
-              The deliverable isn&apos;t a file, it&apos;s the experience working where your people already
-              are. Which channel is right isn&apos;t a preference — it&apos;s the answer to &ldquo;how does this
-              reach a crew member who doesn&apos;t have a computer?&rdquo;
+              Lo que te entregamos no es un archivo: es la experiencia funcionando donde ya está tu
+              gente. Elegir el canal no es cuestión de gusto — es la respuesta a cómo le llega esto a
+              alguien que trabaja en terreno y no tiene computador.
             </p>
 
-            <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-[var(--sala-2)]" data-motion style={{ ["--retardo" as string]: "180ms" }}>
+            <div className="mt-9 rounded-2xl border border-[rgba(255,177,72,0.25)] bg-[rgba(255,177,72,0.07)] px-6 py-5" data-motion>
+              <p className="mono text-[10.5px] text-[var(--haz)]">Lo que casi nadie incluye</p>
+              <p className="mt-2 max-w-[70ch] text-[var(--tiza)]">
+                <strong>No necesitas tener un LMS.</strong> La mayoría entrega un ZIP y deja el
+                «¿dónde lo pongo?» de tu lado. El nuestro viene con la experiencia: con tu marca, sin
+                licencia por usuario. Y si ya tienes plataforma, entregamos ahí.
+              </p>
+            </div>
+
+            <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-[var(--sala-2)]" data-motion style={{ ["--retardo" as string]: "180ms" }}>
               {canales.map((c) => (
                 <div
                   key={c.c}
@@ -513,28 +602,20 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
-            <div className="mt-6 rounded-2xl border border-[rgba(255,177,72,0.25)] bg-[rgba(255,177,72,0.07)] px-6 py-5" data-motion>
-              <p className="mono text-[10.5px] text-[var(--haz)]">The one most studios skip</p>
-              <p className="mt-2 max-w-[70ch] text-[var(--tiza)]">
-                <strong>You don&apos;t need to own an LMS.</strong>{" "}
-                Most studios hand over a zip and leave
-                &ldquo;where does this live?&rdquo; as your problem. Ours comes with the experience — white-labelled,
-                no per-seat licence. If you already have a platform, we deliver into it instead.
-              </p>
-            </div>
           </div>
         </section>
 
-        {/* ══ 05 · Work with us ══════════════════════════════════════════ */}
-        <section id="work" className="border-t border-white/10 px-5 py-24 sm:px-10 lg:px-14 lg:py-32">
+        {/* ══ 05 · Cuánto cuesta ═════════════════════════════════════════ */}
+        <section id="precio" className="border-t border-white/10 px-5 py-20 sm:px-10 lg:px-14 lg:py-28">
           <div className="mx-auto max-w-[1180px]">
-            <p className="claqueta" data-motion>05 · Work with us</p>
+            <p className="claqueta" data-motion>05 · Cuánto cuesta</p>
             <h2 className="rubro mt-5" data-motion style={{ ["--retardo" as string]: "80ms" }}>
-              Three ways in.
+              Tres formas de entrar.
             </h2>
             <p className="mt-5 max-w-[66ch] text-[var(--niebla)]" data-motion style={{ ["--retardo" as string]: "140ms" }}>
-              Scoped by the problem you&apos;re solving, not by how many courses come out the other end.
+              Se define por el problema que estás resolviendo, no por cuántos cursos salen al otro
+              lado. Dónde cae exactamente lo dice el diagnóstico, y si el alcance resulta menor, el
+              valor baja.
             </p>
 
             <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -548,8 +629,13 @@ export default function Home() {
                   }`}
                 >
                   <span className="mono text-[11px] text-[var(--haz)]">{f.n}</span>
-                  <h3 className="text-[1.3rem] font-bold tracking-[-0.024em] text-[var(--tiza)]">{f.t}</h3>
-                  <p className="font-medium text-[var(--tiza)]">{f.p}</p>
+                  <h3 className="text-[1.3rem] font-bold tracking-[-0.024em] text-[var(--tiza)]">
+                    {f.t}
+                  </h3>
+                  <p className="text-[1.35rem] font-extrabold tabular-nums tracking-[-0.03em] text-[var(--tiza)]">
+                    {f.precio}
+                  </p>
+                  <p className="font-medium text-[var(--rosa)]">{f.p}</p>
                   <p className="text-[14.8px] leading-[1.58] text-[var(--niebla)]">{f.d}</p>
                   <ul className="lista-disco mt-1 grid gap-1.5 pl-[17px] text-[13.8px] text-[var(--niebla)] marker:text-[var(--haz)]">
                     {f.b.map((x) => (
@@ -565,23 +651,15 @@ export default function Home() {
                 href="/book-a-call"
                 className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[var(--rosa)] px-7 text-base font-semibold text-white shadow-[0_14px_40px_-14px_rgba(253,90,147,0.85)] transition-transform duration-200 hover:-translate-y-0.5"
               >
-                Bring us a problem
+                Agenda 45 minutos
               </Link>
               <Link
                 href="/pricing"
                 className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 text-base font-semibold text-[var(--tiza)] transition-transform duration-200 hover:-translate-y-0.5 hover:border-white/40"
               >
-                See what it costs
+                Ver qué incluye cada una
               </Link>
             </div>
-
-            <p className="mono mt-14 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-t border-white/10 pt-6 text-[11.5px] text-[var(--niebla)]">
-              <span>Learning experience design</span>
-              <span aria-hidden="true">·</span>
-              <span>Simulation · Narrative · Games · Immersive · AI</span>
-              <span aria-hidden="true">·</span>
-              <span className="text-[var(--haz)]">e-waffle.com</span>
-            </p>
           </div>
         </section>
       </div>

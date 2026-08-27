@@ -10,11 +10,11 @@ import { useState } from "react";
    "Case Studies" un PDF de agencia. Las URLs se mantienen porque están
    indexadas y enlazadas desde fuera. */
 const navLinks = [
-  { href: "/services", label: "What we build" },
-  { href: "/case-studies", label: "Work" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "Studio" },
-  { href: "/blog", label: "Notes" },
+  { href: "/services", label: "Qué hacemos" },
+  { href: "/case-studies", label: "Trabajos" },
+  { href: "/pricing", label: "Precios" },
+  { href: "/about", label: "Nosotros" },
+  { href: "/blog", label: "Notas" },
 ];
 
 export default function Header() {
@@ -30,7 +30,7 @@ export default function Header() {
               Ewaffle
             </span>
             <span className="mono mt-1 text-[8.5px] text-[var(--niebla)]">
-              Learning Experience Studio
+              Experiencias de aprendizaje
             </span>
           </span>
         </Link>
@@ -49,14 +49,14 @@ export default function Header() {
             href="/book-a-call"
             className="rounded-full bg-[var(--rosa)] px-5 py-2.5 text-[14px] font-bold text-white transition-transform hover:-translate-y-0.5"
           >
-            Book the diagnosis
+            Agenda 45 minutos
           </Link>
         </nav>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="flex flex-col gap-1.5 md:hidden"
-          aria-label="Toggle menu"
+          aria-label="Abrir menú"
           aria-expanded={mobileOpen}
         >
           <span
@@ -89,7 +89,7 @@ export default function Header() {
               onClick={() => setMobileOpen(false)}
               className="mt-2 rounded-full bg-[var(--rosa)] px-5 py-3 text-center text-[14.5px] font-bold text-white"
             >
-              Book the diagnosis
+              Agenda 45 minutos
             </Link>
           </div>
         </nav>

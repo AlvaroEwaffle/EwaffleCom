@@ -24,21 +24,22 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ewaffle — Learning Experience Studio",
+    default: "Ewaffle — Capacitación que tu gente sí hace",
     template: "%s — Ewaffle",
   },
   description:
-    "We design learning interventions, not courses. Simulations, narrative, games and AI-built experiences — delivered running, in your LMS or in ours. SCORM and beyond.",
+    "Simuladores, juegos, guías interactivas, recorridos 360 y video para mutuales, universidades e institutos, y empresas con equipos grandes en terreno. Te lo entregamos funcionando: en tu LMS, o en el nuestro, que va incluido.",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Ewaffle — Learning Experience Studio",
+    title: "Ewaffle — Capacitación que tu gente sí hace",
     description:
-      "We design learning interventions, not courses. Simulations, narrative, games and AI-built experiences — delivered running, in your LMS or in ours.",
+      "Simuladores, juegos, guías interactivas, recorridos 360 y video. Te lo entregamos funcionando: en tu LMS, o en el nuestro, que va incluido.",
     url: "https://e-waffle.com",
     siteName: "Ewaffle",
+    locale: "es_CL",
     type: "website",
   },
 };
@@ -55,7 +56,7 @@ export default function RootLayout({
        hace que la página se vea igual cuando el JS no corre— así que el aviso es ruido: en dev
        encendía el badge "1 Issue" en todas las páginas y tapaba avisos que sí importan. */
     <html
-      lang="en"
+      lang="es-CL"
       suppressHydrationWarning
       className={`h-full antialiased ${archivo.variable} ${plexMono.variable}`}
     >

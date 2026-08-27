@@ -24,48 +24,48 @@ import { CONTACT_EMAIL } from "@/lib/contact";
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Nosotros",
   description:
-    "A learning experience studio in Latin America. We design interventions, build our own engines, and deliver them running — in your LMS or in ours.",
+    "Un estudio de experiencias de aprendizaje en Chile. Diseñamos la intervención, construimos nuestros propios motores y te la entregamos funcionando: en tu LMS o en el nuestro.",
 };
 
 /* Hechos, no métricas. Cada uno se puede comprobar sin creernos nada: los
    clientes están publicados, los instrumentos se abren y corren. */
 const hechos = [
-  { v: "8", l: "instruments built and running" },
-  { v: "6", l: "delivery channels, including WhatsApp" },
-  { v: "LMS", l: "included, white-labelled" },
-  { v: "3", l: "languages: ES · EN · PT-BR" },
+  { v: "8", l: "instrumentos construidos y corriendo" },
+  { v: "6", l: "canales de entrega, WhatsApp incluido" },
+  { v: "LMS", l: "incluido, con tu marca" },
+  { v: "3", l: "idiomas: ES · EN · PT-BR" },
 ];
 
 const porque = [
   {
     n: "01",
-    t: "We build our own engines",
-    d: "The simulation, the eight game mechanics, the WhatsApp learning engine, the SCORM test harness and the LMS are ours. That is why a client's budget goes into adapting their content rather than into developing the thing that runs it — and why we can say yes to formats an agency would have to subcontract.",
+    t: "Construimos nuestros propios motores",
+    d: "El simulador, las ocho mecánicas de juego, el motor de WhatsApp, el banco de pruebas SCORM y el LMS son nuestros. Por eso el presupuesto de un cliente se va en adaptar su contenido y no en desarrollar lo que lo hace correr — y por eso podemos decir que sí a formatos que una agencia tendría que subcontratar.",
   },
   {
     n: "02",
-    t: "We test before we produce",
-    d: "A playable prototype in five real pairs of hands, in week three, while changing course is still cheap. It turns the review meeting from “I like it / I don't” into “it worked / it didn't”. Most of what goes wrong in this industry goes wrong because that step does not exist.",
+    t: "Probamos antes de producir",
+    d: "Un prototipo jugable en cinco pares de manos reales, en la semana 3, mientras cambiar de rumbo todavía es barato. Convierte la reunión de revisión de «me gusta / no me gusta» en «funcionó / no funcionó». Casi todo lo que sale mal en este rubro sale mal porque ese paso no existe.",
   },
   {
     n: "03",
-    t: "We deliver it running",
-    d: "Not a zip and a good-luck. The experience lands where your people already are — your LMS, a link with no account, WhatsApp, or our platform under your brand. The logistics of who can actually get in are part of the design, not a change order.",
+    t: "Te lo entregamos funcionando",
+    d: "No un ZIP y buena suerte. La experiencia aterriza donde ya está tu gente: tu LMS, un link sin cuenta, WhatsApp, o nuestra plataforma con tu marca. La logística de quién puede entrar de verdad es parte del diseño, no un cobro aparte.",
   },
   {
     n: "04",
-    t: "We will tell you when it is not us",
-    d: "Some behaviours are not a learning problem. They are a process, a tool or an incentive problem, and no experience we build will move them. Saying that out loud costs us a project now and again; saying the opposite would cost the client a great deal more.",
+    t: "Te decimos cuando no somos nosotros",
+    d: "Hay conductas que no son un problema de aprendizaje: son de proceso, de herramienta o de incentivo, y ninguna experiencia que construyamos las va a mover. Decirlo en voz alta nos cuesta un proyecto de vez en cuando; decir lo contrario le costaría muchísimo más al cliente.",
   },
 ];
 
 const noHacemos = [
-  "Bill by minute of finished content.",
-  "Take a format as the brief without asking what is failing.",
-  "Publish a completion rate as if it were evidence of learning.",
-  "Ship a SCORM package we have not watched talk to an LMS.",
+  "Cobrar por minuto de contenido terminado.",
+  "Tomar un formato como encargo sin preguntar qué está fallando.",
+  "Publicar una tasa de completitud como si fuera evidencia de aprendizaje.",
+  "Entregar un paquete SCORM que no hayamos visto conversar con un LMS.",
 ];
 
 export default function AboutPage() {
@@ -74,17 +74,17 @@ export default function AboutPage() {
       <Reveal />
 
       <PageHero
-        claqueta="Ewaffle · About"
+        claqueta="Ewaffle · Nosotros"
         titulo={
           <>
-            A studio, not a
+            Un estudio chico,
             <br />
-            <em>content factory</em>.
+            <em>en Chile</em>.
           </>
         }
-        bajada="We are a learning experience studio based in Latin America, working in Spanish, English and Brazilian Portuguese. We started out producing courses, which is how we learned that producing courses is rarely what the problem needed. Now we design the intervention first and let it decide the format."
-        nota="Overlapping hours with both American coasts and most of Europe's afternoon. It matters for the same reason a prototype matters: the work gets better when the feedback arrives the same day."
-        cta={{ label: "Book the diagnosis call", href: "/book-a-call" }}
+        bajada="Somos un estudio de experiencias de aprendizaje con base en Chile, trabajando en español, inglés y portugués de Brasil. Partimos produciendo cursos, que es exactamente cómo aprendimos que producir cursos casi nunca era lo que el problema necesitaba. Hoy diseñamos primero la intervención y dejamos que ella elija el formato."
+        nota="Horario que se cruza con las dos costas de América y con buena parte de la tarde europea. Importa por la misma razón que importa un prototipo: el trabajo mejora cuando la respuesta llega el mismo día."
+        cta={{ label: "Agenda 45 minutos", href: "/book-a-call" }}
       />
 
       <section className="border-b border-white/10 px-5 py-12 sm:px-10 lg:px-14">
@@ -102,12 +102,12 @@ export default function AboutPage() {
 
       <Escena
         n="01"
-        rotulo="How we got here"
+        rotulo="Cómo llegamos acá"
         titulo={
           <>
-            We produced courses for years.
+            Produjimos cursos por años.
             <br />
-            <em>That is how we learned</em> what was wrong with it.
+            <em>Así aprendimos</em> qué tenía de malo.
           </>
         }
       >
@@ -117,39 +117,39 @@ export default function AboutPage() {
           style={{ ["--retardo" as string]: "160ms" }}
         >
           <p>
-            The work arrived the same way every time: a deck, a manual, a regulation, and a request
-            to turn it into a course. We got good at it. We built for occupational-safety
-            associations, universities, technical institutes, foundations, schools and foodservice
-            chains — compliance, induction, care, leadership, inclusion.
+            El trabajo llegaba siempre igual: una presentación, un manual, una normativa, y el
+            encargo de convertirlo en un curso. Nos volvimos buenos en eso. Construimos para
+            mutuales, universidades, institutos profesionales, fundaciones, colegios y cadenas de
+            foodservice — cumplimiento, inducción, cuidados, liderazgo, inclusión.
           </p>
           <p>
-            And a pattern kept showing up. The courses were correct and the behaviour did not move.
-            Not because the content was bad, but because nobody had asked what was actually failing
-            on the floor before deciding that a course was the answer. We were being paid to produce
-            the format the client had already chosen, and the choosing was the part that mattered.
+            Y un patrón se repetía. Los cursos quedaban correctos y la conducta no se movía. No
+            porque el contenido fuera malo, sino porque nadie había preguntado qué estaba fallando
+            en terreno antes de decidir que un curso era la respuesta. Nos pagaban por producir el
+            formato que el cliente ya había elegido, y elegirlo era la parte que importaba.
           </p>
           <p>
-            Meanwhile the production half started commoditising. Generative AI put a passable course
-            within reach of anyone with the tools they already have open — so competing on being
-            faster and cheaper at production means competing with something sitting in the client&apos;s
-            other browser tab. That race is lost by definition.
+            Mientras tanto la mitad de producción empezó a commoditizarse. La IA generativa dejó un
+            curso decente al alcance de cualquiera con las herramientas que ya tiene abiertas — así
+            que competir por ser más rápido y más barato produciendo es competirle a algo que está
+            en la otra pestaña del cliente. Esa carrera se pierde por definición.
           </p>
           <p className="border-l-2 border-[var(--haz)] pl-5 font-medium text-[var(--tiza)]">
-            What has not commoditised is deciding which experience makes someone work differently.
-            That takes diagnosis, pedagogical judgement, and the ability to build things that do not
-            come out of a template. It is what we had been doing for free inside every project, and
-            it is now what the studio sells.
+            Lo que no se commoditiza es decidir qué experiencia hace que alguien trabaje distinto.
+            Eso pide diagnóstico, criterio pedagógico y capacidad de construir cosas que no salen de
+            una plantilla. Es lo que veníamos haciendo gratis dentro de cada proyecto, y es lo que
+            hoy vende el estudio.
           </p>
         </div>
       </Escena>
 
       <Escena
         n="02"
-        rotulo="What makes it work"
+        rotulo="Qué lo hace funcionar"
         fondo
         titulo={
           <>
-            Four things an agency <em>cannot easily copy</em>.
+            Cuatro cosas que a una agencia le cuesta copiar.
           </>
         }
       >
@@ -173,13 +173,13 @@ export default function AboutPage() {
 
       <Escena
         n="03"
-        rotulo="Who runs it"
+        rotulo="Quién lo lleva"
         titulo={
           <>
-            Small studio. <em>Named people.</em>
+            Personas con nombre, no un ejecutivo de cuenta.
           </>
         }
-        bajada="You will not be handed to an account manager. The person who runs the diagnosis is the person who shapes the experience, and they stay on it through delivery."
+        bajada="Quien corre el diagnóstico es quien le da forma a la experiencia, y sigue ahí hasta la entrega."
       >
         <div
           className="mt-10 flex max-w-[74ch] flex-col gap-6 rounded-2xl border border-white/10 bg-[var(--sala-2)] p-7 sm:flex-row sm:items-start sm:gap-8"
@@ -192,12 +192,12 @@ export default function AboutPage() {
             <h3 className="text-[1.3rem] font-bold tracking-[-0.024em] text-[var(--tiza)]">
               Álvaro Villena
             </h3>
-            <p className="mono mt-1 text-[10.5px] text-[var(--rosa)]">Founder</p>
+            <p className="mono mt-1 text-[10.5px] text-[var(--rosa)]">Fundador</p>
             <p className="mt-4 leading-relaxed text-[var(--niebla)]">
-              Eight years building learning products, and a background running AI-driven product
-              work as a Toptal project manager before that. He takes the diagnosis calls himself —
-              which is the reason this site asks you to describe a behaviour rather than fill in a
-              project brief.
+              Ocho años construyendo productos de aprendizaje, y antes de eso trabajo de producto
+              con IA como project manager en Toptal. Toma él mismo las llamadas de diagnóstico —
+              que es la razón por la que este sitio te pide describir una conducta en vez de
+              llenar un formulario de proyecto.
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
@@ -212,14 +212,14 @@ export default function AboutPage() {
 
       <Escena
         n="04"
-        rotulo="The no-gos"
+        rotulo="Lo que no hacemos"
         fondo
         titulo={
           <>
-            Things we <em>will not do</em>.
+            Cuatro cosas que no vamos a hacer.
           </>
         }
-        bajada="A position is only worth something if it costs you work sometimes. These are the four that cost us work."
+        bajada="Una posición vale algo solo si a veces te cuesta trabajo. Estas son las cuatro que nos lo cuestan."
       >
         <ul className="mt-10 grid gap-3 md:grid-cols-2" data-motion>
           {noHacemos.map((x) => (
@@ -237,10 +237,10 @@ export default function AboutPage() {
       </Escena>
 
       <CTASection
-        title="Tell us what is not changing."
-        description="Not what you want built. What your people are doing that they should not be — and what it is costing you. That is the conversation this studio is built for."
-        primaryCTA="Book the diagnosis call"
-        secondaryCTA="See the work"
+        title="Cuéntanos qué no está cambiando."
+        description="No qué quieres que construyamos. Qué está haciendo tu gente que no debería, y cuánto te está costando. Para esa conversación existe este estudio."
+        primaryCTA="Agenda 45 minutos"
+        secondaryCTA="Mira los trabajos"
         secondaryHref="/case-studies"
       />
     </div>

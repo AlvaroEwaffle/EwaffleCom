@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function CTASection({
   title,
   description,
-  primaryCTA = "Book the diagnosis call",
+  primaryCTA = "Agenda 45 minutos",
   primaryHref = "/book-a-call",
   secondaryCTA,
   secondaryHref,
@@ -28,7 +28,7 @@ export default function CTASection({
       <div className="mx-auto max-w-[1180px]">
         <p className="claqueta" data-motion>
           <span className="claqueta__punto" />
-          Next step
+          El siguiente paso
         </p>
         <h2 className="rubro mt-5 max-w-[20ch]" data-motion style={{ ["--retardo" as string]: "80ms" }}>
           {title}

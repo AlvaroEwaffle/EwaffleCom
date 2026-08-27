@@ -3,167 +3,158 @@ import Link from "next/link";
 import Reveal from "@/components/studio/Reveal";
 import PageHero from "@/components/studio/PageHero";
 import Escena from "@/components/studio/Escena";
+import Logos from "@/components/studio/Logos";
 import CTASection from "@/components/CTASection";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SERVICES · el instrumental del Lab
+   QUÉ HACEMOS
    ───────────────────────────────────────────────────────────────────────────
-   La versión anterior era un menú de herramientas: "SCORM & xAPI production",
-   "Gamification design", "LMS solutions", cada una con su lista de features y
-   su claim de conversión. Ese formato le pide al cliente que elija el formato,
-   que es exactamente la decisión que no puede tomar todavía —y la única que
-   nosotros cobramos por tomar bien.
+   Antes era un menú de herramientas —"SCORM production", "Gamification design",
+   "LMS solutions"— cada una con su lista de features y su claim de conversión.
+   Ese formato le pide al cliente que elija el formato, que es justo la decisión
+   que todavía no puede tomar.
 
-   Acá el orden se invierte. Primero la regla (el formato es una conclusión, no
-   un input), después el instrumental con la pregunta que responde cada
-   instrumento, después qué hace y qué no hace la IA, y recién al final los
-   canales de entrega.
-
-   También salieron tres afirmaciones que no podíamos defender si un comprador
-   preguntaba de dónde salen: "proven to increase completion rates by 40%",
-   "50+ LMS compatibility" y "50% faster production cycles".
+   Acá cada instrumento se define por la PREGUNTA que responde, y arriba de todo
+   va la regla: el formato lo concluye el diagnóstico. Salieron tres frases que
+   no podíamos defender si alguien preguntaba de dónde salen: "40% más
+   completitud", "compatible con 50+ LMS" y "50% más rápido".
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const metadata: Metadata = {
-  title: "What we build",
+  title: "Qué hacemos",
   description:
-    "Simulations, branching narrative, game mechanics, spatial learning, AI-built video, interactive guides, WhatsApp learning and a white-labelled LMS. The format is never the input — it is what the diagnosis concludes.",
+    "Simuladores multijugador, narrativa ramificada, ocho mecánicas de juego, 360, video con IA, guías interactivas, WhatsApp y LMS incluido. Cuál te sirve lo decide el diagnóstico, no el encargo.",
 };
 
-/* Cada instrumento se define por la PREGUNTA que responde, no por la
-   herramienta con que se construye. Un comprador no tiene un problema de
-   Storyline; tiene gente que no revisa el punto de anclaje. */
 const instrumental = [
   {
     n: "01",
-    t: "Multiplayer simulation",
-    cuando: "Coordination between roles is the competence.",
-    d: "Several people log in as the roles that have to agree in real life — customs, carrier, shipping line, importer — and nothing advances until what they submit actually reconciles. The friction between roles is the lesson, and it cannot be rehearsed alone.",
+    t: "Simulador multijugador",
+    cuando: "Cuando la competencia es coordinarse entre roles.",
+    d: "Varias personas entran como los roles que tienen que ponerse de acuerdo en la vida real —aduana, transportista, naviera, importador— y nada avanza hasta que lo que cargan cuadra de verdad. La fricción entre roles es la lección, y esa no se ensaya solo.",
     hecho: [
-      "Our own engine, running in the browser. No per-seat platform licence.",
-      "Real artefacts of the job: bills of lading, invoices, customs declarations.",
-      "The scenario is data, so a new domain is a configuration, not a rebuild.",
+      "Motor propio, corriendo en el navegador. Sin licencia por usuario.",
+      "Documentos reales del oficio: B/L, factura comercial, declaración de ingreso.",
+      "El escenario es data, así que otro rubro es una configuración y no un desarrollo nuevo.",
     ],
     demo: null,
   },
   {
     n: "02",
-    t: "Branching narrative",
-    cuando: "The topic has no clean answer and the goal is judgement.",
-    d: "Ethics, safeguarding, dignity in care, prevention. Remembering the policy is not the point — holding a line when nobody is watching is. They choose, they see what the choice cost, and they get the reasoning behind it.",
+    t: "Narrativa ramificada",
+    cuando: "Cuando el tema no tiene respuesta limpia y lo que se juega es el criterio.",
+    d: "Ética, buen trato, autonomía, prevención. Que se acuerden del protocolo no es el punto: el punto es que sostengan una línea cuando nadie está mirando. Eligen, ven lo que costó esa elección, y recién después reciben el razonamiento.",
     hecho: [
-      "Built on the real dilemmas of the job, not textbook cases.",
-      "Every option carries a defensible cost, so there is nothing to game.",
+      "Construida sobre los dilemas reales del puesto, no sobre casos de manual.",
+      "Cada opción tiene un costo defendible, así que no hay nada que adivinar.",
     ],
     demo: {
       href: "https://ewaffle.cl/demos/los-heroes-decidir-mas-cerca",
-      label: "Open a real one · 24 lessons",
+      label: "Ábrela · 24 lecciones",
     },
   },
   {
     n: "03",
-    t: "Game mechanics",
-    cuando: "The material needs repetition and nobody is repeating it.",
-    d: "Eight mechanics already built and tested, configured with your concepts. Your budget goes into adapting your content, not into developing an engine — and people practise the material instead of reading it.",
+    t: "Mecánicas de juego",
+    cuando: "Cuando la materia necesita repetición y nadie la está repitiendo.",
+    d: "Ocho mecánicas ya construidas y probadas, configuradas con tus conceptos. Tu presupuesto se va en adaptar tu contenido y no en desarrollar un motor — y la gente practica la materia en vez de leerla.",
     hecho: [
-      "Wheel, memory, quiz show, word search, concept ring, drag and drop, decision tree, floor-plan placement.",
-      "No grade sent to the LMS and unlimited retries: practice without fear of failing.",
+      "Ruleta, memorice, quiz show, sopa de letras, anillo de conceptos, arrastrar y soltar, árbol de decisión y ubicar en plano.",
+      "Sin nota enviada al LMS y con reintentos ilimitados: se practica sin miedo a reprobar.",
     ],
     demo: {
       href: "https://ewaffle.cl/demos/juegos-demo",
-      label: "Open four of them, chained",
+      label: "Abre cuatro, encadenadas",
     },
   },
   {
     n: "04",
-    t: "Spatial learning and 360",
-    cuando: "The physical space is part of what has to be learned.",
-    d: "When the plant, the ward or the venue is the thing, describing it does not work. They place each zone, its function and its risk before they ever walk in — and the on-site induction gets shorter because they arrive oriented.",
+    t: "Aprendizaje espacial y 360",
+    cuando: "Cuando el espacio físico es parte de lo que hay que aprender.",
+    d: "Cuando la planta, el pabellón o el recinto es la cosa, describirlo no funciona. Ubican cada zona, su función y su riesgo antes de pisar el lugar — y la inducción en terreno se acorta porque llegan orientados.",
     hecho: [
-      "Floor-plan placement pairs with 360 walkthroughs of the real site.",
-      "Works on a phone: every zone is a touch target, nothing to drag.",
+      "Ubicar en plano se combina con recorridos 360 del sitio real.",
+      "Funciona en el teléfono: cada zona es un toque, nada que arrastrar.",
     ],
     demo: {
       href: "https://ewaffle.cl/demos/hotspot-plano-prototipo",
-      label: "Open a real floor plan",
+      label: "Abre un plano real",
     },
   },
   {
     n: "05",
-    t: "AI-built video and voice",
-    cuando: "The explanation is genuinely the bottleneck.",
-    d: "Scripting, motion, voice and visuals produced with AI in the loop, then reviewed piece by piece by a person before anything ships. It makes explanation cheap enough that it stops eating the budget the practice needs.",
+    t: "Video y voz con IA",
+    cuando: "Cuando explicar es de verdad el cuello de botella.",
+    d: "Guion, motion, voz y gráfica producidos con IA en el proceso, y después revisados pieza por pieza por una persona antes de que salga. Vuelve la explicación lo bastante barata como para que deje de comerse el presupuesto que necesita la práctica.",
     hecho: [
-      "Scripted from your material and your terminology, not from a generic template.",
-      "On-location production too, when the real workplace is what has to be seen.",
-      "A human signs off on every piece. The AI moves the floor, not the decisions.",
+      "Guionizado desde tu material y tu terminología, no desde una plantilla genérica.",
+      "También producción en terreno, cuando lo que hay que ver es el lugar de trabajo real.",
+      "Una persona firma cada pieza. La IA mueve el piso, no toma las decisiones.",
     ],
     demo: null,
   },
   {
     n: "06",
-    t: "Interactive guides",
-    cuando: "There is a manual, and nobody opens it.",
-    d: "The procedure becomes something people walk through and finish. It opens in a browser with nothing to install and no account to create, so a new hire can do their induction on day one without waiting on IT for access.",
+    t: "Guías interactivas",
+    cuando: "Cuando existe un manual y nadie lo abre.",
+    d: "El procedimiento pasa a ser algo que la gente recorre y termina. Se abre en el navegador sin instalar nada y sin crear cuenta, así alguien que entra hoy hace su inducción el día uno sin esperar que TI le dé acceso.",
     hecho: [
-      "For induction, procedures and contractor onboarding.",
-      "Same experience on phone, tablet and desktop.",
+      "Para inducción, procedimientos y onboarding de contratistas.",
+      "La misma experiencia en teléfono, tablet y computador.",
     ],
     demo: {
       href: "https://ewaffle.cl/demos/buffalo-induccion",
-      label: "Open a real induction",
+      label: "Abre una inducción real",
     },
   },
   {
     n: "07",
-    t: "WhatsApp learning",
-    cuando: "Your people have no computer and no corporate email.",
-    d: "One lesson per reply, in the app they already have open. Field crews, shift workers, drivers, contractors — the population every LMS rollout quietly loses. Our own engine, not a broadcast list.",
+    t: "WhatsApp",
+    cuando: "Cuando tu gente no tiene computador ni correo corporativo.",
+    d: "Una lección por respuesta, en la aplicación que ya tienen abierta. Cuadrillas en terreno, turnos, conductores, contratistas — la población que todo despliegue de LMS pierde en silencio. Motor propio, no una lista de difusión.",
     hecho: [
-      "It advances on their reply, so the pace is theirs.",
-      "No app to install, no account to create, no training on the tool itself.",
+      "Avanza con su respuesta, así que el ritmo es de ellos.",
+      "Nada que instalar, ninguna cuenta que crear, ninguna capacitación sobre la herramienta.",
     ],
     demo: null,
   },
   {
     n: "08",
-    t: "The LMS, included",
-    cuando: "You do not have a platform and do not want to buy one.",
-    d: "Most studios hand over a zip, and where to put it is your problem. Ours comes with the experience, under your brand, with no per-user licence. If you already have an LMS we deliver into it instead — and we can show you exactly what it will receive.",
+    t: "El LMS, incluido",
+    cuando: "Cuando no tienes plataforma y no quieres comprar una.",
+    d: "La mayoría entrega un ZIP y dónde ponerlo es tu problema. El nuestro viene con la experiencia, con tu marca y sin licencia por usuario. Y si ya tienes LMS, entregamos ahí — y te mostramos exactamente qué va a recibir.",
     hecho: [
-      "White-labelled: your logo, your palette, your domain.",
-      "SCORM 1.2, SCORM 2004 and xAPI, verified against a live call log before delivery.",
+      "Con tu marca: tu logo, tu paleta, tu dominio.",
+      "SCORM 1.2, SCORM 2004 y xAPI, verificados contra un registro de llamadas en vivo antes de entregarte nada.",
     ],
     demo: {
       href: "https://ewaffle.cl/demos/lms-sim",
-      label: "Watch the SCORM calls, live",
+      label: "Mira las llamadas SCORM en vivo",
     },
   },
 ];
 
-/* La IA es la razón por la que esto es económicamente posible, y también el
-   lugar donde más se miente en este mercado. Conviene decir las dos mitades. */
 const iaHace = [
-  "Drafting and restructuring source material into a first pass.",
-  "Voice, motion and visuals at a cost that used to be prohibitive.",
-  "Variants: translations, role-specific cuts, alternative scenarios.",
-  "The tedious half of production, so the budget can go to the practice.",
+  "Redactar y reestructurar tu material en una primera versión.",
+  "Voz, motion y gráfica a un costo que antes era prohibitivo.",
+  "Variantes: traducciones, cortes por rol, escenarios alternativos.",
+  "La mitad tediosa de la producción, para que el presupuesto se vaya a la práctica.",
 ];
 
 const iaNoHace = [
-  "Decide which behaviour is worth an intervention. That is the diagnosis.",
-  "Judge whether a dilemma is honest, or whether a cost is defensible.",
-  "Sign anything off. A person reviews every piece before it ships.",
-  "Replace testing with five real users. Nothing predicts that.",
+  "Decidir qué conducta amerita una intervención. Eso es el diagnóstico.",
+  "Juzgar si un dilema es honesto o si un costo es defendible.",
+  "Firmar nada. Una persona revisa cada pieza antes de que salga.",
+  "Reemplazar la prueba con cinco usuarios reales. Eso no lo predice nada.",
 ];
 
 const canales = [
-  { c: "SCORM 1.2 / 2004 / xAPI", w: "You have an LMS and need the formal record." },
-  { c: "Web link, no account, no install", w: "Contractors, suppliers, people passing through." },
-  { c: "WhatsApp", w: "Field crews and shift workers with no corporate email." },
-  { c: "360 and immersive", w: "The physical space is part of what must be learned." },
-  { c: "Multiplayer simulation", w: "Coordination between roles is the competence." },
-  { c: "Our LMS, white-labelled", w: "You do not have a platform and do not want to buy one." },
+  { c: "SCORM 1.2 / 2004 / xAPI", w: "Tienes LMS y necesitas el registro formal." },
+  { c: "Link web, sin cuenta ni instalación", w: "Contratistas, proveedores, gente de paso." },
+  { c: "WhatsApp", w: "Terreno y turnos, sin correo corporativo." },
+  { c: "360 e inmersivo", w: "El espacio físico es parte de lo que hay que aprender." },
+  { c: "Simulador multijugador", w: "La coordinación entre roles es la competencia." },
+  { c: "Nuestro LMS, con tu marca", w: "No tienes plataforma y no quieres comprar una." },
 ];
 
 export default function ServicesPage() {
@@ -172,28 +163,26 @@ export default function ServicesPage() {
       <Reveal />
 
       <PageHero
-        claqueta="Ewaffle · What we build"
+        claqueta="Ewaffle · Qué hacemos"
         titulo={
           <>
-            Eight instruments.
+            Ocho cosas que
             <br />
-            <em>One decision</em> before any of them.
+            sabemos <em>construir</em>.
           </>
         }
-        bajada="This is not a menu. Nobody has a Storyline problem — they have a crew that signs off on a permit without checking the anchor point. What follows is what the studio can build; which one you get is the conclusion of the diagnosis, not something you order by name."
-        nota="If the diagnosis concludes that a one-page checklist would fix it, that is what we will tell you — and it is a cheaper answer than anything on this page."
-        cta={{ label: "Start with the diagnosis", href: "/book-a-call" }}
+        bajada="Simuladores, narrativa, juegos, 360, video, guías, WhatsApp y la plataforma. Todas están corriendo hoy en algún cliente. Cuál te sirve a ti no lo eliges del menú: lo concluye el diagnóstico, después de saber qué está fallando y con quién."
+        nota="Si el diagnóstico concluye que basta con cambiar una lista de chequeo, te lo vamos a decir — y es una respuesta más barata que cualquier cosa de esta página."
+        cta={{ label: "Agenda 45 minutos", href: "/book-a-call" }}
       />
+
+      <Logos nota="Corriendo hoy en" />
 
       <Escena
         n="01"
-        rotulo="The rule"
-        titulo={
-          <>
-            The format is <em>never</em> the input.
-          </>
-        }
-        bajada="Every brief that arrives already names the format — a course, a video, a game, an LMS. It is an understandable shortcut and it is almost always wrong, because the format is the last decision, not the first. In the Lab it gets made in step 03, once we know the behaviour, the audience, and what makes the wrong choice the easy one today."
+        rotulo="La regla"
+        titulo={<>El formato no es lo que se encarga.</>}
+        bajada="Casi todo encargo llega con el formato ya elegido: un curso, un video, un juego, un LMS. Es un atajo entendible y casi siempre está equivocado, porque el formato es la última decisión y no la primera. Acá se toma en el paso 3, cuando ya sabemos la conducta, la gente y qué vuelve fácil la opción equivocada."
       >
         <div
           className="mt-10 grid gap-4 sm:grid-cols-3"
@@ -201,21 +190,9 @@ export default function ServicesPage() {
           style={{ ["--retardo" as string]: "180ms" }}
         >
           {[
-            {
-              k: "What you ask for",
-              v: "“We need a gamified course on fall protection.”",
-              nuevo: false,
-            },
-            {
-              k: "What we ask back",
-              v: "“Who signs off without checking, and what makes skipping it the easy call at 6am?”",
-              nuevo: false,
-            },
-            {
-              k: "What it turns out to be",
-              v: "A two-minute decision at the moment of sign-off, on the phone they already carry.",
-              nuevo: true,
-            },
+            { k: "Lo que nos piden", v: "«Necesitamos un curso gamificado de trabajo en altura.»", nuevo: false },
+            { k: "Lo que preguntamos", v: "«¿Quién firma sin revisar, y qué hace que saltárselo sea lo fácil a las 6 de la mañana?»", nuevo: false },
+            { k: "En qué termina", v: "Una decisión de dos minutos en el momento de firmar, en el teléfono que ya andan trayendo.", nuevo: true },
           ].map((c) => (
             <div
               key={c.k}
@@ -225,9 +202,7 @@ export default function ServicesPage() {
                   : "border-white/10 bg-white/[0.02]"
               }`}
             >
-              <p
-                className={`mono text-[10.5px] ${c.nuevo ? "text-[var(--haz)]" : "text-[var(--niebla)]"}`}
-              >
+              <p className={`mono text-[10.5px] ${c.nuevo ? "text-[var(--haz)]" : "text-[var(--niebla)]"}`}>
                 {c.k}
               </p>
               <p className="mt-3 text-[15.5px] leading-relaxed text-[var(--tiza)]">{c.v}</p>
@@ -238,14 +213,10 @@ export default function ServicesPage() {
 
       <Escena
         n="02"
-        rotulo="The instruments"
+        rotulo="El instrumental"
         fondo
-        titulo={
-          <>
-            Built and tested. <em>Not a capability deck.</em>
-          </>
-        }
-        bajada="Every one of these is running somewhere today. Where there is a link, it opens the real thing — no form, no account, no sales call in between."
+        titulo={<>Construido y probado, no una lámina de capacidades.</>}
+        bajada="Donde hay link, abre la cosa real: sin formulario, sin cuenta y sin una llamada de por medio."
       >
         <div className="mt-12 grid gap-4 lg:grid-cols-2">
           {instrumental.map((it, i) => (
@@ -262,7 +233,7 @@ export default function ServicesPage() {
                 </h3>
               </div>
 
-              <p className="mono mt-4 text-[10.5px] text-[var(--niebla)]">When it is the answer</p>
+              <p className="mono mt-4 text-[10.5px] text-[var(--niebla)]">Cuándo sirve</p>
               <p className="mt-1 font-semibold text-[var(--tiza)]">{it.cuando}</p>
 
               <p className="mt-4 text-[15px] leading-relaxed text-[var(--niebla)]">{it.d}</p>
@@ -278,7 +249,7 @@ export default function ServicesPage() {
                   href={it.demo.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mono mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-[var(--linea-viva)] px-4 py-2 pt-2 text-[10.5px] text-[var(--tiza)] transition-colors hover:border-[var(--haz)] hover:text-[var(--haz)]"
+                  className="mono mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-[var(--linea-viva)] px-4 py-2 text-[10.5px] text-[var(--tiza)] transition-colors hover:border-[var(--haz)] hover:text-[var(--haz)]"
                 >
                   {it.demo.label}
                   <span aria-hidden="true">↗</span>
@@ -291,20 +262,14 @@ export default function ServicesPage() {
 
       <Escena
         n="03"
-        rotulo="AI, honestly"
-        titulo={
-          <>
-            It moves the floor.
-            <br />
-            It does <em>not</em> make the decisions.
-          </>
-        }
-        bajada="AI is why a studio our size can build a multiplayer simulation at all, and it is also the most oversold word in this industry. So here is the split, in the terms we actually work in."
+        rotulo="La IA, en concreto"
+        titulo={<>Qué hace la IA acá, y qué <em>no</em>.</>}
+        bajada="La IA es la razón por la que un estudio de nuestro tamaño puede construir un simulador multijugador, y también la palabra más sobrevendida del rubro. Así que va el reparto, en los términos en que de verdad trabajamos."
       >
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {[
-            { t: "What the AI does", items: iaHace, vivo: true },
-            { t: "What it does not", items: iaNoHace, vivo: false },
+            { t: "Lo que hace", items: iaHace, vivo: true },
+            { t: "Lo que no", items: iaNoHace, vivo: false },
           ].map((col) => (
             <div
               key={col.t}
@@ -331,14 +296,10 @@ export default function ServicesPage() {
 
       <Escena
         n="04"
-        rotulo="Delivery"
+        rotulo="Dónde llega"
         fondo
-        titulo={
-          <>
-            SCORM <em>and beyond</em>.
-          </>
-        }
-        bajada="The deliverable is not a file, it is the experience working where your people already are. Each channel below is an answer to one question: how does this reach someone who does not sit at a desk?"
+        titulo={<>SCORM, y bastante más allá.</>}
+        bajada="Lo que entregamos no es un archivo: es la experiencia funcionando donde ya está tu gente. Cada canal de abajo responde una sola pregunta — cómo le llega esto a alguien que no se sienta frente a un escritorio."
       >
         <div className="mt-10 overflow-hidden rounded-2xl border border-white/10" data-motion>
           {canales.map((c) => (
@@ -353,20 +314,20 @@ export default function ServicesPage() {
         </div>
 
         <p className="mt-8 max-w-[66ch] text-[var(--niebla)]" data-motion>
-          Most of what sinks a rollout is not pedagogical, it is logistical: the people who most
-          needed it never had a way in.{" "}
+          La mayor parte de lo que hunde un despliegue no es pedagógico sino logístico: la gente que
+          más lo necesitaba nunca tuvo por dónde entrar.{" "}
           <Link href="/pricing" className="text-[var(--haz)] underline underline-offset-4">
-            All three ways of working with us
+            Las tres formas de trabajar con nosotros
           </Link>{" "}
-          settle the channel in the diagnosis. It is never a change order.
+          resuelven el canal en el diagnóstico. Nunca es un cobro aparte.
         </p>
       </Escena>
 
       <CTASection
-        title="Bring us the behaviour, not the brief."
-        description="Forty-five minutes. You describe what is going wrong on the floor; we tell you whether it is a learning problem at all — and if it is not, what we think it actually is."
-        primaryCTA="Book the diagnosis call"
-        secondaryCTA="See what we have built"
+        title="Cuéntanos qué no está pasando en terreno."
+        description="Cuarenta y cinco minutos. Tú describes qué está saliendo mal; nosotros te decimos si es un problema de aprendizaje o no — y si no lo es, qué creemos que es."
+        primaryCTA="Agenda 45 minutos"
+        secondaryCTA="Mira lo que hemos construido"
         secondaryHref="/case-studies"
       />
     </div>
