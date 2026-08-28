@@ -24,7 +24,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(10,8,18,0.82)] backdrop-blur-md">
       <div className="mx-auto flex max-w-[1340px] items-center justify-between px-5 py-3.5 sm:px-10 lg:px-14">
         <Link href="/" className="flex items-center gap-2.5">
-          <img src="/favicon.png" alt="" className="h-7 w-7" />
+          <img src="/icon.png" alt="" className="h-7 w-7" />
           <span className="flex flex-col leading-none">
             <span className="text-[17px] font-extrabold tracking-[-0.03em] text-[var(--tiza)]">
               Ewaffle

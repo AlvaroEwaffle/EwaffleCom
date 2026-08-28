@@ -41,7 +41,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center gap-2.5">
-              <img src="/favicon.png" alt="" className="h-7 w-7" />
+              <img src="/icon.png" alt="" className="h-7 w-7" />
               <span className="text-[17px] font-extrabold tracking-[-0.03em] text-[var(--tiza)]">
                 Ewaffle
               </span>

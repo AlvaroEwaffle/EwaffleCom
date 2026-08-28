@@ -29,9 +29,22 @@ export const metadata: Metadata = {
   },
   description:
     "Simuladores, juegos, guías interactivas, recorridos 360 y video para mutuales, universidades e institutos, y empresas con equipos grandes en terreno. Te lo entregamos funcionando: en tu LMS, o en el nuestro, que va incluido.",
+  /* El sitio servía el favicon por defecto de Next —el círculo negro con el
+     triángulo— porque `app/favicon.ico` existía y la convención de archivo del
+     App Router tiene precedencia sobre lo que se declare acá. Daba igual que
+     este bloque apuntara a la marca: Next emitía su propio <link rel="icon">
+     primero y ese ganaba. Ese archivo se borró.
+
+     El .ico va multi-tamaño (16 a 256) porque el navegador pide /favicon.ico
+     directo aunque el HTML declare un PNG, y también lo piden buscadores y
+     lectores. La marca se recortó a su contenido: venía con ~30% de margen
+     transparente y a 16px eso dejaba la "w" ilegible. */
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "Ewaffle — Capacitación que tu gente sí hace",
