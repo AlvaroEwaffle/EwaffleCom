@@ -3,6 +3,13 @@ import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Script from "next/script";
+import Analytics from "@/components/Analytics";
+
+/* Contenedor propio de e-waffle.com → GA4 G-DZM8MTFY9V (propiedad separada de
+   ewaffle.cl). Estaba en origin desde el 13-may (4870367) pero el sitio se
+   publicó desde una rama que no lo traía: 25-sep el sitio no medía nada. */
+const GTM_ID = "GTM-55QPCXTK";
 
 /* Archivo lleva el peso y IBM Plex Mono la capa técnica —numeración de pasos,
    etiquetas, canales—. Es la misma pareja del catálogo de ewaffle.cl: el mono
@@ -82,6 +89,22 @@ export default function RootLayout({
             __html: `document.documentElement.classList.add('js')`,
           }}
         />
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <Analytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
