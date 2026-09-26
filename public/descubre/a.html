@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-55QPCXTK');</script>
+<script>document.documentElement.classList.add("js")</script>
 <script src="/descubre/lab.js"></script>
 <style>
   /* Tokens tomados del catálogo (ewaffle.cl/catalogo), que es lo último que se diseñó. */
@@ -153,6 +154,15 @@
     .wrap { padding: 0 16px; }
     .steps { grid-template-columns: 1fr; }
     .ctas .btn { width: 100%; justify-content: center; }
+  }
+
+  /* Entradas: sin JS todo se ve igual (la clase js la pone el script del head). */
+  html.js .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
+  html.js .rv.in { opacity: 1; transform: none; }
+  html.js .hero h1 .palabra { display: inline-block; opacity: 0; transform: translateY(.45em); animation: sube .55s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes sube { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    html.js .rv, html.js .hero h1 .palabra { opacity: 1; transform: none; transition: none; animation: none; }
   }
 </style>
 </head>
@@ -320,5 +330,50 @@
   </div>
 </footer>
 
+
+<script>
+/* Coreografía de A: el hero entra al cargar (titular palabra por palabra, en menos
+   de un segundo), y cada sección entra cuando llega a la pantalla, un elemento a la vez. */
+(function () {
+  var h1 = document.querySelector(".hero h1"), n = 0;
+  (function recorrer(nodo) {
+    Array.prototype.slice.call(nodo.childNodes).forEach(function (c) {
+      if (c.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        c.textContent.split(/(\s+)/).forEach(function (t) {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+          var sp = document.createElement("span");
+          sp.className = "palabra"; sp.style.animationDelay = 80 + n++ * 70 + "ms"; sp.textContent = t;
+          frag.appendChild(sp);
+        });
+        nodo.replaceChild(frag, c);
+      } else if (c.nodeType === 1) recorrer(c);
+    });
+  })(h1);
+
+  var SEL = ".eyebrow, h2, .lead, .checks li, .ctas, .micro, .piece, .chip, .card, .offer, .plan, .step, .feat li, .quote, .booking";
+  var grupos = [document.querySelector(".hero")].concat(Array.prototype.slice.call(document.querySelectorAll(".logos, section")));
+  grupos.forEach(function (g) {
+    var base = g.classList.contains("hero") ? 350 : 0; // en el hero, después del titular
+    Array.prototype.forEach.call(g.querySelectorAll(SEL), function (el, i) {
+      el.classList.add("rv");
+      el.style.transitionDelay = base + Math.min(i, 10) * 90 + "ms";
+    });
+  });
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".rv").forEach(function (el) { el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll(".rv").forEach(function (el) { el.classList.add("in"); });
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  grupos.forEach(function (g) { io.observe(g); });
+})();
+</script>
 </body>
 </html>

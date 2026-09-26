@@ -35,7 +35,10 @@
 
   .stage { flex: 1; display: flex; flex-direction: column; gap: 16px; }
   .guide { display: flex; gap: 12px; align-items: flex-start; }
-  .avatar { flex: 0 0 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--pink), #7b5cff); display: grid; place-items: center; font-weight: 900; font-size: 18px; box-shadow: 0 0 0 4px rgba(255,79,139,.15); }
+  .avatar { flex: 0 0 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--pink), #7b5cff); display: grid; place-items: center; font-size: 26px; line-height: 1; box-shadow: 0 0 0 4px rgba(255,79,139,.15); }
+  /* La guía saluda al aparecer: un vaivén corto, una vez por escena. */
+  .avatar.saluda { animation: saluda 1s ease .1s both; transform-origin: 50% 80%; }
+  @keyframes saluda { 0% { transform: scale(.6) rotate(0); opacity: 0; } 35% { transform: scale(1.08) rotate(-10deg); opacity: 1; } 55% { transform: rotate(10deg); } 75% { transform: rotate(-6deg); } 100% { transform: none; } }
   .bubble { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px 18px 18px 18px; padding: 14px 16px; font-size: 17px; line-height: 1.45; max-width: 560px; }
   .bubble b { color: var(--pink-soft); }
   .bubble .typing { display: inline-flex; gap: 4px; }
@@ -100,12 +103,24 @@
 
   .foot { padding: 18px 0 8px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; color: var(--muted); }
   .logos { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; opacity: .9; }
-  /* Logos en chip claro, como en e-waffle.com: con filtro de color algunos desaparecían sobre el fondo oscuro. */
-  .logos img { height: 26px; background: #fff; padding: 4px 8px; border-radius: 6px; }
+  /* Misma regla que components/studio/Logos.tsx: colores reales sobre pastilla. UST y UGM
+     vienen en blanco y van sobre pastilla oscura; el resto, sobre clara. */
+  .logos img { height: 26px; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,.93); }
+  .logos img.oscuro { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); }
 
   .fade { animation: in .35s ease both; }
-  @keyframes in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .fade { animation: none; } .bar i::after { transition: none; } }
+  @keyframes in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  /* Coreografía de cada escena: el titular sube palabra por palabra, la guía
+     escribe, y recién entonces entra lo demás, un bloque (y una tarjeta) a la vez. */
+  .wait { opacity: 0; transform: translateY(14px); }
+  .pop { animation: in .5s cubic-bezier(.2,.7,.2,1) both; }
+  .palabra { display: inline-block; opacity: 0; transform: translateY(.45em); animation: sube .55s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes sube { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .fade, .pop, .palabra, .avatar.saluda { animation: none; opacity: 1; transform: none; }
+    .wait { opacity: 1; transform: none; }
+    .bar i::after { transition: none; }
+  }
   @media (max-width: 560px) {
     .choices { grid-template-columns: 1fr; }
     .piece { grid-template-columns: 1fr; }
@@ -128,7 +143,7 @@
 
   <div class="foot">
     <div class="logos" aria-label="Trabajamos con">
-      <img src="/logos/achs.svg" alt="ACHS"><img src="/logos/aiep.svg" alt="AIEP"><img src="/logos/ust.svg" alt="Santo Tomás"><img src="/logos/uniacc.svg" alt="UNIACC"><img src="/logos/ugm.svg" alt="U. Gabriela Mistral">
+      <img src="/logos/achs.svg" alt="ACHS"><img src="/logos/aiep.svg" alt="AIEP"><img class="oscuro" src="/logos/ust.svg" alt="Santo Tomás"><img src="/logos/uniacc.svg" alt="UNIACC"><img class="oscuro" src="/logos/ugm.svg" alt="U. Gabriela Mistral">
     </div>
     <span>Ewaffle · estudio de experiencias de aprendizaje</span>
   </div>
@@ -149,20 +164,100 @@
     var n = Object.keys(hechos).length;
     document.querySelectorAll(".progress i").forEach(function (el, i) { el.classList.toggle("on", i < n); });
   }
+  var QUIETO = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // En una pestaña de fondo Chrome frena los temporizadores (~1 s por paso): ahí no se anima,
+  // se muestra todo de una vez. Así quien abre el link "en otra pestaña" no encuentra la escena a medias.
+  function sinAnimar() { return QUIETO || document.hidden; }
+  var turno = 0; // cada escena nueva cancela los temporizadores de la anterior
+
   function escena(html) {
-    stage.innerHTML = '<div class="fade" style="display:flex;flex-direction:column;gap:16px">' + html + "</div>";
+    turno++;
+    stage.innerHTML = '<div id="esc" style="display:flex;flex-direction:column;gap:16px">' + html + "</div>";
+    var esc = document.getElementById("esc");
+    var hijos = Array.prototype.slice.call(esc.children);
+    var iGuia = hijos.findIndex(function (h) { return h.classList.contains("guide"); });
+    hijos.forEach(function (h, i) {
+      if (i < iGuia) {
+        // Lo que va antes de la guía (antetítulo, titular) entra de inmediato.
+        if (h.tagName === "H1") partirEnPalabras(h);
+        else { h.classList.add("pop"); h.style.animationDelay = i * 90 + "ms"; }
+      } else if (i > iGuia) {
+        h.classList.add("wait");
+        // Tarjetas y opciones esperan su propio turno dentro del bloque.
+        if (h.matches(".choices, .row, .kpis")) Array.prototype.forEach.call(h.children, function (c) { c.classList.add("wait"); });
+      }
+    });
+    if (iGuia < 0) revelar(turno);
     window.lab.cablear(stage);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
-  // El guía "escribe" medio segundo antes de hablar: se siente conversación, no página.
+
+  function partirEnPalabras(el) {
+    var n = 0;
+    (function recorrer(nodo) {
+      Array.prototype.slice.call(nodo.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (t) {
+            if (!t) return;
+            if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+            var s = document.createElement("span");
+            s.className = "palabra";
+            s.style.animationDelay = 60 + n++ * 70 + "ms";
+            s.textContent = t;
+            frag.appendChild(s);
+          });
+          nodo.replaceChild(frag, c);
+        } else if (c.nodeType === 1) recorrer(c);
+      });
+    })(el);
+  }
+
+  // Muestra lo que esperaba: un bloque cada 160 ms, y dentro de él una tarjeta cada 110 ms.
+  function revelar(t, listo) {
+    var esc = document.getElementById("esc");
+    if (!esc) return;
+    var bloques = Array.prototype.filter.call(esc.children, function (h) { return h.classList.contains("wait"); });
+    var reloj = 0;
+    bloques.forEach(function (b) {
+      setTimeout(function () {
+        if (t !== turno) return;
+        b.classList.remove("wait"); b.classList.add("pop");
+        Array.prototype.forEach.call(b.querySelectorAll(":scope > .wait"), function (c, j) {
+          c.style.animationDelay = j * 110 + "ms";
+          c.classList.remove("wait"); c.classList.add("pop");
+        });
+      }, sinAnimar() ? 0 : reloj);
+      reloj += 160 + b.querySelectorAll(":scope > .wait").length * 110;
+    });
+    if (listo) setTimeout(function () { if (t === turno) listo(); }, sinAnimar() ? 0 : reloj + 200);
+  }
+
+  // Escribe el texto palabra por palabra, respetando las <b> del mensaje.
+  function escribir(el, texto, t, fin) {
+    if (sinAnimar()) { el.innerHTML = texto; return fin(); }
+    var partes = texto.split(/(<[^>]+>|\s+)/).filter(Boolean);
+    var hecho = "", i = 0;
+    (function paso() {
+      if (t !== turno) return;
+      while (i < partes.length && /^(<[^>]+>|\s+)$/.test(partes[i])) hecho += partes[i++];
+      if (i < partes.length) hecho += partes[i++];
+      el.innerHTML = hecho;
+      if (i < partes.length && document.hidden) { el.innerHTML = texto; return fin(); }
+      if (i < partes.length) setTimeout(paso, 38); else fin();
+    })();
+  }
+
+  // La guía "escribe" medio segundo, luego habla, y recién ahí aparece el resto de la escena.
   function guia(texto, despues) {
     var id = "b" + Math.random().toString(36).slice(2, 7);
-    var html = '<div class="guide"><div class="avatar" aria-hidden="true">W</div><div class="bubble" id="' + id + '"><span class="typing"><span></span><span></span><span></span></span></div></div>';
+    var t = turno + 1; // la escena que se está armando
+    var html = '<div class="guide"><div class="avatar saluda" aria-hidden="true">🧑‍🏫</div><div class="bubble" id="' + id + '"><span class="typing"><span></span><span></span><span></span></span></div></div>';
     setTimeout(function () {
       var b = document.getElementById(id);
-      if (b) b.innerHTML = texto;
-      if (despues) despues();
-    }, 550);
+      if (!b || t !== turno) return;
+      escribir(b, texto, t, function () { revelar(t, despues); });
+    }, sinAnimar() ? 0 : 550);
     return html;
   }
   function cierre(camino, pregunta) {
@@ -218,22 +313,25 @@
         ["Producción", "El programa completo, con tus revisiones."],
         ["En marcha", "Funcionando en tu LMS o en el nuestro, con reportes de uso."],
       ];
-      escena(guia("Trabajamos en cinco pasos. Lo importante: <b>ves algo funcionando en la semana 3</b>, no al final.") +
+      var tModelo = turno + 1;
+      escena(guia("Trabajamos en cinco pasos. Lo importante: <b>ves algo funcionando en la semana 3</b>, no al final.", function () {
+        var steps = stage.querySelectorAll(".step");
+        steps.forEach(function (s, i) { setTimeout(function () { if (tModelo !== turno) return; s.classList.add("on"); if (i === steps.length - 1) { document.getElementById("fin").innerHTML = '<div class="fade" style="display:flex;flex-direction:column;gap:16px">' + cierre("modelo", "El paso 1 es una conversación de 30 minutos. ¿La agendamos?") + "</div>"; window.lab.cablear(stage); } }, i * 480); });
+      }) +
         '<div class="steps">' + PASOS.map(function (p, i) { return '<div class="step' + (i === 2 ? " hl" : "") + '"><div class="n">0' + (i + 1) + "</div><div><b>" + p[0] + "</b><p>" + p[1] + "</p></div></div>"; }).join("") + "</div>" +
         '<div id="fin"></div>');
-      var steps = stage.querySelectorAll(".step");
-      steps.forEach(function (s, i) { setTimeout(function () { s.classList.add("on"); if (i === steps.length - 1) { document.getElementById("fin").innerHTML = cierre("modelo", "El paso 1 es una conversación de 30 minutos. ¿La agendamos?"); window.lab.cablear(stage); } }, 700 + i * 550); });
     },
 
     plataforma: function () {
-      escena(guia("La plataforma va incluida: <b>tu marca, sin licencia por usuario</b>, y la gente entra por WhatsApp o un link sin clave.") +
+      escena(guia("La plataforma va incluida: <b>tu marca, sin licencia por usuario</b>, y la gente entra por WhatsApp o un link sin clave.", function () {
+        stage.querySelectorAll("[data-w]").forEach(function (i) { i.style.setProperty("--w", i.getAttribute("data-w")); });
+      }) +
         '<div class="card dash"><div class="eyebrow" style="color:var(--muted)">Ejemplo de panel · datos de muestra</div>' +
         '<div class="kpis"><div class="kpi"><b>412</b><span>Personas</span></div><div class="kpi"><b>87%</b><span>Completaron</span></div><div class="kpi"><b>6 min</b><span>Por cápsula</span></div></div>' +
         [["Santiago Centro", 94], ["Maipú", 88], ["Concepción", 79], ["Antofagasta", 71]].map(function (r) { return '<div class="bar"><span>' + r[0] + '</span><i style="--w:0%" data-w="' + r[1] + '%"></i><span>' + r[1] + "%</span></div>"; }).join("") +
         '<div class="demo-note">Datos de muestra. En tu plataforma: avance por persona, equipo y sucursal.</div></div>' +
         '<div class="card"><div class="row"><span class="opt">✓ Marca blanca y tu dominio</span><span class="opt">✓ Acceso por WhatsApp o link</span><span class="opt">✓ ¿Ya tienes LMS? SCORM verificado en el tuyo</span></div></div>' +
         cierre("plataforma", "¿Te mostramos la plataforma con un caso como el tuyo?"));
-      setTimeout(function () { stage.querySelectorAll("[data-w]").forEach(function (i) { i.style.setProperty("--w", i.getAttribute("data-w")); }); }, 150);
     },
 
     tutores: function () {
