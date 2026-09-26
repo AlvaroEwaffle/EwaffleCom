@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ewaffle</title>
+<script>
+  /* Repartidor del experimento /descubre: 50/50 entre A (home v2) y B (cápsula guiada).
+     La variante queda fija por navegador para que quien vuelve vea lo mismo.
+     ?v=a o ?v=b fuerza una (para revisar); los utm_* y el gclid pasan intactos. */
+  (function () {
+    var qs = new URLSearchParams(location.search);
+    var forzada = (qs.get("v") || "").toLowerCase();
+    var v = forzada === "a" || forzada === "b" ? forzada : null;
+    if (!v) { try { v = localStorage.getItem("lab_descubre"); } catch (e) {} }
+    if (v !== "a" && v !== "b") v = Math.random() < 0.5 ? "a" : "b";
+    try { localStorage.setItem("lab_descubre", v); } catch (e) {}
+    qs.delete("v");
+    var resto = qs.toString();
+    location.replace("/descubre/" + v + ".html" + (resto ? "?" + resto : ""));
+  })();
+</script>
+</head>
+<body style="background:#0a0812"></body>
+</html>

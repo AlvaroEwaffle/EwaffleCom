@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="es-CL" data-variante="B">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ewaffle · Te guiamos</title>
+<meta name="description" content="Una cápsula interactiva de 2 minutos: elige qué quieres conocer de Ewaffle — catálogo, modelo de trabajo, plataforma o tutores IA.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-55QPCXTK');</script>
+<script src="/descubre/lab.js"></script>
+<style>
+  :root {
+    --bg: #0a0812; --bg-2: #14112b; --bg-3: #1c1838; --line: rgba(169,163,196,.18);
+    --ink: #fff; --muted: #a9a3c4; --pink: #ff4f8b; --pink-soft: #ffc0d6; --green: #5fe0ab; --amber: #f5a524;
+    --mono: "IBM Plex Mono", ui-monospace, monospace; --sans: "Archivo", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: radial-gradient(800px 500px at 90% -10%, rgba(255,79,139,.20), transparent 60%), radial-gradient(600px 400px at -10% 30%, rgba(95,224,171,.08), transparent 60%), var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+
+  /* Marco de la cápsula: se siente como un módulo, no como una web. */
+  .app { max-width: 760px; margin: 0 auto; min-height: 100%; display: flex; flex-direction: column; padding: 16px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: .16em; font-size: 14px; text-decoration: none; }
+  .brand img { width: 26px; height: 26px; }
+  .progress { flex: 1; max-width: 260px; display: flex; gap: 6px; }
+  .progress i { flex: 1; height: 5px; border-radius: 3px; background: var(--line); transition: background .3s; }
+  .progress i.on { background: var(--pink); }
+  .skip { font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+
+  .stage { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+  .guide { display: flex; gap: 12px; align-items: flex-start; }
+  .avatar { flex: 0 0 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--pink), #7b5cff); display: grid; place-items: center; font-weight: 900; font-size: 18px; box-shadow: 0 0 0 4px rgba(255,79,139,.15); }
+  .bubble { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px 18px 18px 18px; padding: 14px 16px; font-size: 17px; line-height: 1.45; max-width: 560px; }
+  .bubble b { color: var(--pink-soft); }
+  .bubble .typing { display: inline-flex; gap: 4px; }
+  .bubble .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: dot 1s infinite; }
+  .bubble .typing span:nth-child(2) { animation-delay: .15s; } .bubble .typing span:nth-child(3) { animation-delay: .3s; }
+  @keyframes dot { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+  h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.02; margin: 4px 0 0; letter-spacing: -.02em; font-weight: 900; }
+  h1 em { font-style: normal; color: var(--pink-soft); }
+
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .choice { text-align: left; background: var(--bg-2); border: 1px solid var(--line); border-radius: 16px; padding: 18px; color: var(--ink); font: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 6px; transition: border-color .15s, transform .15s, background .15s; }
+  .choice:hover, .choice:focus-visible { border-color: var(--pink); transform: translateY(-2px); outline: none; background: var(--bg-3); }
+  .choice .ico { font-size: 24px; }
+  .choice b { font-size: 18px; }
+  .choice span { color: var(--muted); font-size: 14px; line-height: 1.35; }
+  .choice.done { border-color: rgba(95,224,171,.5); }
+  .choice.done b::after { content: " ✓"; color: var(--green); }
+
+  .card { background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .opt { background: transparent; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: 10px 14px; font: inherit; font-size: 15px; cursor: pointer; }
+  .opt:hover, .opt.sel { border-color: var(--pink); background: rgba(255,79,139,.12); }
+  .piece { display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: center; margin-top: 14px; }
+  .piece img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); }
+  .piece b { font-size: 18px; display: block; margin-bottom: 4px; }
+  .piece p { margin: 0; color: var(--muted); font-size: 15px; }
+  .tag { display: inline-block; font-family: var(--mono); font-size: 11px; padding: 3px 8px; border-radius: 999px; background: rgba(95,224,171,.14); color: var(--green); margin-bottom: 6px; }
+
+  .steps { display: grid; gap: 8px; }
+  .step { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; padding: 12px; border-radius: 12px; border: 1px solid transparent; opacity: .45; transition: opacity .3s, border-color .3s, background .3s; }
+  .step.on { opacity: 1; border-color: var(--line); background: var(--bg-2); }
+  .step.hl.on { border-color: var(--pink); }
+  .step .n { font-family: var(--mono); font-size: 12px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line); }
+  .step.on .n { background: var(--pink); border-color: var(--pink); }
+  .step b { display: block; font-size: 16px; }
+  .step p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+
+  .dash { display: grid; gap: 10px; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .kpi { background: var(--bg-3); border-radius: 12px; padding: 12px; }
+  .kpi b { font-size: 22px; display: block; }
+  .kpi span { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+  .bar { display: grid; grid-template-columns: 110px 1fr 40px; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
+  .bar i { height: 8px; border-radius: 4px; background: var(--line); position: relative; overflow: hidden; }
+  .bar i::after { content: ""; position: absolute; inset: 0; width: var(--w); background: linear-gradient(90deg, var(--pink), var(--green)); border-radius: 4px; transition: width 1s ease; }
+  .demo-note { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  .chat { display: grid; gap: 10px; }
+  .msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 15px; line-height: 1.4; }
+  .msg.u { justify-self: end; background: var(--pink); border-bottom-right-radius: 4px; }
+  .msg.t { background: var(--bg-3); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+  .msg.t small { display: block; font-family: var(--mono); font-size: 10px; color: var(--green); margin-top: 6px; }
+
+  .cta { display: flex; flex-direction: column; gap: 10px; background: linear-gradient(135deg, rgba(255,79,139,.18), rgba(95,224,171,.06)); border: 1px solid rgba(255,79,139,.4); border-radius: 18px; padding: 18px; }
+  .cta p { margin: 0; font-size: 16px; }
+  .btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 14px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 16px; border: 0; cursor: pointer; font-family: inherit; }
+  .btn-primary { background: var(--pink); color: #fff; box-shadow: 0 10px 30px rgba(255,79,139,.35); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .foot { padding: 18px 0 8px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .logos { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; opacity: .9; }
+  /* Logos en chip claro, como en e-waffle.com: con filtro de color algunos desaparecían sobre el fondo oscuro. */
+  .logos img { height: 26px; background: #fff; padding: 4px 8px; border-radius: 6px; }
+
+  .fade { animation: in .35s ease both; }
+  @keyframes in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .fade { animation: none; } .bar i::after { transition: none; } }
+  @media (max-width: 560px) {
+    .choices { grid-template-columns: 1fr; }
+    .piece { grid-template-columns: 1fr; }
+    .kpis { grid-template-columns: 1fr 1fr 1fr; }
+    .bubble { font-size: 16px; }
+    .actions .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55QPCXTK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div class="app">
+  <div class="top">
+    <a class="brand" href="https://e-waffle.com/"><img src="/favicon.png" alt="">EWAFFLE</a>
+    <div class="progress" aria-label="Progreso"><i></i><i></i><i></i><i></i></div>
+    <a class="skip" data-agenda="saltar">Saltar y agendar →</a>
+  </div>
+
+  <main class="stage" id="stage" aria-live="polite"></main>
+
+  <div class="foot">
+    <div class="logos" aria-label="Trabajamos con">
+      <img src="/logos/achs.svg" alt="ACHS"><img src="/logos/aiep.svg" alt="AIEP"><img src="/logos/ust.svg" alt="Santo Tomás"><img src="/logos/uniacc.svg" alt="UNIACC"><img src="/logos/ugm.svg" alt="U. Gabriela Mistral">
+    </div>
+    <span>Ewaffle · estudio de experiencias de aprendizaje</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  var stage = document.getElementById("stage");
+  var hechos = {};
+  var CAMINOS = [
+    { id: "catalogo", ico: "📦", t: "Conocer el catálogo", d: "Ocho formatos, uno por problema. Ves piezas reales." },
+    { id: "modelo", ico: "🧭", t: "Conocer el modelo", d: "Cómo trabajamos: prototipo funcionando en la semana 3." },
+    { id: "plataforma", ico: "🖥️", t: "Ver la plataforma", d: "Tu marca, reportes por sucursal y acceso por WhatsApp." },
+    { id: "tutores", ico: "🤖", t: "Tutores IA", d: "Un asistente que responde con el contenido de tu curso." },
+  ];
+
+  function progreso() {
+    var n = Object.keys(hechos).length;
+    document.querySelectorAll(".progress i").forEach(function (el, i) { el.classList.toggle("on", i < n); });
+  }
+  function escena(html) {
+    stage.innerHTML = '<div class="fade" style="display:flex;flex-direction:column;gap:16px">' + html + "</div>";
+    window.lab.cablear(stage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  // El guía "escribe" medio segundo antes de hablar: se siente conversación, no página.
+  function guia(texto, despues) {
+    var id = "b" + Math.random().toString(36).slice(2, 7);
+    var html = '<div class="guide"><div class="avatar" aria-hidden="true">W</div><div class="bubble" id="' + id + '"><span class="typing"><span></span><span></span><span></span></span></div></div>';
+    setTimeout(function () {
+      var b = document.getElementById(id);
+      if (b) b.innerHTML = texto;
+      if (despues) despues();
+    }, 550);
+    return html;
+  }
+  function cierre(camino, pregunta) {
+    var otros = CAMINOS.filter(function (c) { return c.id !== camino; });
+    return '<div class="cta"><p>' + pregunta + '</p><div class="actions">' +
+      '<a class="btn btn-primary" data-agenda="' + camino + '">Agenda 30 minutos con Álvaro</a>' +
+      '<button class="btn btn-ghost" data-ir="menu">Ver otra cosa</button></div></div>' +
+      '<div class="row">' + otros.map(function (c) { return '<button class="opt" data-ir="' + c.id + '">' + c.ico + " " + c.t + "</button>"; }).join("") + "</div>";
+  }
+
+  var ESCENAS = {
+    menu: function () {
+      var primera = !Object.keys(hechos).length;
+      escena(
+        (primera ? '<div class="eyebrow">Cápsula de 2 minutos</div><h1>Capacitación que tu gente <em>sí hace.</em></h1>' : "") +
+        guia(primera
+          ? "Hola 👋 Soy la guía de Ewaffle. Hacemos simuladores, juegos, guías interactivas, recorridos 360 y video para equipos grandes. <b>¿Qué quieres conocer primero?</b>"
+          : "¿Qué más quieres ver? También puedes agendar cuando quieras.") +
+        '<div class="choices">' + CAMINOS.map(function (c) {
+          return '<button class="choice' + (hechos[c.id] ? " done" : "") + '" data-ir="' + c.id + '"><span class="ico" aria-hidden="true">' + c.ico + "</span><b>" + c.t + "</b><span>" + c.d + "</span></button>";
+        }).join("") + "</div>" +
+        (primera ? "" : '<div class="actions"><a class="btn btn-primary" data-agenda="menu">Agenda 30 minutos con Álvaro</a></div>')
+      );
+    },
+
+    catalogo: function () {
+      var PROBLEMAS = [
+        { k: "induccion", t: "La inducción no escala", f: "Onboarding Digital", img: "/experiences/video-induccion.webp", p: "Tu jornada de inducción presencial, convertida en video + guía interactiva. Tres planes y precio cerrado." },
+        { k: "practica", t: "Saben la teoría, fallan en la práctica", f: "Simuladores", img: "/experiences/sala.webp", p: "Decisiones reales con feedback inmediato: atención a clientes, seguridad, protocolos." },
+        { k: "terreno", t: "El lugar de trabajo es parte de la clase", f: "Recorridos 360", img: "/experiences/tour360.webp", p: "Plantas, salas de venta y bodegas que no puedes visitar con cada ingreso." },
+        { k: "obligatorio", t: "El curso obligatorio que nadie termina", f: "Juegos y gamificación", img: "/experiences/juegos.webp", p: "Normativa y compliance que se juega en vez de clickear." },
+      ];
+      escena(guia("Partimos por el problema, no por el formato. <b>¿Cuál se parece más al tuyo?</b>") +
+        '<div class="card"><div class="row" id="probs">' + PROBLEMAS.map(function (p) { return '<button class="opt" data-p="' + p.k + '">' + p.t + "</button>"; }).join("") + '</div><div id="res"></div></div>' +
+        '<div id="fin"></div>');
+      stage.querySelectorAll("[data-p]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var p = PROBLEMAS.filter(function (x) { return x.k === b.getAttribute("data-p"); })[0];
+          stage.querySelectorAll("[data-p]").forEach(function (x) { x.classList.toggle("sel", x === b); });
+          document.getElementById("res").innerHTML = '<div class="piece fade"><img src="' + p.img + '" alt="' + p.f + '"><div><span class="tag">' + p.f + "</span><b>" + p.t + "</b><p>" + p.p + '</p><p style="margin-top:8px"><a href="https://ewaffle.cl/catalogo/" target="_blank" rel="noopener" style="color:var(--pink-soft)">Ver los 8 formatos y cotizar →</a></p></div></div>';
+          document.getElementById("fin").innerHTML = cierre("catalogo", "¿Lo vemos aplicado a tu equipo?");
+          window.lab.cablear(stage);
+          window.lab.evento("lab_step", { lab_camino: "catalogo", lab_paso: p.k });
+        });
+      });
+    },
+
+    modelo: function () {
+      var PASOS = [
+        ["Descubrimiento", "Una reunión para entender a quién hay que capacitar y qué tiene que cambiar."],
+        ["Propuesta", "Formatos, plazos y precio por escrito."],
+        ["Prototipo · semana 3", "Una pieza real, probada con 5 personas de tu equipo."],
+        ["Producción", "El programa completo, con tus revisiones."],
+        ["En marcha", "Funcionando en tu LMS o en el nuestro, con reportes de uso."],
+      ];
+      escena(guia("Trabajamos en cinco pasos. Lo importante: <b>ves algo funcionando en la semana 3</b>, no al final.") +
+        '<div class="steps">' + PASOS.map(function (p, i) { return '<div class="step' + (i === 2 ? " hl" : "") + '"><div class="n">0' + (i + 1) + "</div><div><b>" + p[0] + "</b><p>" + p[1] + "</p></div></div>"; }).join("") + "</div>" +
+        '<div id="fin"></div>');
+      var steps = stage.querySelectorAll(".step");
+      steps.forEach(function (s, i) { setTimeout(function () { s.classList.add("on"); if (i === steps.length - 1) { document.getElementById("fin").innerHTML = cierre("modelo", "El paso 1 es una conversación de 30 minutos. ¿La agendamos?"); window.lab.cablear(stage); } }, 700 + i * 550); });
+    },
+
+    plataforma: function () {
+      escena(guia("La plataforma va incluida: <b>tu marca, sin licencia por usuario</b>, y la gente entra por WhatsApp o un link sin clave.") +
+        '<div class="card dash"><div class="eyebrow" style="color:var(--muted)">Ejemplo de panel · datos de muestra</div>' +
+        '<div class="kpis"><div class="kpi"><b>412</b><span>Personas</span></div><div class="kpi"><b>87%</b><span>Completaron</span></div><div class="kpi"><b>6 min</b><span>Por cápsula</span></div></div>' +
+        [["Santiago Centro", 94], ["Maipú", 88], ["Concepción", 79], ["Antofagasta", 71]].map(function (r) { return '<div class="bar"><span>' + r[0] + '</span><i style="--w:0%" data-w="' + r[1] + '%"></i><span>' + r[1] + "%</span></div>"; }).join("") +
+        '<div class="demo-note">Datos de muestra. En tu plataforma: avance por persona, equipo y sucursal.</div></div>' +
+        '<div class="card"><div class="row"><span class="opt">✓ Marca blanca y tu dominio</span><span class="opt">✓ Acceso por WhatsApp o link</span><span class="opt">✓ ¿Ya tienes LMS? SCORM verificado en el tuyo</span></div></div>' +
+        cierre("plataforma", "¿Te mostramos la plataforma con un caso como el tuyo?"));
+      setTimeout(function () { stage.querySelectorAll("[data-w]").forEach(function (i) { i.style.setProperty("--w", i.getAttribute("data-w")); }); }, 150);
+    },
+
+    tutores: function () {
+      var QA = [
+        ["¿Qué hago si un cliente reclama por un cobro?", "Según el módulo 3, primero escuchas sin interrumpir, luego revisas la boleta en el sistema y, si el error es nuestro, lo corriges en el momento. Si no puedes resolverlo, derivas al supervisor de turno."],
+        ["¿Cada cuánto se revisa el extintor?", "El procedimiento de tu curso dice: inspección visual mensual y mantención anual por un proveedor certificado. La ficha está en la lección 2."],
+        ["No entendí la parte de cierre de caja", "Te lo explico en 3 pasos: 1) cuentas el efectivo, 2) comparas con el reporte del sistema, 3) registras la diferencia antes de salir. ¿Quieres repasarlo con un ejercicio?"],
+      ];
+      escena(guia("Un tutor IA responde las dudas <b>con el contenido de tu curso</b>, a cualquier hora. Prueba una pregunta:") +
+        '<div class="card chat" id="chat"><div class="demo-note">Demo con un curso de ejemplo · respuestas escritas de antemano</div></div>' +
+        '<div class="row" id="qs">' + QA.map(function (q, i) { return '<button class="opt" data-q="' + i + '">' + q[0] + "</button>"; }).join("") + "</div>" + '<div id="fin"></div>');
+      stage.querySelectorAll("[data-q]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var q = QA[+b.getAttribute("data-q")];
+          var chat = document.getElementById("chat");
+          b.remove();
+          chat.insertAdjacentHTML("beforeend", '<div class="msg u fade">' + q[0] + '</div><div class="msg t fade"><span class="typing"><span></span><span></span><span></span></span></div>');
+          var t = chat.lastElementChild;
+          setTimeout(function () { t.innerHTML = q[1] + "<small>Fuente: contenido del curso</small>"; }, 700);
+          if (!document.getElementById("fin").innerHTML) { document.getElementById("fin").innerHTML = cierre("tutores", "¿Te armamos un tutor con el contenido de tu empresa?"); window.lab.cablear(stage); }
+          window.lab.evento("lab_step", { lab_camino: "tutores", lab_paso: "pregunta" });
+        });
+      });
+    },
+  };
+
+  function ir(id) {
+    if (id !== "menu") { hechos[id] = true; progreso(); window.lab.evento("lab_path", { lab_camino: id }); }
+    ESCENAS[id]();
+  }
+  stage.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-ir]");
+    if (b) ir(b.getAttribute("data-ir"));
+  });
+  ir("menu");
+})();
+</script>
+</body>
+</html>
